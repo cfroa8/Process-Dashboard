@@ -1,0 +1,307 @@
+// 
+// Data definitions for a TSP(SM) project root
+//
+
+[Project_Path_Prefix] = [^];
+[Project_ID] = "Enter Project Identifier";
+[Project_WBS_ID] = [Project_ID];
+[Team_Process_PID] = "TSP";
+
+
+/*
+ * Redefine the rollup filter to include items from this project.
+ */
+[Rollup_Filter] =
+     "[Project_WBS_ID] == [{Project_WBS_ID}] || startsWith([{Project_WBS_ID}] & \"/\", [Project_WBS_ID])";
+
+
+
+/*
+ * Default guidelines for the quality profile
+ */
+
+[Target Design/Code Ratio] = 1.0;
+
+[Target Design Review/Design Ratio] = 0.5;
+
+[Target Code Review/Code Ratio] = 0.5;
+
+[Target Test Defect Density] = 5;
+
+[Target Compile Defect Density] = 10;
+
+
+
+/*
+ * Default Phase Yields and Defect Injection Rates
+ */
+
+[Misc/Estimated % Phase Yield] =
+     0;
+    
+[Misc/Estimated Defects Injected per Hour] = 
+     0;
+    
+[Strategy/Estimated % Phase Yield] =
+     0;
+    
+[Strategy/Estimated Defects Injected per Hour] = 
+     0;
+    
+[Planning/Estimated % Phase Yield] =
+     0;
+    
+[Planning/Estimated Defects Injected per Hour] = 
+     0;
+    
+[Reqts/Estimated % Phase Yield] =
+     0;
+    
+[Reqts/Estimated Defects Injected per Hour] = 
+     0.25;
+    
+[Sys Test Plan/Estimated % Phase Yield] =
+     0;
+    
+[Sys Test Plan/Estimated Defects Injected per Hour] = 
+     0;
+    
+[Reqts Review/Estimated % Phase Yield] =
+     0.70;
+    
+[Reqts Review/Estimated Defects Injected per Hour] = 
+     0;
+    
+[Reqts Inspect/Estimated % Phase Yield] =
+     0.70;
+    
+[Reqts Inspect/Estimated Defects Injected per Hour] = 
+     0;
+    
+[HLD/Estimated % Phase Yield] =
+     0;
+    
+[HLD/Estimated Defects Injected per Hour] = 
+     0.25;
+    
+[Int Test Plan/Estimated % Phase Yield] =
+     0;
+    
+[Int Test Plan/Estimated Defects Injected per Hour] = 
+     0;
+    
+[HLD Review/Estimated % Phase Yield] =
+     0.70;
+    
+[HLD Review/Estimated Defects Injected per Hour] = 
+     0;
+    
+[HLD Inspect/Estimated % Phase Yield] =
+     0.70;
+    
+[HLD Inspect/Estimated Defects Injected per Hour] = 
+     0;
+    
+[Design/Estimated % Phase Yield] =
+     0;
+    
+[Design/Estimated Defects Injected per Hour] = 
+     0.75;
+    
+[Design Review/Estimated % Phase Yield] =
+     0.70;
+    
+[Design Review/Estimated Defects Injected per Hour] = 
+     0;
+    
+[Test Devel/Estimated % Phase Yield] =
+     0;
+    
+[Test Devel/Estimated Defects Injected per Hour] = 
+     0;
+    
+[Design Inspect/Estimated % Phase Yield] =
+     0.70;
+    
+[Design Inspect/Estimated Defects Injected per Hour] = 
+     0;
+    
+[Code/Estimated % Phase Yield] =
+     0;
+    
+[Code/Estimated Defects Injected per Hour] = 
+     2;
+    
+[Code Review/Estimated % Phase Yield] =
+     0.70;
+    
+[Code Review/Estimated Defects Injected per Hour] = 
+     0;
+    
+[Compile/Estimated % Phase Yield] =
+     0.50;
+    
+[Compile/Estimated Defects Injected per Hour] = 
+     0.3;
+    
+[Code Inspect/Estimated % Phase Yield] =
+     0.70;
+    
+[Code Inspect/Estimated Defects Injected per Hour] = 
+     0;
+    
+[Test/Estimated % Phase Yield] =
+     0.90;
+    
+[Test/Estimated Defects Injected per Hour] = 
+     0.067;
+    
+[Int Test/Estimated % Phase Yield] =
+     0.80;
+    
+[Int Test/Estimated Defects Injected per Hour] = 
+     0;
+    
+[Sys Test/Estimated % Phase Yield] =
+     0.80;
+    
+[Sys Test/Estimated Defects Injected per Hour] = 
+     0;
+    
+[Documentation/Estimated % Phase Yield] =
+     0;
+    
+[Documentation/Estimated Defects Injected per Hour] = 
+     0;
+    
+[Accept Test/Estimated % Phase Yield] =
+     0;
+    
+[Accept Test/Estimated Defects Injected per Hour] = 
+     0;
+    
+[Postmortem/Estimated % Phase Yield] =
+     0;
+    
+[Postmortem/Estimated Defects Injected per Hour] = 
+     0;
+    
+[Product Life/Estimated % Phase Yield] =
+     0;
+    
+[Product Life/Estimated Defects Injected per Hour] = 
+     0;
+    
+
+
+
+
+/*
+ * Settings concerning team interconnectivity.
+ */
+
+[Team_Directory] = "Enter network directory path";
+[Team_URL] = null;
+
+/*
+ * Determine the effective team directory that should be used.
+ *   - If the current operating system is Windows and a UNC path is available,
+ *     use that UNC path.
+ *   - Otherwise, if a regular directory has been entered, use that.
+ *   - Otherwise, this will be the empty string.
+ */
+[Team_Directory_Eff] =
+    iff([Team_Directory_UNC] && [//Env/OS.IS_WINDOWS],
+            [Team_Directory_UNC],
+        iff([Team_Directory] != "Enter network directory path",
+            [Team_Directory],
+            ""));
+
+[file_sep] = iff([//Env/OS.IS_WINDOWS], "\\", "/");
+
+[Team_Data_Directory] = 
+    iff([Team_Directory_Eff] && [Project_ID],
+        [Team_Directory_Eff] & [file_sep] & "data" & [file_sep] & [Project_ID],
+	"");
+[Team_Directory_URL_Only] = [Team_Data_Directory_URL] && ![Team_Data_Directory];
+
+
+/*
+ * Enable display of the earned value "week" form.
+ */
+[/Enable_EV_Week_form] = TAG;
+
+/*
+ * Default configuration for export of the team project plan.
+ * This setting also controls whether distinct datafiles are
+ * created in support of hierarchy-based filtering.
+ */
+
+[Export_Max_Node_Depth] = 0;
+
+/*
+ * Data elements for wbs-based ordering
+ */
+
+[Task_ID_WBS_Order] = [Synchronized_Task_ID_WBS_Order];
+[Synchronized_Task_ID_WBS_Order] = "none";
+
+
+/*
+ * Calculate the list of phases to show on forms/charts/reports.
+ */
+
+[Phase_Display_Filter_Include/Misc] = 1;
+
+[Phase_Display_Filter_Include/Strategy] = 1;
+
+[Phase_Display_Filter_Include/Planning] = 1;
+
+[Phase_Display_Filter_Include/Reqts] = 1;
+
+[Phase_Display_Filter_Include/Sys Test Plan] = 1;
+
+[Phase_Display_Filter_Include/Reqts Review] = 1;
+
+[Phase_Display_Filter_Include/Reqts Inspect] = 1;
+
+[Phase_Display_Filter_Include/HLD] = 1;
+
+[Phase_Display_Filter_Include/Int Test Plan] = 1;
+
+[Phase_Display_Filter_Include/HLD Review] = 1;
+
+[Phase_Display_Filter_Include/HLD Inspect] = 1;
+
+[Phase_Display_Filter_Include/Design] = 1;
+
+[Phase_Display_Filter_Include/Design Review] = 1;
+
+[Phase_Display_Filter_Include/Test Devel] = 1;
+
+[Phase_Display_Filter_Include/Design Inspect] = 1;
+
+[Phase_Display_Filter_Include/Code] = 1;
+
+[Phase_Display_Filter_Include/Code Review] = 1;
+
+[Phase_Display_Filter_Include/Compile] = 1;
+
+[Phase_Display_Filter_Include/Code Inspect] = 1;
+
+[Phase_Display_Filter_Include/Test] = 1;
+
+[Phase_Display_Filter_Include/Int Test] = 1;
+
+[Phase_Display_Filter_Include/Sys Test] = 1;
+
+[Phase_Display_Filter_Include/Documentation] = 1;
+
+[Phase_Display_Filter_Include/Accept Test] = 1;
+
+[Phase_Display_Filter_Include/Postmortem] = 1;
+
+[Phase_Display_Filter_Include/Product Life] = 1;
+
+[Phase_Display_Filter_List] =
+    filter(indirect("Phase_Display_Filter_Include/" & [_]), [Phase_List]);

@@ -1,0 +1,16 @@
+<?xml version='1.0'?>
+
+<file-list>
+
+   <directory name="Team Project Document Directory"
+              templatePath="/Templates/TSP"
+              path="[Team Project Document Directory]">
+      <var name="[Team Project Document Directory]">
+           Please enter the complete path to a directory where you would like
+           to store documents pertaining to this team project.</var>
+
+      
+
+   </directory>
+
+</file-list>

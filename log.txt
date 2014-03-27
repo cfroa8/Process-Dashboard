@@ -1,0 +1,110 @@
+Process Dashboard - logging started at Wed Mar 26 18:13:29 COT 2014
+Apple Inc. JRE 1.6.0_65; Mac OS X
+Using LocalWorkingDirectory[/Users/CarlosRoa/Documents/Documents/Process Dashboard]
+Mar 26, 2014 6:13:32 PM net.sourceforge.processdash.ProcessDashboard <init>
+INFO: Process Dashboard version 2.0
+Mar 26, 2014 6:13:32 PM com.tuma_solutions.tpidw.client.addon.TpidwAddOnContext createContextImpl
+INFO: Creating TPIDW database
+Mar 26, 2014 6:13:35 PM com.tuma_solutions.tpidw.client.addon.TpidwAddOnContext createContextImpl
+INFO: TPIDW database created
+Mar 26, 2014 6:13:36 PM com.tuma_solutions.tpidw.client.addon.TpidwAddOnDataLoader$DatasetLoaderThread loadDatasetImpl
+INFO: Refreshed database with project data (took 467 ms)
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/1.dat
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/3.dat
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/global.dat
+Mar 26, 2014 6:13:40 PM com.tuma_solutions.tpidw.client.addon.TpidwAddOnDataLoader$DatasetLoaderThread loadDatasetImpl
+INFO: Refreshed database with project data (took 47 ms)
+Mar 26, 2014 6:14:25 PM net.sourceforge.processdash.tool.bridge.client.WorkingDirectoryFactory get
+INFO: Using local working directory /Users/CarlosRoa/Documents/Documents/Process Dashboard/data/ht77arzq
+Mar 26, 2014 6:15:44 PM net.sourceforge.processdash.tool.bridge.client.WorkingDirectoryFactory get
+INFO: Using local working directory /Users/CarlosRoa/Documents/Documents/Process Dashboard/data/ht77arzq
+Mar 26, 2014 6:18:52 PM net.sourceforge.processdash.tool.bridge.client.WorkingDirectoryFactory get
+INFO: Using local working directory /Users/CarlosRoa/Documents/Documents/Process Dashboard/data/ht77arzq
+Mar 26, 2014 6:28:57 PM net.sourceforge.processdash.tool.bridge.client.WorkingDirectoryFactory get
+INFO: Using local working directory /Users/CarlosRoa/Documents/Documents/Process Dashboard/data/ht77arzq
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/3.dat
+Mar 26, 2014 6:30:55 PM com.tuma_solutions.tpidw.client.addon.TpidwAddOnDataLoader$DatasetLoaderThread loadDatasetImpl
+INFO: Refreshed database with project data (took 124 ms)
+Mar 26, 2014 6:30:58 PM net.sourceforge.processdash.tool.bridge.client.WorkingDirectoryFactory get
+INFO: Using local working directory /Users/CarlosRoa/Documents/Documents/Process Dashboard/data/ht77arzq
+setValueAt(10)
+setValueAt(0.09615384615384615)
+setValueAt(0.560897435897436)
+setValueAt(0.560897435897436)
+setValueAt(0.560897435897436)
+setValueAt(0.560897435897436)
+setValueAt(0.560897435897436)
+setValueAt(0.560897435897436)
+setValueAt(0.24038461538461536)
+setValueAt(0.24038461538461536)
+setValueAt(0.24038461538461536)
+setValueAt(0.24038461538461536)
+setValueAt(0.24038461538461536)
+setValueAt(0.24038461538461536)
+setValueAt(0.9615384615384615)
+setValueAt(0.09615384615384615)
+setValueAt(0.09615384615384615)
+setValueAt(0.08012820512820512)
+setValueAt(0.08012820512820512)
+setValueAt(0.08012820512820512)
+setValueAt(0.08012820512820512)
+setValueAt(0.08012820512820512)
+setValueAt(0.08012820512820512)
+setValueAt(0.04807692307692307)
+setValueAt(0.4807692307692307)
+setValueAt(0.8653846153846151)
+setValueAt(0.4807692307692307)
+setValueAt(0.7211538461538461)
+setValueAt(0.7211538461538461)
+setValueAt(0.04807692307692307)
+setValueAt(0.04807692307692307)
+setValueAt(0.04807692307692307)
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/3.dat
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/3.dat
+Mar 26, 2014 7:06:21 PM com.tuma_solutions.tpidw.client.addon.TpidwAddOnDataLoader$DatasetLoaderThread loadDatasetImpl
+INFO: Refreshed database with project data (took 94 ms)
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/1.dat
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/3.dat
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/global.dat
+Mar 26, 2014 8:26:57 PM net.sourceforge.processdash.BackgroundTaskManager$BackgroundTaskExecutor abort
+SEVERE: A background task 'net.sourceforge.processdash.tool.export.mgr.ExportManager$BGTask [filename=Templates/Dash-template.xml (in file:/Users/CarlosRoa/Documents/Documents/Process%20Dashboard/pspdash.jar)]' appears to be stuck; discarding it
+java.io.IOException: Output aborted
+	at net.sourceforge.processdash.tool.export.impl.ExportFileStream$AbortableOutputStream.checkStatus(ExportFileStream.java:232)
+	at net.sourceforge.processdash.tool.export.impl.ExportFileStream$AbortableOutputStream.write(ExportFileStream.java:241)
+	at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:65)
+	at java.io.BufferedOutputStream.flush(BufferedOutputStream.java:123)
+	at java.io.FilterOutputStream.flush(FilterOutputStream.java:123)
+	at sun.nio.cs.StreamEncoder.implFlush(StreamEncoder.java:278)
+	at sun.nio.cs.StreamEncoder.flush(StreamEncoder.java:122)
+	at java.io.OutputStreamWriter.flush(OutputStreamWriter.java:212)
+	at org.kxml2.io.KXmlSerializer.flush(Unknown Source)
+	at org.kxml2.io.KXmlSerializer.endDocument(Unknown Source)
+	at net.sourceforge.processdash.tool.export.impl.DataExporterXMLv1.writeDataElements(DataExporterXMLv1.java:95)
+	at net.sourceforge.processdash.tool.export.impl.DataExporterXMLv1.export(DataExporterXMLv1.java:58)
+	at net.sourceforge.processdash.tool.export.impl.ArchiveMetricsFileExporter.writeData(ArchiveMetricsFileExporter.java:316)
+	at net.sourceforge.processdash.tool.export.impl.ArchiveMetricsFileExporter.doExport(ArchiveMetricsFileExporter.java:158)
+	at net.sourceforge.processdash.tool.export.impl.ArchiveMetricsFileExporter.run(ArchiveMetricsFileExporter.java:139)
+	at net.sourceforge.processdash.tool.export.mgr.ExportManager$ExportTask.run(ExportManager.java:468)
+	at net.sourceforge.processdash.tool.export.mgr.ExportManager.exportAll(ExportManager.java:274)
+	at net.sourceforge.processdash.tool.export.mgr.ExportManager$BGTask.run(ExportManager.java:430)
+	at net.sourceforge.processdash.BackgroundTaskManager$BackgroundTask.run(BackgroundTaskManager.java:313)
+	at net.sourceforge.processdash.BackgroundTaskManager$BackgroundTaskExecutor.run(BackgroundTaskManager.java:437)
+Completed user-scheduled data export.
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/1.dat
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/global.dat
+Mar 26, 2014 8:26:58 PM com.tuma_solutions.tpidw.client.addon.TpidwAddOnDataLoader$DatasetLoaderThread loadDatasetImpl
+INFO: Refreshed database with project data (took 32 ms)
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/1.dat
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/3.dat
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/global.dat
+Mar 26, 2014 8:27:00 PM com.tuma_solutions.tpidw.client.addon.TpidwAddOnDataLoader$DatasetLoaderThread loadDatasetImpl
+INFO: Refreshed database with project data (took 30 ms)
+Mar 26, 2014 8:27:23 PM net.sourceforge.processdash.tool.bridge.client.WorkingDirectoryFactory get
+INFO: Using local working directory /Users/CarlosRoa/Documents/Documents/Process Dashboard/https:/github.com/ECOS2014/proyectotsp.git/data/ht5x5427
+Mar 26, 2014 8:27:51 PM net.sourceforge.processdash.tool.bridge.client.WorkingDirectoryFactory get
+INFO: Using local working directory /Users/CarlosRoa/Documents/Documents/Process Dashboard/data/ht77arzq
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/3.dat
+Mar 26, 2014 8:36:18 PM com.tuma_solutions.tpidw.client.addon.TpidwAddOnDataLoader$DatasetLoaderThread loadDatasetImpl
+INFO: Refreshed database with project data (took 54 ms)
+Mar 26, 2014 8:36:30 PM net.sourceforge.processdash.tool.bridge.client.WorkingDirectoryFactory get
+INFO: Using local working directory /Users/CarlosRoa/Documents/Documents/Process Dashboard/data/ht77arzq

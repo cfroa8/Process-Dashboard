@@ -1,0 +1,129 @@
+
+<h2><!--#echo Heading --><!--#if [TSP Indiv Root Tag] -->
+<a class="doNotPrint" target="_top" href="sizeForm.class" style="font-size: medium; font-style: italic; font-weight: normal; margin-left: 0.5cm"><!--#echo Edit_Link --></a>
+<!--#endif--></h2>
+
+<table>
+
+<tr>
+<th></th>
+<th style="padding-left: 10px"><!--#echo Plan --></th>
+<th><!--#echo Actual --></th>
+</tr>
+
+<!--#if [TSP Indiv Root Tag] -->
+<tr style="background-color: #D3D3D3; font-weight: bold">
+<td align="left" colspan="3"><!--#echo Personally_Produced --></td>
+</tr>
+<!--#endif-->
+
+
+
+<tr>
+<td align="left">Text Pages</td>
+<td style="padding-left: 10px"><input type="text" size="7"
+    name="Estimated Text Pages"></td>
+<td><input type="text" size="7" name="Text Pages"></td>
+</tr>
+
+
+
+<tr>
+<td align="left">Requirements Pages</td>
+<td style="padding-left: 10px"><input type="text" size="7"
+    name="Estimated Req Pages"></td>
+<td><input type="text" size="7" name="Req Pages"></td>
+</tr>
+
+
+
+<tr>
+<td align="left">HLD Pages</td>
+<td style="padding-left: 10px"><input type="text" size="7"
+    name="Estimated HLD Pages"></td>
+<td><input type="text" size="7" name="HLD Pages"></td>
+</tr>
+
+
+
+
+<tr>
+<td align="left"><!--#echo Detailed_Design_Lines --></td>
+<td style="padding-left: 10px"><input type="text" size="7"
+    name="Estimated DLD Lines"></td>
+<td><input type="text" size="7" name="DLD Lines"></td>
+</tr>
+
+
+
+
+<tr>
+<td align="left"><!--#echo New_&_Changed_LOC --></td>
+<td style="padding-left: 10px"><input type="text" size="7"
+    name="Estimated New &amp; Changed LOC"></td>
+<td><input type="text" size="7" name="New &amp; Changed LOC"></td>
+</tr>
+
+
+
+
+
+
+<!--#if [TSP Indiv Root Tag] -->
+
+<tr style="background-color: #D3D3D3; font-weight: bold">
+<td align="left" colspan="3"><!--#echo Personally_Inspected --></td>
+</tr>
+
+
+
+<tr>
+<td align="left">Text Pages</td>
+<td style="padding-left: 10px"><input type="text" size="7"
+    name="Estimated Inspected Text Pages"></td>
+<td><input type="text" size="7" 
+    name="Inspected Text Pages"></td>
+</tr>
+
+
+
+<tr>
+<td align="left">Requirements Pages</td>
+<td style="padding-left: 10px"><input type="text" size="7"
+    name="Estimated Inspected Req Pages"></td>
+<td><input type="text" size="7" 
+    name="Inspected Req Pages"></td>
+</tr>
+
+
+
+<tr>
+<td align="left">HLD Pages</td>
+<td style="padding-left: 10px"><input type="text" size="7"
+    name="Estimated Inspected HLD Pages"></td>
+<td><input type="text" size="7" 
+    name="Inspected HLD Pages"></td>
+</tr>
+
+
+
+
+<tr>
+<td align="left"><!--#echo Detailed_Design_Lines --></td>
+<td style="padding-left: 10px"><input type="text" size="7"
+    name="Estimated Inspected DLD Lines"></td>
+<td><input type="text" size="7" name="Inspected DLD Lines"></td>
+</tr>
+
+
+<tr>
+<td align="left"><!--#echo New_&_Changed_LOC --></td>
+<td style="padding-left: 10px"><input type="text" size="7"
+    name="Estimated Inspected New &amp; Changed LOC"></td>
+<td><input type="text" size="7" name="Inspected New &amp; Changed LOC"></td>
+</tr>
+
+<!--#endif-->
+
+
+</table>

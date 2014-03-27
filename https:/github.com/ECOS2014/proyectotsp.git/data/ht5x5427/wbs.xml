@@ -1,0 +1,653 @@
+<wbsModel>
+  <wbsNode name='ContadorCambios' id='6447202' type='Project' indentLevel='0' expanded='true'>
+    <attr name='createdWithVersion' value='4.0.0'/>
+    <attr name='Milestone' value='5279789'/>
+  </wbsNode>
+    <wbsNode name='Reuniones' id='6447111' type='Component' indentLevel='1'>
+      <attr name='workflowSourceIDs' value='3958074'/>
+    </wbsNode>
+      <wbsNode name='WeekForm' id='6447088' type='Documentation Task' indentLevel='2' expanded='true'>
+        <attr name='GM-Time (Top Down)' value='5.0'/>
+        <attr name='Time (Top Down)' value='30.0'/>
+        <attr name='DA-Time (Top Down)' value='5.0'/>
+        <attr name='Added-HLD Pages (Top Down)' value='10.0'/>
+        <attr name='# People' value='6.0'/>
+        <attr name='Task Size Units' value='Text Pages '/>
+        <attr name='Time Per Person' value='5.0'/>
+        <attr name='PC-Time (Top Down)' value='5.0'/>
+        <attr name='IE-Time (Top Down)' value='5.0'/>
+        <attr name='FF-Time (Top Down)' value='5.0'/>
+        <attr name='Rate' value='2.0'/>
+        <attr name='Misc Size' value='10.0'/>
+        <attr name='Added-Text Pages (Top Down)' value='10.0'/>
+        <attr name='CR-Time (Top Down)' value='5.0'/>
+      </wbsNode>
+    <wbsNode name='Lanzamiento1' id='6447085' type='Component' indentLevel='1'>
+      <attr name='Milestone' value='5279790'/>
+      <attr name='Time Per Person' value='0.0'/>
+    </wbsNode>
+      <wbsNode name='InfoForm' id='6447087' type='Documentation Task' indentLevel='2' expanded='true'>
+        <attr name='GM-Time (Top Down)' value='0.17'/>
+        <attr name='Time (Top Down)' value='1.02'/>
+        <attr name='DA-Time (Top Down)' value='0.17'/>
+        <attr name='# People' value='6.0'/>
+        <attr name='Task Size Units' value='Text Pages '/>
+        <attr name='Time Per Person' value='0.17'/>
+        <attr name='PC-Time (Top Down)' value='0.17'/>
+        <attr name='IE-Time (Top Down)' value='0.17'/>
+        <attr name='FF-Time (Top Down)' value='0.17'/>
+        <attr name='Misc Size' value='6.0'/>
+        <attr name='Added-Text Pages (Top Down)' value='6.0'/>
+        <attr name='CR-Time (Top Down)' value='0.17'/>
+      </wbsNode>
+      <wbsNode name='ProjectCha' id='6447089' type='Documentation Task' indentLevel='2' expanded='true'>
+        <attr name='GM-Time (Top Down)' value='4.0'/>
+        <attr name='Time (Top Down)' value='24.0'/>
+        <attr name='DA-Time (Top Down)' value='4.0'/>
+        <attr name='# People' value='6.0'/>
+        <attr name='Task Size Units' value='Text Pages '/>
+        <attr name='Time Per Person' value='4.0'/>
+        <attr name='PC-Time (Top Down)' value='4.0'/>
+        <attr name='IE-Time (Top Down)' value='4.0'/>
+        <attr name='FF-Time (Top Down)' value='4.0'/>
+        <attr name='Misc Size' value='5.0'/>
+        <attr name='Added-Text Pages (Top Down)' value='5.0'/>
+        <attr name='CR-Time (Top Down)' value='4.0'/>
+      </wbsNode>
+    <wbsNode name='Estrategia1' id='6447086' type='Component' indentLevel='1'>
+      <attr name='Milestone' value='5279791'/>
+    </wbsNode>
+      <wbsNode name='Conceptual Design' id='6447092' type='Design Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='2.0'/>
+        <attr name='# People' value='2.0'/>
+        <attr name='Task Size Units' value='Text Pages '/>
+        <attr name='Time Per Person' value='1.0'/>
+        <attr name='PC-Time (Top Down)' value='1.0'/>
+        <attr name='FF-Time (Top Down)' value='1.0'/>
+        <attr name='Rate' value='1.0'/>
+        <attr name='Misc Size' value='1.0'/>
+        <attr name='Added-DLD Lines (Top Down)' value='2.0'/>
+      </wbsNode>
+      <wbsNode name='STRAT' id='6447090' type='Strategy Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='2.0'/>
+        <attr name='Added-HLD Pages (Top Down)' value='3.0'/>
+        <attr name='# People' value='2.0'/>
+        <attr name='Task Size Units' value='Text Pages '/>
+        <attr name='Time Per Person' value='1.0'/>
+        <attr name='IE-Time (Top Down)' value='1.0'/>
+        <attr name='Rate' value='1.0'/>
+        <attr name='Misc Size' value='1.0'/>
+        <attr name='Added-Text Pages (Top Down)' value='2.0'/>
+        <attr name='CR-Time (Top Down)' value='1.0'/>
+      </wbsNode>
+      <wbsNode name='ITL' id='6447091' type='Strategy Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='0.5'/>
+        <attr name='DA-Time (Top Down)' value='0.5'/>
+        <attr name='Added-HLD Pages (Top Down)' value='2.0'/>
+        <attr name='# People' value='1.0'/>
+        <attr name='Task Size Units' value='Text Pages '/>
+        <attr name='Time Per Person' value='0.5'/>
+        <attr name='Rate' value='2.0'/>
+        <attr name='Misc Size' value='1.0'/>
+        <attr name='CR-Time (Top Down)' value='0.0'/>
+      </wbsNode>
+      <wbsNode name='Estandar Codificacion' id='6447170' type='Strategy Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='1.0'/>
+        <attr name='DA-Time (Top Down)' value='1.0'/>
+        <attr name='# People' value='1.0'/>
+        <attr name='Task Size Units' value='Text Pages '/>
+        <attr name='Time Per Person' value='1.0'/>
+        <attr name='Rate' value='2.0'/>
+        <attr name='Misc Size' value='2.0'/>
+      </wbsNode>
+      <wbsNode name='Manual GIT' id='6447102' type='Misc Task' indentLevel='2'>
+        <attr name='GM-Time (Top Down)' value='1.5'/>
+        <attr name='Time (Top Down)' value='1.5'/>
+        <attr name='# People' value='1.0'/>
+        <attr name='Task Size Units' value='Text Pages '/>
+        <attr name='Time Per Person' value='1.5'/>
+        <attr name='Rate' value='2.0'/>
+        <attr name='Misc Size' value='3.0'/>
+        <attr name='Added-Text Pages (Top Down)' value='4.0'/>
+      </wbsNode>
+      <wbsNode name='Manual DashBoard' id='6447103' type='Component' indentLevel='2'/>
+        <wbsNode name='Equipo' id='6447105' type='Misc Task' indentLevel='3'>
+          <attr name='GM-Time (Top Down)' value='1.3333333333333333'/>
+          <attr name='Time (Top Down)' value='1.3333333333333333'/>
+          <attr name='# People' value='1.0'/>
+          <attr name='Task Size Units' value='Text Pages '/>
+          <attr name='Time Per Person' value='1.3333333333333333'/>
+          <attr name='Rate' value='1.5'/>
+          <attr name='Misc Size' value='2.0'/>
+          <attr name='Added-Text Pages (Top Down)' value='1.0'/>
+        </wbsNode>
+        <wbsNode name='Lider' id='6447106' type='Misc Task' indentLevel='3'>
+          <attr name='GM-Time (Top Down)' value='1.3333333333333333'/>
+          <attr name='Time (Top Down)' value='1.3333333333333333'/>
+          <attr name='Task Size Units' value='Text Pages '/>
+          <attr name='Time Per Person' value='1.3333333333333333'/>
+          <attr name='Rate' value='1.5'/>
+          <attr name='Misc Size' value='2.0'/>
+          <attr name='Added-Text Pages (Top Down)' value='3.0'/>
+        </wbsNode>
+        <wbsNode name='Programador' id='6447107' type='Misc Task' indentLevel='3'>
+          <attr name='GM-Time (Top Down)' value='1.3333333333333333'/>
+          <attr name='Time (Top Down)' value='1.3333333333333333'/>
+          <attr name='Task Size Units' value='Text Pages '/>
+          <attr name='Time Per Person' value='1.3333333333333333'/>
+          <attr name='Rate' value='1.5'/>
+          <attr name='Misc Size' value='2.0'/>
+          <attr name='Added-Text Pages (Top Down)' value='2.0'/>
+        </wbsNode>
+      <wbsNode name='Configuracion DashBoard' id='6447104' type='Misc Task' indentLevel='2'>
+        <attr name='GM-Time (Top Down)' value='1.0'/>
+        <attr name='Time (Top Down)' value='1.0'/>
+        <attr name='Task Size Units' value='Text Pages '/>
+        <attr name='Time Per Person' value='1.0'/>
+        <attr name='Rate' value='1.0'/>
+        <attr name='Misc Size' value='1.0'/>
+        <attr name='Added-Text Pages (Top Down)' value='3.0'/>
+      </wbsNode>
+      <wbsNode name='Configuracion GIT' id='6447109' type='Misc Task' indentLevel='2'>
+        <attr name='GM-Time (Top Down)' value='1.0'/>
+        <attr name='Time (Top Down)' value='1.0'/>
+        <attr name='Task Size Units' value='Text Pages '/>
+        <attr name='Time Per Person' value='1.0'/>
+        <attr name='Rate' value='1.0'/>
+        <attr name='Misc Size' value='1.0'/>
+        <attr name='Added-Text Pages (Top Down)' value='2.0'/>
+      </wbsNode>
+      <wbsNode name='Instalacion DashBoard' id='6447164' type='Component' indentLevel='2'/>
+        <wbsNode name='Equipo' id='6447167' type='Misc Task' indentLevel='3'>
+          <attr name='GM-Time (Top Down)' value='0.6'/>
+          <attr name='Time (Top Down)' value='2.4'/>
+          <attr name='DA-Time (Top Down)' value='0.6'/>
+          <attr name='# People' value='4.0'/>
+          <attr name='Task Size Units' value='Text Pages '/>
+          <attr name='Time Per Person' value='0.6'/>
+          <attr name='PC-Time (Top Down)' value='0.6'/>
+          <attr name='FF-Time (Top Down)' value='0.6'/>
+          <attr name='Misc Size' value='1.0'/>
+          <attr name='Added-Text Pages (Top Down)' value='1.0'/>
+        </wbsNode>
+        <wbsNode name='Lider' id='6447168' type='Misc Task' indentLevel='3'>
+          <attr name='GM-Time (Top Down)' value='0.0'/>
+          <attr name='Time (Top Down)' value='0.6'/>
+          <attr name='# People' value='1.0'/>
+          <attr name='Task Size Units' value='Text Pages '/>
+          <attr name='Time Per Person' value='0.6'/>
+          <attr name='Misc Size' value='1.0'/>
+          <attr name='Added-Text Pages (Top Down)' value='3.0'/>
+          <attr name='CR-Time (Top Down)' value='0.6'/>
+        </wbsNode>
+        <wbsNode name='Programador' id='6447169' type='Misc Task' indentLevel='3'>
+          <attr name='GM-Time (Top Down)' value='0.0'/>
+          <attr name='Time (Top Down)' value='0.6'/>
+          <attr name='Task Size Units' value='Text Pages '/>
+          <attr name='Time Per Person' value='0.6'/>
+          <attr name='IE-Time (Top Down)' value='0.6'/>
+          <attr name='Misc Size' value='1.0'/>
+          <attr name='Added-Text Pages (Top Down)' value='2.0'/>
+        </wbsNode>
+    <wbsNode name='Planning1' id='6447078' type='Component' indentLevel='1'>
+      <attr name='Milestone' value='5279792'/>
+      <attr name='Time Per Person' value='0.0'/>
+    </wbsNode>
+      <wbsNode name='SUMP' id='6447095' type='Planning Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='1.0'/>
+        <attr name='Added-HLD Pages (Top Down)' value='2.0'/>
+        <attr name='Task Size Units' value='Text Pages '/>
+        <attr name='Time Per Person' value='0.5'/>
+        <attr name='IE-Time (Top Down)' value='0.5'/>
+        <attr name='Rate' value='4.0'/>
+        <attr name='Misc Size' value='2.0'/>
+        <attr name='CR-Time (Top Down)' value='0.5'/>
+      </wbsNode>
+      <wbsNode name='SUMQ' id='6447096' type='Planning Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='0.5'/>
+        <attr name='Added-Req Pages (Top Down)' value='2.0'/>
+        <attr name='DA-Time (Top Down)' value='0.5'/>
+        <attr name='Added-HLD Pages (Top Down)' value='2.0'/>
+        <attr name='# People' value='1.0'/>
+        <attr name='Task Size Units' value='Text Pages '/>
+        <attr name='Time Per Person' value='0.5'/>
+        <attr name='Rate' value='4.0'/>
+        <attr name='Misc Size' value='2.0'/>
+      </wbsNode>
+      <wbsNode name='SUMTASK' id='6447097' type='Planning Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='1.0'/>
+        <attr name='Added-HLD Pages (Top Down)' value='2.0'/>
+        <attr name='# People' value='2.0'/>
+        <attr name='Task Size Units' value='Text Pages '/>
+        <attr name='Time Per Person' value='0.5'/>
+        <attr name='IE-Time (Top Down)' value='0.5'/>
+        <attr name='Misc Size' value='2.0'/>
+        <attr name='CR-Time (Top Down)' value='0.5'/>
+      </wbsNode>
+      <wbsNode name='SUMS' id='6447098' type='Planning Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='1.0'/>
+        <attr name='Added-HLD Pages (Top Down)' value='2.0'/>
+        <attr name='# People' value='2.0'/>
+        <attr name='Task Size Units' value='Text Pages '/>
+        <attr name='Time Per Person' value='0.5'/>
+        <attr name='IE-Time (Top Down)' value='0.5'/>
+        <attr name='Misc Size' value='2.0'/>
+        <attr name='CR-Time (Top Down)' value='0.5'/>
+      </wbsNode>
+      <wbsNode name='TASK' id='6447100' type='Planning Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='1.0'/>
+        <attr name='Added-HLD Pages (Top Down)' value='4.0'/>
+        <attr name='# People' value='2.0'/>
+        <attr name='Task Size Units' value='Text Pages '/>
+        <attr name='Time Per Person' value='0.5'/>
+        <attr name='IE-Time (Top Down)' value='0.5'/>
+        <attr name='Misc Size' value='2.0'/>
+        <attr name='CR-Time (Top Down)' value='0.5'/>
+      </wbsNode>
+      <wbsNode name='SCHEDULE' id='6447101' type='Planning Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='1.0'/>
+        <attr name='Added-HLD Pages (Top Down)' value='4.0'/>
+        <attr name='# People' value='2.0'/>
+        <attr name='Task Size Units' value='Text Pages '/>
+        <attr name='Time Per Person' value='0.5'/>
+        <attr name='IE-Time (Top Down)' value='0.5'/>
+        <attr name='Misc Size' value='2.0'/>
+        <attr name='CR-Time (Top Down)' value='0.5'/>
+      </wbsNode>
+      <wbsNode name='DesignReviewCheck' id='6447174' type='Planning Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='0.5'/>
+        <attr name='DA-Time (Top Down)' value='0.5'/>
+        <attr name='# People' value='1.0'/>
+        <attr name='Task Size Units' value='Text Pages '/>
+        <attr name='Time Per Person' value='0.5'/>
+        <attr name='Rate' value='4.0'/>
+        <attr name='Misc Size' value='2.0'/>
+      </wbsNode>
+      <wbsNode name='CodeReviewCheck' id='6447172' type='Planning Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='0.5'/>
+        <attr name='DA-Time (Top Down)' value='0.5'/>
+        <attr name='Task Size Units' value='Text Pages '/>
+        <attr name='Time Per Person' value='0.5'/>
+        <attr name='Rate' value='4.0'/>
+        <attr name='Misc Size' value='2.0'/>
+      </wbsNode>
+    <wbsNode name='Design' id='6447079' type='Design Task' indentLevel='1' expanded='true'>
+      <attr name='GM-Time (Top Down)' value='11.666666666666668'/>
+      <attr name='Time (Top Down)' value='70.00000000000001'/>
+      <attr name='DA-Time (Top Down)' value='11.666666666666668'/>
+      <attr name='# People' value='6.0'/>
+      <attr name='Task Size Units' value='HLD Pages '/>
+      <attr name='Time Per Person' value='11.666666666666668'/>
+      <attr name='PC-Time (Top Down)' value='11.666666666666668'/>
+      <attr name='IE-Time (Top Down)' value='11.666666666666668'/>
+      <attr name='FF-Time (Top Down)' value='11.666666666666668'/>
+      <attr name='Misc Size' value='18.0'/>
+      <attr name='CR-Time (Top Down)' value='11.666666666666668'/>
+    </wbsNode>
+    <wbsNode name='Design Review' id='6447080' type='Design Review Task' indentLevel='1'>
+      <attr name='GM-Time (Top Down)' value='5.833333333333334'/>
+      <attr name='Time (Top Down)' value='35.00000000000001'/>
+      <attr name='DA-Time (Top Down)' value='5.833333333333334'/>
+      <attr name='# People' value='6.0'/>
+      <attr name='Task Size Units' value='HLD Pages '/>
+      <attr name='Time Per Person' value='5.833333333333334'/>
+      <attr name='PC-Time (Top Down)' value='5.833333333333334'/>
+      <attr name='IE-Time (Top Down)' value='5.833333333333334'/>
+      <attr name='FF-Time (Top Down)' value='5.833333333333334'/>
+      <attr name='Misc Size' value='18.0'/>
+      <attr name='CR-Time (Top Down)' value='5.833333333333334'/>
+    </wbsNode>
+    <wbsNode name='Code1' id='6447081' type='Code Task' indentLevel='1'>
+      <attr name='Time Per Person' value='0.0'/>
+    </wbsNode>
+      <wbsNode name='ProgramComparatorGUI' id='6447062' type='Code Task' indentLevel='2' expanded='true'>
+        <attr name='GM-Time (Top Down)' value='0.0'/>
+        <attr name='Time (Top Down)' value='6.4029371271225335'/>
+        <attr name='Added-LOC (Top Down)' value='500.0'/>
+        <attr name='DA-Time (Top Down)' value='1.6007342817806334'/>
+        <attr name='# People' value='4.0'/>
+        <attr name='Time Per Person' value='1.6007342817806334'/>
+        <attr name='PC-Time (Top Down)' value='1.6007342817806334'/>
+        <attr name='IE-Time (Top Down)' value='1.6007342817806334'/>
+        <attr name='FF-Time (Top Down)' value='0.0'/>
+        <attr name='CR-Time (Top Down)' value='1.6007342817806334'/>
+      </wbsNode>
+      <wbsNode name='ProgramComparatorFacade' id='6447063' type='Code Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='0.6424965580541532'/>
+        <attr name='Added-LOC (Top Down)' value='20.0'/>
+        <attr name='DA-Time (Top Down)' value='0.0'/>
+        <attr name='# People' value='1.0'/>
+        <attr name='Time Per Person' value='0.6424965580541532'/>
+        <attr name='IE-Time (Top Down)' value='0.6424965580541532'/>
+      </wbsNode>
+      <wbsNode name='ProgramComparator' id='6447064' type='Code Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='3.212482790270766'/>
+        <attr name='Added-LOC (Top Down)' value='100.0'/>
+        <attr name='Time Per Person' value='3.212482790270766'/>
+        <attr name='PC-Time (Top Down)' value='3.212482790270766'/>
+        <attr name='CR-Time (Top Down)' value='0.0'/>
+      </wbsNode>
+      <wbsNode name='FileComparator' id='6447065' type='Code Task' indentLevel='2'>
+        <attr name='GM-Time (Top Down)' value='0.0'/>
+        <attr name='Time (Top Down)' value='0.6424965580541532'/>
+        <attr name='Added-LOC (Top Down)' value='20.0'/>
+        <attr name='# People' value='1.0'/>
+        <attr name='Time Per Person' value='0.6424965580541532'/>
+        <attr name='PC-Time (Top Down)' value='0.6424965580541532'/>
+      </wbsNode>
+      <wbsNode name='JavaFileComparator' id='6447067' type='Code Task' indentLevel='2'>
+        <attr name='GM-Time (Top Down)' value='0.0'/>
+        <attr name='Time (Top Down)' value='22.487379531895364'/>
+        <attr name='Added-LOC (Top Down)' value='700.0'/>
+        <attr name='DA-Time (Top Down)' value='7.495793177298454'/>
+        <attr name='# People' value='3.0'/>
+        <attr name='Time Per Person' value='7.495793177298454'/>
+        <attr name='PC-Time (Top Down)' value='7.495793177298454'/>
+        <attr name='IE-Time (Top Down)' value='0.0'/>
+        <attr name='FF-Time (Top Down)' value='7.495793177298454'/>
+        <attr name='CR-Time (Top Down)' value='0.0'/>
+      </wbsNode>
+      <wbsNode name='ProgramLoader' id='6447069' type='Code Task' indentLevel='2'>
+        <attr name='GM-Time (Top Down)' value='0.0'/>
+        <attr name='Time (Top Down)' value='1.606241395135383'/>
+        <attr name='Added-LOC (Top Down)' value='50.0'/>
+        <attr name='DA-Time (Top Down)' value='1.606241395135383'/>
+        <attr name='Time Per Person' value='1.606241395135383'/>
+      </wbsNode>
+      <wbsNode name='FileLoader' id='6447070' type='Code Task' indentLevel='2'>
+        <attr name='GM-Time (Top Down)' value='1.606241395135383'/>
+        <attr name='Time (Top Down)' value='1.606241395135383'/>
+        <attr name='Added-LOC (Top Down)' value='50.0'/>
+        <attr name='Time Per Person' value='1.606241395135383'/>
+      </wbsNode>
+      <wbsNode name='ProgramPart' id='6447074' type='Code Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='1.606241395135383'/>
+        <attr name='Added-LOC (Top Down)' value='50.0'/>
+        <attr name='Time Per Person' value='1.606241395135383'/>
+        <attr name='IE-Time (Top Down)' value='1.606241395135383'/>
+      </wbsNode>
+      <wbsNode name='ProgramPartVersion' id='6447075' type='Code Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='1.606241395135383'/>
+        <attr name='Added-LOC (Top Down)' value='50.0'/>
+        <attr name='Time Per Person' value='1.606241395135383'/>
+        <attr name='IE-Time (Top Down)' value='1.606241395135383'/>
+      </wbsNode>
+      <wbsNode name='LineLabel' id='6447076' type='Code Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='1.606241395135383'/>
+        <attr name='Added-LOC (Top Down)' value='50.0'/>
+        <attr name='# People' value='1.0'/>
+        <attr name='Time Per Person' value='1.606241395135383'/>
+        <attr name='CR-Time (Top Down)' value='1.606241395135383'/>
+      </wbsNode>
+      <wbsNode name='LineCounter' id='6447161' type='Code Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='1.9274896741624594'/>
+        <attr name='Added-LOC (Top Down)' value='300.0'/>
+        <attr name='# People' value='1.0'/>
+        <attr name='Time Per Person' value='1.9274896741624594'/>
+        <attr name='IE-Time (Top Down)' value='1.9274896741624594'/>
+      </wbsNode>
+      <wbsNode name='Otros' id='6447160' type='Code Task' indentLevel='2'>
+        <attr name='GM-Time (Top Down)' value='0.0'/>
+        <attr name='Time (Top Down)' value='0.9178522257916475'/>
+        <attr name='Added-LOC (Top Down)' value='100.0'/>
+        <attr name='# People' value='2.0'/>
+        <attr name='Time Per Person' value='0.45892611289582375'/>
+        <attr name='PC-Time (Top Down)' value='0.45892611289582375'/>
+        <attr name='FF-Time (Top Down)' value='0.45892611289582375'/>
+      </wbsNode>
+      <wbsNode name='UnitTest' id='6447077' type='Test Task' indentLevel='2'>
+        <attr name='GM-Time (Top Down)' value='2.3558207128652286'/>
+        <attr name='Time (Top Down)' value='14.13492427719137'/>
+        <attr name='Added-LOC (Top Down)' value='440.0'/>
+        <attr name='DA-Time (Top Down)' value='2.3558207128652286'/>
+        <attr name='# People' value='6.0'/>
+        <attr name='Task Size Units' value='LOC '/>
+        <attr name='Time Per Person' value='2.3558207128652286'/>
+        <attr name='PC-Time (Top Down)' value='2.3558207128652286'/>
+        <attr name='IE-Time (Top Down)' value='2.3558207128652286'/>
+        <attr name='FF-Time (Top Down)' value='2.3558207128652286'/>
+        <attr name='Misc Size' value='440.0'/>
+        <attr name='CR-Time (Top Down)' value='2.3558207128652286'/>
+      </wbsNode>
+    <wbsNode name='Code Review' id='6447082' type='Code Review Task' indentLevel='1'>
+      <attr name='GM-Time (Top Down)' value='5.833333333333333'/>
+      <attr name='Time (Top Down)' value='35.0'/>
+      <attr name='DA-Time (Top Down)' value='5.833333333333333'/>
+      <attr name='# People' value='6.0'/>
+      <attr name='Task Size Units' value='LOC '/>
+      <attr name='Time Per Person' value='5.833333333333333'/>
+      <attr name='PC-Time (Top Down)' value='5.833333333333333'/>
+      <attr name='IE-Time (Top Down)' value='5.833333333333333'/>
+      <attr name='FF-Time (Top Down)' value='5.833333333333333'/>
+      <attr name='Misc Size' value='1990.0'/>
+      <attr name='CR-Time (Top Down)' value='5.833333333333333'/>
+    </wbsNode>
+    <wbsNode name='Test' id='6447083' type='Test Task' indentLevel='1'>
+      <attr name='GM-Time (Top Down)' value='1.6666666666666665'/>
+      <attr name='Time (Top Down)' value='9.999999999999998'/>
+      <attr name='DA-Time (Top Down)' value='1.6666666666666665'/>
+      <attr name='# People' value='6.0'/>
+      <attr name='Task Size Units' value='LOC '/>
+      <attr name='Time Per Person' value='1.6666666666666665'/>
+      <attr name='PC-Time (Top Down)' value='1.6666666666666665'/>
+      <attr name='IE-Time (Top Down)' value='1.6666666666666665'/>
+      <attr name='FF-Time (Top Down)' value='1.6666666666666665'/>
+      <attr name='Misc Size' value='3640.0'/>
+      <attr name='CR-Time (Top Down)' value='1.6666666666666665'/>
+    </wbsNode>
+    <wbsNode name='Postmortem' id='6447084' type='Postmortem Task' indentLevel='1'>
+      <attr name='GM-Time (Top Down)' value='0.0'/>
+      <attr name='Time (Top Down)' value='3.3600000000000003'/>
+      <attr name='DA-Time (Top Down)' value='0.8400000000000001'/>
+      <attr name='# People' value='4.0'/>
+      <attr name='Milestone' value='5279793'/>
+      <attr name='Time Per Person' value='0.8400000000000001'/>
+      <attr name='PC-Time (Top Down)' value='0.8400000000000001'/>
+      <attr name='IE-Time (Top Down)' value='0.0'/>
+      <attr name='FF-Time (Top Down)' value='0.8400000000000001'/>
+      <attr name='CR-Time (Top Down)' value='0.8400000000000001'/>
+    </wbsNode>
+    <wbsNode name='Lanzamiento2' id='6447112' type='Component' indentLevel='1'>
+      <attr name='Milestone' value='5279795'/>
+      <attr name='Time Per Person' value='0.0'/>
+    </wbsNode>
+      <wbsNode name='InfoForm' id='6447113' type='Documentation Task' indentLevel='2' expanded='true'>
+        <attr name='GM-Time (Top Down)' value='0.33333333333333337'/>
+        <attr name='Time (Top Down)' value='2.0000000000000004'/>
+        <attr name='DA-Time (Top Down)' value='0.33333333333333337'/>
+        <attr name='# People' value='6.0'/>
+        <attr name='Time Per Person' value='0.33333333333333337'/>
+        <attr name='PC-Time (Top Down)' value='0.33333333333333337'/>
+        <attr name='IE-Time (Top Down)' value='0.33333333333333337'/>
+        <attr name='FF-Time (Top Down)' value='0.33333333333333337'/>
+        <attr name='Added-Text Pages (Top Down)' value='3.0'/>
+        <attr name='CR-Time (Top Down)' value='0.33333333333333337'/>
+      </wbsNode>
+      <wbsNode name='WeekForInfoFormm' id='6447114' type='Documentation Task' indentLevel='2' expanded='true'>
+        <attr name='GM-Time (Top Down)' value='0.33333333333333337'/>
+        <attr name='Time (Top Down)' value='2.0000000000000004'/>
+        <attr name='DA-Time (Top Down)' value='0.33333333333333337'/>
+        <attr name='# People' value='6.0'/>
+        <attr name='Time Per Person' value='0.33333333333333337'/>
+        <attr name='PC-Time (Top Down)' value='0.33333333333333337'/>
+        <attr name='IE-Time (Top Down)' value='0.33333333333333337'/>
+        <attr name='FF-Time (Top Down)' value='0.33333333333333337'/>
+        <attr name='Added-Text Pages (Top Down)' value='1.0'/>
+        <attr name='CR-Time (Top Down)' value='0.33333333333333337'/>
+      </wbsNode>
+      <wbsNode name='ProjectCha' id='6447115' type='Documentation Task' indentLevel='2' expanded='true'>
+        <attr name='GM-Time (Top Down)' value='0.33333333333333337'/>
+        <attr name='Time (Top Down)' value='2.0000000000000004'/>
+        <attr name='DA-Time (Top Down)' value='0.33333333333333337'/>
+        <attr name='# People' value='6.0'/>
+        <attr name='Time Per Person' value='0.33333333333333337'/>
+        <attr name='PC-Time (Top Down)' value='0.33333333333333337'/>
+        <attr name='IE-Time (Top Down)' value='0.33333333333333337'/>
+        <attr name='FF-Time (Top Down)' value='0.33333333333333337'/>
+        <attr name='Added-Text Pages (Top Down)' value='5.0'/>
+        <attr name='CR-Time (Top Down)' value='0.33333333333333337'/>
+      </wbsNode>
+    <wbsNode name='Estrategia2' id='6447116' type='Component' indentLevel='1'>
+      <attr name='Milestone' value='5279797'/>
+    </wbsNode>
+      <wbsNode name='STRAT' id='6447117' type='Documentation Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='1.0'/>
+        <attr name='# People' value='1.0'/>
+        <attr name='Time Per Person' value='1.0'/>
+        <attr name='IE-Time (Top Down)' value='1.0'/>
+      </wbsNode>
+      <wbsNode name='ITL' id='6447118' type='Documentation Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='1.0'/>
+        <attr name='# People' value='1.0'/>
+        <attr name='Time Per Person' value='1.0'/>
+        <attr name='CR-Time (Top Down)' value='1.0'/>
+      </wbsNode>
+      <wbsNode name='Conceptual Design' id='6447119' type='Design Task' indentLevel='2' expanded='true'>
+        <attr name='Time (Top Down)' value='1.0'/>
+        <attr name='# People' value='1.0'/>
+        <attr name='Time Per Person' value='1.0'/>
+        <attr name='FF-Time (Top Down)' value='1.0'/>
+      </wbsNode>
+    <wbsNode name='Planning2' id='6447127' type='Component' indentLevel='1'>
+      <attr name='Milestone' value='5279798'/>
+      <attr name='Time Per Person' value='0.0'/>
+    </wbsNode>
+      <wbsNode name='PLAN2' id='6447128' type='Planning Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='0.2'/>
+        <attr name='# People' value='1.0'/>
+        <attr name='Task Size Units' value='Text Pages'/>
+        <attr name='Time Per Person' value='0.2'/>
+        <attr name='IE-Time (Top Down)' value='0.2'/>
+      </wbsNode>
+      <wbsNode name='SUMP' id='6447129' type='Planning Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='0.6'/>
+        <attr name='# People' value='1.0'/>
+        <attr name='Task Size Units' value='Text Pages'/>
+        <attr name='Time Per Person' value='0.6'/>
+        <attr name='IE-Time (Top Down)' value='0.6'/>
+      </wbsNode>
+      <wbsNode name='SUMQ' id='6447130' type='Planning Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='0.2'/>
+        <attr name='DA-Time (Top Down)' value='0.2'/>
+        <attr name='Task Size Units' value='Text Pages'/>
+        <attr name='Time Per Person' value='0.2'/>
+      </wbsNode>
+      <wbsNode name='SUMTASK' id='6447131' type='Planning Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='0.6'/>
+        <attr name='Task Size Units' value='Text Pages'/>
+        <attr name='Time Per Person' value='0.6'/>
+        <attr name='IE-Time (Top Down)' value='0.6'/>
+      </wbsNode>
+      <wbsNode name='SUMS' id='6447132' type='Planning Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='0.2'/>
+        <attr name='Task Size Units' value='Text Pages'/>
+        <attr name='Time Per Person' value='0.2'/>
+        <attr name='IE-Time (Top Down)' value='0.2'/>
+      </wbsNode>
+      <wbsNode name='TASK' id='6447133' type='Planning Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='0.6'/>
+        <attr name='Task Size Units' value='Text Pages'/>
+        <attr name='Time Per Person' value='0.6'/>
+        <attr name='IE-Time (Top Down)' value='0.6'/>
+      </wbsNode>
+      <wbsNode name='SCHEDULE' id='6447134' type='Planning Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='0.6'/>
+        <attr name='Task Size Units' value='Text Pages'/>
+        <attr name='Time Per Person' value='0.6'/>
+        <attr name='IE-Time (Top Down)' value='0.6'/>
+      </wbsNode>
+    <wbsNode name='Design2' id='6447135' type='Design Task' indentLevel='1'>
+      <attr name='GM-Time (Top Down)' value='1.25'/>
+      <attr name='Time (Top Down)' value='7.5'/>
+      <attr name='DA-Time (Top Down)' value='1.25'/>
+      <attr name='# People' value='6.0'/>
+      <attr name='Time Per Person' value='1.25'/>
+      <attr name='PC-Time (Top Down)' value='1.25'/>
+      <attr name='IE-Time (Top Down)' value='1.25'/>
+      <attr name='FF-Time (Top Down)' value='1.25'/>
+      <attr name='CR-Time (Top Down)' value='1.25'/>
+    </wbsNode>
+    <wbsNode name='Design Review2' id='6447136' type='Design Review Task' indentLevel='1'>
+      <attr name='GM-Time (Top Down)' value='0.6666666666666666'/>
+      <attr name='Time (Top Down)' value='3.9999999999999996'/>
+      <attr name='DA-Time (Top Down)' value='0.6666666666666666'/>
+      <attr name='# People' value='6.0'/>
+      <attr name='Time Per Person' value='0.6666666666666666'/>
+      <attr name='PC-Time (Top Down)' value='0.6666666666666666'/>
+      <attr name='IE-Time (Top Down)' value='0.6666666666666666'/>
+      <attr name='FF-Time (Top Down)' value='0.6666666666666666'/>
+      <attr name='CR-Time (Top Down)' value='0.6666666666666666'/>
+    </wbsNode>
+    <wbsNode name='Code2' id='6447175' type='Code Task' indentLevel='1'/>
+      <wbsNode name='VersionFileManager' id='6447072' type='Code Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='1.5'/>
+        <attr name='Added-LOC (Top Down)' value='50.0'/>
+        <attr name='Time Per Person' value='1.5'/>
+        <attr name='FF-Time (Top Down)' value='1.5'/>
+      </wbsNode>
+      <wbsNode name='VersionManager' id='6447071' type='Code Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='1.5'/>
+        <attr name='Added-LOC (Top Down)' value='50.0'/>
+        <attr name='Time Per Person' value='1.5'/>
+        <attr name='IE-Time (Top Down)' value='1.5'/>
+      </wbsNode>
+      <wbsNode name='ProgramVersion' id='6447073' type='Code Task' indentLevel='2'>
+        <attr name='GM-Time (Top Down)' value='2.25'/>
+        <attr name='Time (Top Down)' value='4.5'/>
+        <attr name='Added-LOC (Top Down)' value='150.0'/>
+        <attr name='Time Per Person' value='2.25'/>
+        <attr name='CR-Time (Top Down)' value='2.25'/>
+      </wbsNode>
+    <wbsNode name='Code Review2' id='6447155' type='Code Review Task' indentLevel='1'>
+      <attr name='GM-Time (Top Down)' value='0.7000000000000001'/>
+      <attr name='Time (Top Down)' value='4.2'/>
+      <attr name='DA-Time (Top Down)' value='0.7000000000000001'/>
+      <attr name='# People' value='6.0'/>
+      <attr name='Task Size Units' value='LOC '/>
+      <attr name='Time Per Person' value='0.7000000000000001'/>
+      <attr name='PC-Time (Top Down)' value='0.7000000000000001'/>
+      <attr name='IE-Time (Top Down)' value='0.7000000000000001'/>
+      <attr name='FF-Time (Top Down)' value='0.7000000000000001'/>
+      <attr name='Misc Size' value='250.0'/>
+      <attr name='CR-Time (Top Down)' value='0.7000000000000001'/>
+    </wbsNode>
+    <wbsNode name='Test2' id='6447156' type='Test Task' indentLevel='1'>
+      <attr name='GM-Time (Top Down)' value='0.7'/>
+      <attr name='Time (Top Down)' value='4.2'/>
+      <attr name='DA-Time (Top Down)' value='0.7'/>
+      <attr name='Task Size Units' value='LOC '/>
+      <attr name='Time Per Person' value='0.7'/>
+      <attr name='PC-Time (Top Down)' value='0.7'/>
+      <attr name='IE-Time (Top Down)' value='0.7'/>
+      <attr name='FF-Time (Top Down)' value='0.7'/>
+      <attr name='Misc Size' value='250.0'/>
+      <attr name='CR-Time (Top Down)' value='0.7'/>
+    </wbsNode>
+    <wbsNode name='Postmortem2' id='6447157' type='Postmortem Task' indentLevel='1'>
+      <attr name='Time (Top Down)' value='3.2'/>
+      <attr name='DA-Time (Top Down)' value='0.8'/>
+      <attr name='# People' value='4.0'/>
+      <attr name='Task Size Units' value='LOC '/>
+      <attr name='Milestone' value='5279799'/>
+      <attr name='Time Per Person' value='0.8'/>
+      <attr name='PC-Time (Top Down)' value='0.8'/>
+      <attr name='FF-Time (Top Down)' value='0.8'/>
+      <attr name='Misc Size' value='250.0'/>
+      <attr name='CR-Time (Top Down)' value='0.8'/>
+    </wbsNode>
+    <wbsNode name='Code3' id='6447137' type='Code Task' indentLevel='1'>
+      <attr name='Time Per Person' value='0.0'/>
+    </wbsNode>
+      <wbsNode name='CSharpComparator' id='6447068' type='Code Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='70.0'/>
+        <attr name='Added-LOC (Top Down)' value='700.0'/>
+        <attr name='# People' value='1.0'/>
+        <attr name='Time Per Person' value='70.0'/>
+      </wbsNode>
+      <wbsNode name='CPlusPlusComparator' id='6447066' type='Code Task' indentLevel='2'>
+        <attr name='Time (Top Down)' value='70.0'/>
+        <attr name='Added-LOC (Top Down)' value='700.0'/>
+        <attr name='# People' value='1.0'/>
+        <attr name='Time Per Person' value='70.0'/>
+      </wbsNode>
+</wbsModel>

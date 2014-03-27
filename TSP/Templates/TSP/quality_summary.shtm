@@ -1,0 +1,1438 @@
+<!--#server-parsed -->
+<html>
+<head>
+<link rel=stylesheet type="text/css" href="style.css">
+<title>TSP(SM)
+Project
+Quality Summary</title>
+
+</head>
+<body>
+
+<!--#if not frames -->
+<h1><!-- #include file="/team/lib/hier.htm" --><!--#echo var="PATH_TRANSLATED" --></h1>
+<!--#endif-->
+
+<h2>TSP(SM)
+Project
+Quality Summary</h2>
+
+<form>
+
+<input type=hidden name=requiredTag
+
+       VALUE="TSP Tag"
+
+>
+
+
+
+
+<H2>Phase Ratios</H2>
+
+<TABLE>
+
+<TR>
+<TD><B>Defect Ratios</B></TD>
+<TD ALIGN=CENTER><B>Plan</B></TD>
+<TD ALIGN=CENTER><B>Actual</B></TD>
+<TD ALIGN=CENTER><B>To Date</B></TD>
+</TR>
+
+<TR>
+<TD class=indented>Detailed Design Review/Unit Test</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="DLDR_vs_UT/Estimated Defect Ratio"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="DLDR_vs_UT/Defect Ratio"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="DLDR_vs_UT/Defect Ratio To Date"></TD>
+</TR>
+
+<TR>
+<TD class=indented>Code Review/Compile</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="CR_vs_COMP/Estimated Defect Ratio"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="CR_vs_COMP/Defect Ratio"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="CR_vs_COMP/Defect Ratio To Date"></TD>
+</TR>
+
+<TR>
+<TD><B>Development Time Ratios</B></TD>
+<TD ALIGN=CENTER><B>Plan</B></TD>
+<TD ALIGN=CENTER><B>Actual</B></TD>
+<TD ALIGN=CENTER><B>To Date</B></TD>
+</TR>
+
+<TR>
+<TD class=indented>Text Pages (Appraisal/Development)</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Text Pages/Estimated Appraisal Time Ratio"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Text Pages/Appraisal Time Ratio"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Text Pages/Appraisal Time Ratio To Date"></TD>
+</TR>
+
+<TR>
+<TD class=indented>Requirements Pages (Appraisal/Development)</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Req Pages/Estimated Appraisal Time Ratio"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Req Pages/Appraisal Time Ratio"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Req Pages/Appraisal Time Ratio To Date"></TD>
+</TR>
+
+<TR>
+<TD class=indented>HLD Pages (Appraisal/Development)</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="HLD Pages/Estimated Appraisal Time Ratio"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="HLD Pages/Appraisal Time Ratio"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="HLD Pages/Appraisal Time Ratio To Date"></TD>
+</TR>
+
+
+
+<TR>
+<TD class=indented>Detailed Design/Code</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="DLD_vs_CODE/Estimated Time Ratio"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="DLD_vs_CODE/Time Ratio"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="DLD_vs_CODE/Time Ratio To Date"></TD>
+</TR>
+
+<TR>
+<TD class=indented>DLD Review/Detailed Design</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="DLDR_vs_DLD/Estimated Time Ratio"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="DLDR_vs_DLD/Time Ratio"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="DLDR_vs_DLD/Time Ratio To Date"></TD>
+</TR>
+
+<TR>
+<TD class=indented>Code Review/Code</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="CR_vs_CODE/Estimated Time Ratio"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="CR_vs_CODE/Time Ratio"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="CR_vs_CODE/Time Ratio To Date"></TD>
+</TR>
+
+</TABLE>
+
+<H2>Inspection/Review Rates</H2>
+
+<TABLE>
+
+<TR>
+<TD></TD>
+<TD ALIGN=CENTER><B>Plan</B></TD>
+<TD ALIGN=CENTER><B>Actual</B></TD>
+<TD ALIGN=CENTER><B>To Date</B></TD>
+</TR>
+
+
+
+
+
+
+
+<TR>
+<TD class=indented>Requirements Review</TD>
+<TD><INPUT TYPE=text SIZE=7 
+           NAME="Reqts Review/Estimated Appraisal Rate"></TD>
+<TD><INPUT TYPE=text SIZE=7
+           NAME="Reqts Review/Appraisal Rate"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+           NAME="Reqts Review/Appraisal Rate To Date"></TD>
+
+</TR>
+
+
+
+<TR>
+<TD class=indented>Requirements Inspection</TD>
+<TD><INPUT TYPE=text SIZE=7 
+           NAME="Reqts Inspect/Estimated Appraisal Rate"></TD>
+<TD><INPUT TYPE=text SIZE=7
+           NAME="Reqts Inspect/Appraisal Rate"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+           NAME="Reqts Inspect/Appraisal Rate To Date"></TD>
+
+</TR>
+
+
+
+
+
+<TR>
+<TD class=indented>HLD Review</TD>
+<TD><INPUT TYPE=text SIZE=7 
+           NAME="HLD Review/Estimated Appraisal Rate"></TD>
+<TD><INPUT TYPE=text SIZE=7
+           NAME="HLD Review/Appraisal Rate"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+           NAME="HLD Review/Appraisal Rate To Date"></TD>
+
+</TR>
+
+
+
+<TR>
+<TD class=indented>HLD Inspection</TD>
+<TD><INPUT TYPE=text SIZE=7 
+           NAME="HLD Inspect/Estimated Appraisal Rate"></TD>
+<TD><INPUT TYPE=text SIZE=7
+           NAME="HLD Inspect/Appraisal Rate"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+           NAME="HLD Inspect/Appraisal Rate To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Detailed Design Review</TD>
+<TD><INPUT TYPE=text SIZE=7 
+           NAME="Design Review/Estimated Appraisal Rate"></TD>
+<TD><INPUT TYPE=text SIZE=7
+           NAME="Design Review/Appraisal Rate"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+           NAME="Design Review/Appraisal Rate To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Detailed Design Inspection</TD>
+<TD><INPUT TYPE=text SIZE=7 
+           NAME="Design Inspect/Estimated Appraisal Rate"></TD>
+<TD><INPUT TYPE=text SIZE=7
+           NAME="Design Inspect/Appraisal Rate"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+           NAME="Design Inspect/Appraisal Rate To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Code Review</TD>
+<TD><INPUT TYPE=text SIZE=7 
+           NAME="Code Review/Estimated Appraisal Rate"></TD>
+<TD><INPUT TYPE=text SIZE=7
+           NAME="Code Review/Appraisal Rate"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+           NAME="Code Review/Appraisal Rate To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Code Inspection</TD>
+<TD><INPUT TYPE=text SIZE=7 
+           NAME="Code Inspect/Estimated Appraisal Rate"></TD>
+<TD><INPUT TYPE=text SIZE=7
+           NAME="Code Inspect/Appraisal Rate"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+           NAME="Code Inspect/Appraisal Rate To Date"></TD>
+
+</TR>
+
+
+
+
+
+
+
+
+
+
+
+</TABLE>
+
+<H2>Cost of Quality</H2>
+
+<TABLE>
+
+<TR>
+<TD></TD>
+<TD ALIGN=CENTER><B>Plan</B></TD>
+<TD ALIGN=CENTER><B>Actual</B></TD>
+<TD ALIGN=CENTER><B>To Date</B></TD>
+</TR>
+
+<TR>
+<TD>Appraisal COQ</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Estimated % Appraisal COQ"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="% Appraisal COQ"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="% Appraisal COQ To Date"></TD>
+
+</TR>
+
+<TR>
+<TD>Failure COQ</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Estimated % Failure COQ"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="% Failure COQ"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="% Failure COQ To Date"></TD>
+
+</TR>
+
+<TR>
+<TD>A/FR</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Estimated AFR"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="AFR"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="AFR To Date"></TD>
+
+</TR>
+
+</TABLE>
+
+<H2>Phase Yields</H2>
+
+<TABLE>
+
+<TR>
+<TD></TD>
+<TD ALIGN=CENTER><B>Plan</B></TD>
+<TD ALIGN=CENTER><B>Actual</B></TD>
+<TD ALIGN=CENTER><B>To Date</B></TD>
+</TR>
+
+
+
+
+
+<TR>
+<TD class=indented>Planning</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Planning/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Planning/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Planning/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Requirements</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Reqts/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Reqts/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Reqts/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>System Test Plan</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Sys Test Plan/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Sys Test Plan/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Sys Test Plan/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Requirements Review</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Reqts Review/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Reqts Review/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Reqts Review/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Requirements Inspection</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Reqts Inspect/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Reqts Inspect/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Reqts Inspect/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>High-Level Design</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="HLD/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="HLD/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="HLD/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Integration Test Plan</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Int Test Plan/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Int Test Plan/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Int Test Plan/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>HLD Review</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="HLD Review/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="HLD Review/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="HLD Review/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>HLD Inspection</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="HLD Inspect/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="HLD Inspect/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="HLD Inspect/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Detailed Design</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Design/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Design/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Design/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Detailed Design Review</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Design Review/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Design Review/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Design Review/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Test Development</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Test Devel/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Test Devel/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Test Devel/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Detailed Design Inspection</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Design Inspect/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Design Inspect/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Design Inspect/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Code</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Code/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Code/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Code/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Code Review</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Code Review/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Code Review/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Code Review/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Compile</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Compile/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Compile/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Compile/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Code Inspection</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Code Inspect/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Code Inspect/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Code Inspect/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Unit Test</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Test/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Test/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Test/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Build and Integration Test</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Int Test/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Int Test/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Int Test/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>System Test</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Sys Test/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Sys Test/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Sys Test/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Documentation</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Documentation/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Documentation/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Documentation/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Acceptance Test</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Accept Test/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Accept Test/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Accept Test/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+
+<TR>
+<TD class=indented>Product Life</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Product Life/Estimated % Phase Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Product Life/% Phase Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Product Life/% Phase Yield To Date"></TD>
+
+</TR>
+
+
+
+
+</TABLE>
+
+<H2>Process Yields</H2>
+
+<TABLE>
+
+<TR>
+<TD></TD>
+<TD ALIGN=CENTER><B>Plan</B></TD>
+<TD ALIGN=CENTER><B>Actual</B></TD>
+<TD ALIGN=CENTER><B>To Date</B></TD>
+</TR>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<TR>
+<TD class=indented>% Before Compile</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Compile/Estimated % Process Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Compile/% Process Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Compile/% Process Yield To Date"></TD>
+
+</TR>
+
+
+
+
+
+<TR>
+<TD class=indented>% Before Unit Test</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Test/Estimated % Process Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Test/% Process Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Test/% Process Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>% Before Build and Integration Test</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Int Test/Estimated % Process Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Int Test/% Process Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Int Test/% Process Yield To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>% Before System Test</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Sys Test/Estimated % Process Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Sys Test/% Process Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Sys Test/% Process Yield To Date"></TD>
+
+</TR>
+
+
+
+
+
+<TR>
+<TD class=indented>% Before Acceptance Test</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Accept Test/Estimated % Process Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Accept Test/% Process Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Accept Test/% Process Yield To Date"></TD>
+
+</TR>
+
+
+
+
+
+<TR>
+<TD class=indented>% Before Product Life</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Product Life/Estimated % Process Yield"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Product Life/% Process Yield"></TD>
+
+<TD><INPUT TYPE=text SIZE=7 NAME="Product Life/% Process Yield To Date"></TD>
+
+</TR>
+
+
+
+
+</TABLE>
+
+<H2>Defect Injection Rates</H2>
+
+<TABLE>
+
+<TR>
+<TD>Defects Injected per Hour</TD>
+<TD ALIGN=CENTER><B>Plan</B></TD>
+<TD ALIGN=CENTER><B>Actual</B></TD>
+<TD ALIGN=CENTER><B>To Date</B></TD>
+</TR>
+
+
+
+
+
+<TR>
+<TD class=indented>Planning</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Planning/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Planning/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Planning/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Requirements</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Reqts/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Reqts/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Reqts/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>System Test Plan</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Sys Test Plan/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Sys Test Plan/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Sys Test Plan/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Requirements Review</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Reqts Review/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Reqts Review/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Reqts Review/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Requirements Inspection</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Reqts Inspect/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Reqts Inspect/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Reqts Inspect/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>High-Level Design</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="HLD/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="HLD/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="HLD/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Integration Test Plan</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Int Test Plan/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Int Test Plan/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Int Test Plan/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>HLD Review</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="HLD Review/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="HLD Review/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="HLD Review/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>HLD Inspection</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="HLD Inspect/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="HLD Inspect/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="HLD Inspect/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Detailed Design</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Design/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Design/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Design/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Detailed Design Review</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Design Review/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Design Review/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Design Review/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Test Development</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Test Devel/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Test Devel/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Test Devel/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Detailed Design Inspection</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Design Inspect/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Design Inspect/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Design Inspect/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Code</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Code/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Code/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Code/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Code Review</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Code Review/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Code Review/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Code Review/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Compile</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Compile/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Compile/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Compile/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Code Inspection</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Code Inspect/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Code Inspect/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Code Inspect/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Unit Test</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Test/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Test/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Test/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Build and Integration Test</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Int Test/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Int Test/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Int Test/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>System Test</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Sys Test/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Sys Test/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Sys Test/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Documentation</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Documentation/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Documentation/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Documentation/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Acceptance Test</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Accept Test/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Accept Test/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Accept Test/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+
+<TR>
+<TD class=indented>Product Life</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Product Life/Estimated Defects Injected per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Product Life/Defects Injected per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Product Life/Defects Injected per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+</TABLE>
+
+<H2>Defect Removal Rates</H2>
+
+<TABLE>
+
+<TR>
+<TD>Defects Removed per Hour</TD>
+<TD ALIGN=CENTER><B>Plan</B></TD>
+<TD ALIGN=CENTER><B>Actual</B></TD>
+<TD ALIGN=CENTER><B>To Date</B></TD>
+</TR>
+
+
+
+
+
+<TR>
+<TD class=indented>Planning</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Planning/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Planning/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Planning/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Requirements</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Reqts/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Reqts/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Reqts/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>System Test Plan</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Sys Test Plan/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Sys Test Plan/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Sys Test Plan/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Requirements Review</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Reqts Review/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Reqts Review/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Reqts Review/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Requirements Inspection</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Reqts Inspect/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Reqts Inspect/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Reqts Inspect/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>High-Level Design</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="HLD/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="HLD/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="HLD/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Integration Test Plan</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Int Test Plan/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Int Test Plan/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Int Test Plan/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>HLD Review</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="HLD Review/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="HLD Review/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="HLD Review/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>HLD Inspection</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="HLD Inspect/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="HLD Inspect/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="HLD Inspect/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Detailed Design</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Design/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Design/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Design/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Detailed Design Review</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Design Review/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Design Review/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Design Review/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Test Development</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Test Devel/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Test Devel/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Test Devel/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Detailed Design Inspection</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Design Inspect/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Design Inspect/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Design Inspect/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Code</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Code/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Code/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Code/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Code Review</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Code Review/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Code Review/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Code Review/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Compile</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Compile/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Compile/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Compile/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Code Inspection</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Code Inspect/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Code Inspect/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Code Inspect/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Unit Test</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Test/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Test/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Test/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Build and Integration Test</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Int Test/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Int Test/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Int Test/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>System Test</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Sys Test/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Sys Test/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Sys Test/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Documentation</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Documentation/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Documentation/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Documentation/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD class=indented>Acceptance Test</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Accept Test/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Accept Test/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Accept Test/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+
+<TR>
+<TD class=indented>Product Life</TD>
+<TD><INPUT TYPE=text SIZE=7 
+     NAME="Product Life/Estimated Defects Removed per Hour"></TD>
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Product Life/Defects Removed per Hour"></TD>
+
+<TD><INPUT TYPE=text SIZE=7
+     NAME="Product Life/Defects Removed per Hour To Date"></TD>
+
+</TR>
+
+
+
+
+</TABLE>
+
+
+
+
+
+
+
+
+
+</FORM>
+
+<HR>
+
+<SCRIPT SRC="/data.js">
+document.writeln("<P>Problem loading the data.js script!");
+</SCRIPT>
+
+</BODY>
+</HTML>

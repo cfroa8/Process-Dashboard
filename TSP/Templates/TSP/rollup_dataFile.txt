@@ -1,0 +1,711 @@
+// 
+// Data file for a rollup dataset for TSP(SM)
+//
+
+#include <ROLLUP:TSP>;
+undefine([Historical Data Tag]);
+[Exclude Children of Rollup_List for Defects] = tag;
+[Quality Profile Capable] = tag;
+
+/*
+ * Store the list of phases, for use by other calculations.
+ */
+[/TSP/Phase_List] = "MiscStrategyPlanningReqtsSys Test PlanReqts ReviewReqts InspectHLDInt Test PlanHLD ReviewHLD InspectDesignDesign ReviewTest DevelDesign InspectCodeCode ReviewCompileCode InspectTestInt TestSys TestDocumentationAccept TestPostmortemProduct Life";
+
+
+/*
+ * We need to redefine the rollup project list to include PSP projects.
+ */
+[/PSP/Project List] = search("/", "PSP Rollup Eligible");
+[/TSP/Indiv Root List] = search("/", "TSP Indiv Root Tag");
+[/TSP/Full Project List] = setUnion([/TSP/Project List], [/PSP/Project List]);
+[Rollup_List] = filter(eval([Rollup_Filter], [_]), [/TSP/Full Project List]);
+
+
+/*
+ * Define a rollup filter that is appropriate for data rollup instances.
+ * Team and master project datafiles will override this definition.
+ */
+[Rollup_WBS_ID_Filter] = "," & inherit("Project_ID") & ",";
+[Rollup_Filter_Regexp] =
+    "m\n^(\\Q" & join("\\E|\\Q", [Rollup_WBS_ID_Filter]) & "\\E)(/.+)?$\n";
+[Rollup_Filter] = "match([{Rollup_Filter_Regexp}], [Project_WBS_ID])";
+
+
+/*
+ * Count the number of distinct software projects in this rollup list.
+ */
+[Project_Component_List] = hierleaves();
+[Software_Project_List] =
+    filter(indirect([_] &/ "New & Changed LOC") > 0, [Project_Component_List]);
+[Software_Project_Count] = count([Software_Project_List]);
+
+
+/*
+ * Calculate % Defect Free metrics for each failure phase.
+ */
+
+[Compile/% Defect Free]  
+
+
+
+    == "This calculation is disabled; see http://www.processdash.com/pctDefFreeBug";
+
+
+
+[Test/% Defect Free]  
+
+
+
+    == "This calculation is disabled; see http://www.processdash.com/pctDefFreeBug";
+
+
+
+[Int Test/% Defect Free]  
+
+
+
+    == "This calculation is disabled; see http://www.processdash.com/pctDefFreeBug";
+
+
+
+[Sys Test/% Defect Free]  
+
+
+
+    == "This calculation is disabled; see http://www.processdash.com/pctDefFreeBug";
+
+
+
+[Accept Test/% Defect Free]  
+
+
+
+    == "This calculation is disabled; see http://www.processdash.com/pctDefFreeBug";
+
+
+
+[Product Life/% Defect Free]  
+
+
+
+    == "This calculation is disabled; see http://www.processdash.com/pctDefFreeBug";
+
+
+
+
+
+
+/*
+ * Roll up phase data both from both new style (namespaced) and old style
+ * (plain/unadorned) data exports.
+ */
+[Rollup_Namespaced_Phase_Metrics] = true;
+
+[Unadorned_Rollup_List] =
+    filter(! indirect([_] &/ "TSP Namespaced Data"), [Rollup_List]);
+
+[Namespaced_Rollup_List] = iff(![Rollup_Namespaced_Phase_Metrics], null,
+    filter(indirect([_] &/ "TSP Namespaced Data"), [Rollup_List]));
+
+[Namespaced_Rollup_List/Misc] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Misc", [Namespaced_Rollup_List]);
+
+[Misc/Estimated Time] =
+    sumFor("Misc/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Misc]);
+
+[Misc/Time] =
+    sumFor("Misc/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Misc]);
+
+
+
+[Misc/Defects Injected] =
+    sumFor("Misc/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Misc/Defects Injected", [Namespaced_Rollup_List]);
+
+[Misc/Defects Removed] =
+    sumFor("Misc/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Misc/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Strategy] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Strategy", [Namespaced_Rollup_List]);
+
+[Strategy/Estimated Time] =
+    sumFor("Strategy/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Strategy]);
+
+[Strategy/Time] =
+    sumFor("Strategy/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Strategy]);
+
+
+
+[Strategy/Defects Injected] =
+    sumFor("Strategy/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Strategy/Defects Injected", [Namespaced_Rollup_List]);
+
+[Strategy/Defects Removed] =
+    sumFor("Strategy/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Strategy/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Planning] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Planning", [Namespaced_Rollup_List]);
+
+[Planning/Estimated Time] =
+    sumFor("Planning/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Planning]);
+
+[Planning/Time] =
+    sumFor("Planning/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Planning]);
+
+
+
+[Planning/Defects Injected] =
+    sumFor("Planning/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Planning/Defects Injected", [Namespaced_Rollup_List]);
+
+[Planning/Defects Removed] =
+    sumFor("Planning/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Planning/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Reqts] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Reqts", [Namespaced_Rollup_List]);
+
+[Reqts/Estimated Time] =
+    sumFor("Reqts/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Reqts]);
+
+[Reqts/Time] =
+    sumFor("Reqts/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Reqts]);
+
+
+
+[Reqts/Defects Injected] =
+    sumFor("Reqts/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Reqts/Defects Injected", [Namespaced_Rollup_List]);
+
+[Reqts/Defects Removed] =
+    sumFor("Reqts/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Reqts/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Sys Test Plan] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Sys Test Plan", [Namespaced_Rollup_List]);
+
+[Sys Test Plan/Estimated Time] =
+    sumFor("Sys Test Plan/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Sys Test Plan]);
+
+[Sys Test Plan/Time] =
+    sumFor("Sys Test Plan/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Sys Test Plan]);
+
+
+
+[Sys Test Plan/Defects Injected] =
+    sumFor("Sys Test Plan/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Sys Test Plan/Defects Injected", [Namespaced_Rollup_List]);
+
+[Sys Test Plan/Defects Removed] =
+    sumFor("Sys Test Plan/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Sys Test Plan/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Reqts Review] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Reqts Review", [Namespaced_Rollup_List]);
+
+[Reqts Review/Estimated Time] =
+    sumFor("Reqts Review/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Reqts Review]);
+
+[Reqts Review/Time] =
+    sumFor("Reqts Review/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Reqts Review]);
+
+
+
+[Reqts Review/Defects Injected] =
+    sumFor("Reqts Review/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Reqts Review/Defects Injected", [Namespaced_Rollup_List]);
+
+[Reqts Review/Defects Removed] =
+    sumFor("Reqts Review/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Reqts Review/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Reqts Inspect] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Reqts Inspect", [Namespaced_Rollup_List]);
+
+[Reqts Inspect/Estimated Time] =
+    sumFor("Reqts Inspect/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Reqts Inspect]);
+
+[Reqts Inspect/Time] =
+    sumFor("Reqts Inspect/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Reqts Inspect]);
+
+
+
+[Reqts Inspect/Defects Injected] =
+    sumFor("Reqts Inspect/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Reqts Inspect/Defects Injected", [Namespaced_Rollup_List]);
+
+[Reqts Inspect/Defects Removed] =
+    sumFor("Reqts Inspect/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Reqts Inspect/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/HLD] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "HLD", [Namespaced_Rollup_List]);
+
+[HLD/Estimated Time] =
+    sumFor("HLD/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/HLD]);
+
+[HLD/Time] =
+    sumFor("HLD/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/HLD]);
+
+
+
+[HLD/Defects Injected] =
+    sumFor("HLD/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /HLD/Defects Injected", [Namespaced_Rollup_List]);
+
+[HLD/Defects Removed] =
+    sumFor("HLD/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /HLD/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Int Test Plan] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Int Test Plan", [Namespaced_Rollup_List]);
+
+[Int Test Plan/Estimated Time] =
+    sumFor("Int Test Plan/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Int Test Plan]);
+
+[Int Test Plan/Time] =
+    sumFor("Int Test Plan/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Int Test Plan]);
+
+
+
+[Int Test Plan/Defects Injected] =
+    sumFor("Int Test Plan/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Int Test Plan/Defects Injected", [Namespaced_Rollup_List]);
+
+[Int Test Plan/Defects Removed] =
+    sumFor("Int Test Plan/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Int Test Plan/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/HLD Review] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "HLD Review", [Namespaced_Rollup_List]);
+
+[HLD Review/Estimated Time] =
+    sumFor("HLD Review/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/HLD Review]);
+
+[HLD Review/Time] =
+    sumFor("HLD Review/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/HLD Review]);
+
+
+
+[HLD Review/Defects Injected] =
+    sumFor("HLD Review/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /HLD Review/Defects Injected", [Namespaced_Rollup_List]);
+
+[HLD Review/Defects Removed] =
+    sumFor("HLD Review/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /HLD Review/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/HLD Inspect] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "HLD Inspect", [Namespaced_Rollup_List]);
+
+[HLD Inspect/Estimated Time] =
+    sumFor("HLD Inspect/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/HLD Inspect]);
+
+[HLD Inspect/Time] =
+    sumFor("HLD Inspect/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/HLD Inspect]);
+
+
+
+[HLD Inspect/Defects Injected] =
+    sumFor("HLD Inspect/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /HLD Inspect/Defects Injected", [Namespaced_Rollup_List]);
+
+[HLD Inspect/Defects Removed] =
+    sumFor("HLD Inspect/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /HLD Inspect/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Design] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Design", [Namespaced_Rollup_List]);
+
+[Design/Estimated Time] =
+    sumFor("Design/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Design]);
+
+[Design/Time] =
+    sumFor("Design/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Design]);
+
+
+
+[Design/Defects Injected] =
+    sumFor("Design/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Design/Defects Injected", [Namespaced_Rollup_List]);
+
+[Design/Defects Removed] =
+    sumFor("Design/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Design/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Design Review] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Design Review", [Namespaced_Rollup_List]);
+
+[Design Review/Estimated Time] =
+    sumFor("Design Review/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Design Review]);
+
+[Design Review/Time] =
+    sumFor("Design Review/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Design Review]);
+
+
+
+[Design Review/Defects Injected] =
+    sumFor("Design Review/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Design Review/Defects Injected", [Namespaced_Rollup_List]);
+
+[Design Review/Defects Removed] =
+    sumFor("Design Review/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Design Review/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Test Devel] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Test Devel", [Namespaced_Rollup_List]);
+
+[Test Devel/Estimated Time] =
+    sumFor("Test Devel/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Test Devel]);
+
+[Test Devel/Time] =
+    sumFor("Test Devel/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Test Devel]);
+
+
+
+[Test Devel/Defects Injected] =
+    sumFor("Test Devel/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Test Devel/Defects Injected", [Namespaced_Rollup_List]);
+
+[Test Devel/Defects Removed] =
+    sumFor("Test Devel/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Test Devel/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Design Inspect] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Design Inspect", [Namespaced_Rollup_List]);
+
+[Design Inspect/Estimated Time] =
+    sumFor("Design Inspect/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Design Inspect]);
+
+[Design Inspect/Time] =
+    sumFor("Design Inspect/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Design Inspect]);
+
+
+
+[Design Inspect/Defects Injected] =
+    sumFor("Design Inspect/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Design Inspect/Defects Injected", [Namespaced_Rollup_List]);
+
+[Design Inspect/Defects Removed] =
+    sumFor("Design Inspect/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Design Inspect/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Code] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Code", [Namespaced_Rollup_List]);
+
+[Code/Estimated Time] =
+    sumFor("Code/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Code]);
+
+[Code/Time] =
+    sumFor("Code/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Code]);
+
+
+
+[Code/Defects Injected] =
+    sumFor("Code/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Code/Defects Injected", [Namespaced_Rollup_List]);
+
+[Code/Defects Removed] =
+    sumFor("Code/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Code/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Code Review] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Code Review", [Namespaced_Rollup_List]);
+
+[Code Review/Estimated Time] =
+    sumFor("Code Review/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Code Review]);
+
+[Code Review/Time] =
+    sumFor("Code Review/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Code Review]);
+
+
+
+[Code Review/Defects Injected] =
+    sumFor("Code Review/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Code Review/Defects Injected", [Namespaced_Rollup_List]);
+
+[Code Review/Defects Removed] =
+    sumFor("Code Review/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Code Review/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Compile] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Compile", [Namespaced_Rollup_List]);
+
+[Compile/Estimated Time] =
+    sumFor("Compile/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Compile]);
+
+[Compile/Time] =
+    sumFor("Compile/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Compile]);
+
+
+
+[Compile/Defects Injected] =
+    sumFor("Compile/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Compile/Defects Injected", [Namespaced_Rollup_List]);
+
+[Compile/Defects Removed] =
+    sumFor("Compile/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Compile/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Code Inspect] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Code Inspect", [Namespaced_Rollup_List]);
+
+[Code Inspect/Estimated Time] =
+    sumFor("Code Inspect/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Code Inspect]);
+
+[Code Inspect/Time] =
+    sumFor("Code Inspect/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Code Inspect]);
+
+
+
+[Code Inspect/Defects Injected] =
+    sumFor("Code Inspect/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Code Inspect/Defects Injected", [Namespaced_Rollup_List]);
+
+[Code Inspect/Defects Removed] =
+    sumFor("Code Inspect/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Code Inspect/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Test] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Test", [Namespaced_Rollup_List]);
+
+[Test/Estimated Time] =
+    sumFor("Test/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Test]);
+
+[Test/Time] =
+    sumFor("Test/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Test]);
+
+
+
+[Test/Defects Injected] =
+    sumFor("Test/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Test/Defects Injected", [Namespaced_Rollup_List]);
+
+[Test/Defects Removed] =
+    sumFor("Test/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Test/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Int Test] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Int Test", [Namespaced_Rollup_List]);
+
+[Int Test/Estimated Time] =
+    sumFor("Int Test/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Int Test]);
+
+[Int Test/Time] =
+    sumFor("Int Test/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Int Test]);
+
+
+
+[Int Test/Defects Injected] =
+    sumFor("Int Test/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Int Test/Defects Injected", [Namespaced_Rollup_List]);
+
+[Int Test/Defects Removed] =
+    sumFor("Int Test/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Int Test/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Sys Test] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Sys Test", [Namespaced_Rollup_List]);
+
+[Sys Test/Estimated Time] =
+    sumFor("Sys Test/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Sys Test]);
+
+[Sys Test/Time] =
+    sumFor("Sys Test/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Sys Test]);
+
+
+
+[Sys Test/Defects Injected] =
+    sumFor("Sys Test/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Sys Test/Defects Injected", [Namespaced_Rollup_List]);
+
+[Sys Test/Defects Removed] =
+    sumFor("Sys Test/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Sys Test/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Documentation] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Documentation", [Namespaced_Rollup_List]);
+
+[Documentation/Estimated Time] =
+    sumFor("Documentation/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Documentation]);
+
+[Documentation/Time] =
+    sumFor("Documentation/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Documentation]);
+
+
+
+[Documentation/Defects Injected] =
+    sumFor("Documentation/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Documentation/Defects Injected", [Namespaced_Rollup_List]);
+
+[Documentation/Defects Removed] =
+    sumFor("Documentation/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Documentation/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Accept Test] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Accept Test", [Namespaced_Rollup_List]);
+
+[Accept Test/Estimated Time] =
+    sumFor("Accept Test/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Accept Test]);
+
+[Accept Test/Time] =
+    sumFor("Accept Test/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Accept Test]);
+
+
+
+[Accept Test/Defects Injected] =
+    sumFor("Accept Test/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Accept Test/Defects Injected", [Namespaced_Rollup_List]);
+
+[Accept Test/Defects Removed] =
+    sumFor("Accept Test/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Accept Test/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Postmortem] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Postmortem", [Namespaced_Rollup_List]);
+
+[Postmortem/Estimated Time] =
+    sumFor("Postmortem/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Postmortem]);
+
+[Postmortem/Time] =
+    sumFor("Postmortem/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Postmortem]);
+
+
+
+[Postmortem/Defects Injected] =
+    sumFor("Postmortem/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Postmortem/Defects Injected", [Namespaced_Rollup_List]);
+
+[Postmortem/Defects Removed] =
+    sumFor("Postmortem/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Postmortem/Defects Removed", [Namespaced_Rollup_List]);
+
+[Namespaced_Rollup_List/Product Life] =
+    filter(indirect([_] &/ "TSP /Effective_Phase")
+                     == "Product Life", [Namespaced_Rollup_List]);
+
+[Product Life/Estimated Time] =
+    sumFor("Product Life/Estimated Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Product Life]);
+
+[Product Life/Time] =
+    sumFor("Product Life/Time", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Time", [Namespaced_Rollup_List/Product Life]);
+
+
+
+[Product Life/Defects Injected] =
+    sumFor("Product Life/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Product Life/Defects Injected", [Namespaced_Rollup_List]);
+
+[Product Life/Defects Removed] =
+    sumFor("Product Life/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Product Life/Defects Removed", [Namespaced_Rollup_List]);
+
+
+
+[Before Development/Estimated Defects Injected] == 0;
+[Before Development/Defects Injected] =
+    sumFor("Before Development/Defects Injected", [Unadorned_Rollup_List]) +
+    sumFor("TSP /Before Development/Defects Injected",
+           [Namespaced_Rollup_List]);
+[After Development/Estimated Defects Removed] == 0;
+[After Development/Defects Removed] =
+    sumFor("After Development/Defects Removed", [Unadorned_Rollup_List]) +
+    sumFor("TSP /After Development/Defects Removed", [Namespaced_Rollup_List]);
+
+
+
+/*
+ * Add up metrics for uncategorized tasks
+ */
+[Namespaced_Rollup_List/Uncategorized] = 
+    filter(! intersects(indirect([_] &/ "TSP /Effective_Phase"),
+                        [/TSP/Phase_List]),
+           [Namespaced_Rollup_List]);
+
+[Uncategorized/Time] =
+     sumFor("TSP /Time", [Namespaced_Rollup_List/Uncategorized]);
+[Uncategorized/Estimated Time] =
+    sumFor("TSP /Estimated Time", [Namespaced_Rollup_List/Uncategorized]);
+
+[Time] = sumFor("Time", [Phase_List], "Uncategorized");
+[Estimated Time] = sumFor("Estimated Time", [Phase_List], "Uncategorized");

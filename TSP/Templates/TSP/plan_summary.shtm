@@ -1,0 +1,366 @@
+<!--#server-parsed -->
+<html>
+<head>
+<link rel=stylesheet type="text/css" href="style.css">
+<title>TSP(SM)
+Project
+Plan Summary</title>
+<STYLE>
+   .rowHdr { background-color: #D3D3D3 }
+
+   .subtask {
+      <!--#if [Subtask_List] --> 
+         background-color: #CCFFCC
+      <!--#else-->
+         display:none
+      <!--#endif-->
+   }
+
+   .includesSubtask {
+      
+      <!--#if [Subtask_List] --> 
+         background-color: #CCFFCC
+      <!--#endif-->
+      
+   }
+   .time   { background-color: #FFFF99 }
+   .defInj { background-color: #FFCCCC }
+   .defRem { background-color: #CCCCFF }
+</STYLE>
+</head>
+<body>
+
+<h1><a onclick="window.open('', 'popup', 'width=300,height=200,scrollbars=1');"
+   href="setup/selectWBS.class" target="popup"><img border=0 src="hier.png"
+   alt="Navigate Hierarchy" style="margin-right:2px" width=16 height=23></a><!--#echo var="PATH_TRANSLATED" --></h1>
+<h2>TSP(SM)
+Project
+Plan Summary</h2>
+
+<form>
+
+<input type=hidden name=requiredTag
+
+       VALUE="TSP Tag"
+
+>
+
+
+
+<TABLE>
+<TR>
+<TD>Project Owner</TD>
+<TD COLSPAN=10><INPUT TYPE=text SIZE=50 NAME="/Owner	s"></TD>
+</TR>
+
+<TR>
+<TD>Start Date</TD>
+<TD COLSPAN=4><INPUT TYPE=text SIZE=25 NAME="Started	d"></TD>
+</TR>
+
+<TR>
+<TD>Completion Date</TD>
+<TD COLSPAN=4><INPUT TYPE=text SIZE=25 NAME="Completed	du"></TD><TD COLSPAN=6>&nbsp;Completed: <INPUT TYPE=checkbox NAME="Completed	du"></TD>
+</TR>
+
+<TR>
+<TD>Keywords</TD>
+<TD COLSPAN=10><INPUT TYPE=text SIZE=25 NAME="Project/Keywords	s"></TD>
+</TR>
+
+<TR>
+<TD>Language</TD>
+<TD COLSPAN=10><INPUT TYPE=text SIZE=15 NAME="Project/Language	s"></TD>
+</TR>
+
+</TABLE>
+<!--#include file="../dash/selectRollup.class" -->
+
+
+
+
+
+<H2>Overall Metrics</H2>
+
+<TABLE cellpadding=2 cellspacing=0>
+
+
+<!--#if [Subtask_List] --> 
+<TR>
+<TD></TD>
+<TD ALIGN=CENTER COLSPAN=2 class=subtask><B>Including subtasks</B></TD>
+
+</TR>
+<!--#endif-->
+
+
+<TR>
+<TD><B>Summary</B></TD>
+<TD ALIGN=CENTER class=includesSubtask><B>Plan</B></TD>
+<TD ALIGN=CENTER class=includesSubtask><B>Actual</B></TD>
+
+</TR>
+
+
+<TR>
+<TD>Productivity (LOC/Hr)</TD>
+<TD class=includesSubtask><INPUT TYPE=text SIZE=7 NAME="Estimated Productivity"></TD>
+<TD class=includesSubtask><INPUT TYPE=text SIZE=7 NAME="Productivity"></TD>
+
+</TR>
+
+
+<TR>
+<TD>Time Estimating Error</TD>
+<TD class=includesSubtask>&nbsp;</TD>
+<TD class=includesSubtask><INPUT TYPE=text SIZE=7 NAME="Time Estimating Error	%"></TD>
+
+</TR>
+
+
+<TR>
+<TD>Size Estimating Error</TD>
+<TD class=includesSubtask>&nbsp;</TD>
+<TD class=includesSubtask><INPUT TYPE=text SIZE=7 NAME="Size Estimating Error	%"></TD>
+
+</TR>
+
+
+
+<TR>
+<TD>Planned Time</TD>
+<TD class=includesSubtask><INPUT TYPE=text SIZE=7 NAME="Estimated Time"></TD>
+<TD class=includesSubtask>&nbsp;</TD>
+
+</TR>
+
+<TR>
+<TD>Actual Time</TD>
+<TD class=includesSubtask>&nbsp;</TD>
+<TD class=includesSubtask><INPUT TYPE=text SIZE=7 NAME="Time"></TD>
+
+</TR>
+
+
+<TR>
+<TD>CPI (Cost-Performance Index)</TD>
+<TD class=includesSubtask>&nbsp;</TD>
+<TD class=includesSubtask><INPUT TYPE=text SIZE=7 NAME="CPI"></TD>
+
+</TR>
+
+</TABLE>
+
+<H2>Size</H2>
+
+<TABLE cellpadding=2 cellspacing=0>
+
+
+<!--#if [Subtask_List] --> 
+<TR>
+<TD><a href="sizeForm.class"><i>edit size data...</i></a></TD>
+<TD ALIGN=CENTER COLSPAN=2><B>This node only</B></TD>
+<TD ALIGN=CENTER COLSPAN=2 class=subtask><B>Including subtasks</B></TD>
+
+</TR>
+<!--#endif-->
+
+
+<TR>
+<TD></TD>
+<TD ALIGN=CENTER><B>Plan</B></TD>
+<TD ALIGN=CENTER><B>Actual</B></TD>
+
+<TD ALIGN=CENTER class=subtask><B>Plan</B></TD>
+<TD ALIGN=CENTER class=subtask><B>Actual</B></TD>
+
+</TR>
+
+
+<TR class=rowHdr>
+<TD ALIGN=LEFT COLSPAN=5><b>Size of products personally produced</b></TD>
+</TR>
+
+
+
+
+<TR>
+<TD>Text Pages</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Estimated Text Pages"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Text Pages"></TD>
+
+<TD class=subtask>&nbsp;<INPUT TYPE=text SIZE=7 NAME="Total_Plus_Subtasks/Estimated Text Pages"></TD>
+<TD class=subtask><INPUT TYPE=text SIZE=7 NAME="Total_Plus_Subtasks/Text Pages">&nbsp;</TD>
+
+</TR>
+
+
+
+<TR>
+<TD>Requirements Pages</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Estimated Req Pages"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Req Pages"></TD>
+
+<TD class=subtask>&nbsp;<INPUT TYPE=text SIZE=7 NAME="Total_Plus_Subtasks/Estimated Req Pages"></TD>
+<TD class=subtask><INPUT TYPE=text SIZE=7 NAME="Total_Plus_Subtasks/Req Pages">&nbsp;</TD>
+
+</TR>
+
+
+
+<TR>
+<TD>HLD Pages</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Estimated HLD Pages"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="HLD Pages"></TD>
+
+<TD class=subtask>&nbsp;<INPUT TYPE=text SIZE=7 NAME="Total_Plus_Subtasks/Estimated HLD Pages"></TD>
+<TD class=subtask><INPUT TYPE=text SIZE=7 NAME="Total_Plus_Subtasks/HLD Pages">&nbsp;</TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD>Detailed Design Lines</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Estimated DLD Lines"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="DLD Lines"></TD>
+
+<TD class=subtask>&nbsp;<INPUT TYPE=text SIZE=7 NAME="Total_Plus_Subtasks/Estimated DLD Lines"></TD>
+<TD class=subtask><INPUT TYPE=text SIZE=7 NAME="Total_Plus_Subtasks/DLD Lines">&nbsp;</TD>
+
+</TR>
+
+
+
+
+
+<TR class=rowHdr>
+<TD ALIGN=LEFT COLSPAN=5><b>Size of products inspected</b></TD>
+</TR>
+
+
+
+<TR>
+<TD>Text Pages</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Estimated Inspected Text Pages"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Inspected Text Pages"></TD>
+<TD class=subtask>&nbsp;<INPUT TYPE=text SIZE=7 NAME="Total_Plus_Subtasks/Estimated Inspected Text Pages"></TD>
+<TD class=subtask><INPUT TYPE=text SIZE=7 NAME="Total_Plus_Subtasks/Inspected Text Pages">&nbsp;</TD>
+
+</TR>
+
+
+
+<TR>
+<TD>Requirements Pages</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Estimated Inspected Req Pages"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Inspected Req Pages"></TD>
+<TD class=subtask>&nbsp;<INPUT TYPE=text SIZE=7 NAME="Total_Plus_Subtasks/Estimated Inspected Req Pages"></TD>
+<TD class=subtask><INPUT TYPE=text SIZE=7 NAME="Total_Plus_Subtasks/Inspected Req Pages">&nbsp;</TD>
+
+</TR>
+
+
+
+<TR>
+<TD>HLD Pages</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Estimated Inspected HLD Pages"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Inspected HLD Pages"></TD>
+<TD class=subtask>&nbsp;<INPUT TYPE=text SIZE=7 NAME="Total_Plus_Subtasks/Estimated Inspected HLD Pages"></TD>
+<TD class=subtask><INPUT TYPE=text SIZE=7 NAME="Total_Plus_Subtasks/Inspected HLD Pages">&nbsp;</TD>
+
+</TR>
+
+
+
+
+<TR>
+<TD>Detailed Design Lines</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Estimated Inspected DLD Lines"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Inspected DLD Lines"></TD>
+<TD class=subtask>&nbsp;<INPUT TYPE=text SIZE=7 NAME="Total_Plus_Subtasks/Estimated Inspected DLD Lines"></TD>
+<TD class=subtask><INPUT TYPE=text SIZE=7 NAME="Total_Plus_Subtasks/Inspected DLD Lines">&nbsp;</TD>
+
+</TR>
+
+
+<TR>
+<TD>New &amp; Changed LOC</TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Estimated Inspected New &amp; Changed LOC"></TD>
+<TD><INPUT TYPE=text SIZE=7 NAME="Inspected New &amp; Changed LOC"></TD>
+<TD class=subtask>&nbsp;<INPUT TYPE=text SIZE=7 NAME="Total_Plus_Subtasks/Estimated Inspected New &amp; Changed LOC"></TD>
+<TD class=subtask><INPUT TYPE=text SIZE=7 NAME="Total_Plus_Subtasks/Inspected New &amp; Changed LOC">&nbsp;</TD>
+
+</TR>
+
+
+
+
+</TABLE>
+
+
+<H2>Time / Defects</H2>
+
+<TABLE cellpadding=2 cellspacing=0>
+
+<TR>
+<TD>&nbsp;</TD>
+<TD ALIGN=CENTER COLSPAN=2 class=time><B>Time</B></TD>
+<TD ALIGN=CENTER COLSPAN=2 class=defInj><B>Defects Injected</B></TD>
+<TD ALIGN=CENTER COLSPAN=2 class=defRem><B>Defects Removed</B></TD>
+</TR>
+
+<TR>
+<TD>&nbsp;</TD>
+<TD ALIGN=CENTER class=time><B>Plan</B></TD>
+<TD ALIGN=CENTER class=time><B>Actual</B></TD>
+<TD ALIGN=CENTER class=defInj><B>Plan</B></TD>
+<TD ALIGN=CENTER class=defInj><B>Actual</B></TD>
+<TD ALIGN=CENTER class=defRem><B>Plan</B></TD>
+<TD ALIGN=CENTER class=defRem><B>Actual</B></TD>
+</TR>
+
+<!--#fortree expandName="expand" -->
+
+<tr>
+<TD NOWRAP><!--#echo var="DEPTH_SPACER" encoding="none" --><!--#echo var="EXPANDLINK" encoding="none" -->&nbsp;<!--#echo var="NAME" encoding="html" -->&nbsp;</td>
+
+<TD class=time>&nbsp;<INPUT TYPE=text SIZE=7 NAME="<!--#echo RELPATH -->/Estimated Time"></TD>
+<TD class=time><INPUT TYPE=text SIZE=7 NAME="<!--#echo RELPATH -->/Time">&nbsp;</TD>
+
+<TD class=defInj>&nbsp;<INPUT TYPE=text SIZE=7 NAME="<!--#echo RELPATH -->/Estimated Defects Injected"></TD>
+<TD class=defInj><INPUT TYPE=text SIZE=7 NAME="<!--#echo RELPATH -->/Defects Injected">&nbsp;</TD>
+
+<TD class=defRem>&nbsp;<INPUT TYPE=text SIZE=7 NAME="<!--#echo RELPATH -->/Estimated Defects Removed"></TD>
+<TD class=defRem><INPUT TYPE=text SIZE=7 NAME="<!--#echo RELPATH -->/Defects Removed">&nbsp;</TD>
+
+</TR>
+
+<!--#endtree -->
+
+<tr>
+<TD>Total</TD>
+
+<TD class=time>&nbsp;<INPUT TYPE=text SIZE=7 NAME="Estimated Time"></TD>
+<TD class=time><INPUT TYPE=text SIZE=7 NAME="Time">&nbsp;</TD>
+
+<TD class=defInj>&nbsp;<INPUT TYPE=text SIZE=7 NAME="Estimated Defects Injected"></TD>
+<TD class=defInj><INPUT TYPE=text SIZE=7 NAME="Defects Injected">&nbsp;</TD>
+
+<TD class=defRem>&nbsp;<INPUT TYPE=text SIZE=7 NAME="Estimated Defects Removed"></TD>
+<TD class=defRem><INPUT TYPE=text SIZE=7 NAME="Defects Removed">&nbsp;</TD>
+
+</TR>
+</TABLE>
+
+</FORM>
+
+<HR>
+
+<SCRIPT SRC="/data.js">
+document.writeln("<P>Problem loading the data.js script!");
+</SCRIPT>
+
+</BODY>
+</HTML>

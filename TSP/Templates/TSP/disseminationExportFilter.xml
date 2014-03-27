@@ -1,0 +1,14 @@
+<?xml version='1.0' standalone='yes' ?>
+
+<exportMetricsFile>
+  <metricsFilter>
+    <include>/Project_ID$</include>
+    <include>/Team_Settings$</include>
+    <include>/Team_Settings /</include>
+    <include>"Zero" data values</include>
+  </metricsFilter>
+
+  <addEntry name="joinInfo.xml" type="joinInfo" version="1"
+              href="TSP/setup/joinxml.shtm" />
+
+</exportMetricsFile>

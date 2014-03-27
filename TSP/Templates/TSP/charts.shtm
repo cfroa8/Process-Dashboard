@@ -1,0 +1,42 @@
+<html>
+<head>
+<link rel=stylesheet type="text/css" href="style.css">
+<title>Analysis Charts</title>
+</head>
+<body>
+
+<!--#if not frames -->
+<h1><!-- #include file="/team/lib/hier.htm" --><!--#echo var="PATH_TRANSLATED" --></h1>
+<!--#endif-->
+
+<table><tr><td><h2>Analysis Charts&nbsp;</h2></td>
+<td valign="BASELINE"><i>Click on a chart for more detail.</i></td></tr></table>
+
+<!--#if EXPORT -->
+    <!--#set var=fullURL value="table.class" -->
+<!--#else -->
+    <!--#set var=fullURL value="full.htm" -->
+<!--#endif #-->
+
+<!-- Need to do planned vs. actual hours -->
+
+
+    
+<A HREF="../reports/<!--#echo fullURL -->?qf=../TSP/percent-def-free.rpt"><img
+    src="../reports/line.class?qf=../TSP/percent-def-free.rpt&qf=small.rpt"></a>
+
+    
+<A HREF="../reports/<!--#echo fullURL -->?qf=../TSP/def-rem-profile.rpt"><img
+    src="../reports/line.class?qf=../TSP/def-rem-profile.rpt&qf=small.rpt"></a>
+<br>
+
+
+    
+<A HREF="../reports/<!--#echo fullURL -->?qf=../TSP/quality-profile-plan.rpt&chart=radar"><img
+    src="../reports/radar.class?qf=../TSP/quality-profile-plan.rpt&chart=radar&qf=small.rpt&skipAxisLabels"></a>
+
+    
+<A HREF="../reports/<!--#echo fullURL -->?qf=../TSP/quality-profile-act.rpt&chart=radar"><img
+    src="../reports/radar.class?qf=../TSP/quality-profile-act.rpt&chart=radar&qf=small.rpt&skipAxisLabels"></a>
+</BODY>
+</HTML>

@@ -1,0 +1,1529 @@
+<?xml version='1.0'?>
+
+<dashboard-process-template>
+
+
+
+
+<!--======================================================================
+    The template for the team project stub
+ =======================================================================-->
+
+  <template
+      name="Team Project"
+      ID="TeamProjectStub"
+      defineRollup="no"
+      constraints="{"
+      >
+
+    <html ID="setup" href="dash/teamStart.class"
+          title="Team Project Setup Wizard"/>
+
+  </template>
+
+
+
+
+<!--======================================================================
+    The template for a root node in a master project
+ =======================================================================-->
+
+  <template
+      name="TSP-Master:!*!:TSP(SM) Project (Team)"
+      ID="TSP/MasterRoot"
+      defineRollup="no"
+      dataFile="TSP/master_root_dataFile.txt"
+      constraints="{TSP/Rollup}"
+      >
+
+    <html ID="sum" href="cms/TSP/rollup_plan_summary"/>
+
+    <html ID="tasklist"
+        href="control/showTaskSchedule.class?trigger&amp;TSP-master"
+        title="Project Task &amp; Schedule"/>
+    <html ID="evCharts" href="reports/ev.class?tl=auto&amp;charts&amp;TSP-master"
+        title="    Earned Value Charts"/>
+    <html ID="week" href="reports/week.class?tl=auto&amp;TSP-master"
+        title="    Weekly Earned Value Report"/>
+
+    <html ID="wbsTD" href="TSP/setup/openWBS.shtm?trigger&amp;master"
+        title="Top-Down Work Breakdown Structure"
+        inPackage="teamTools version 2.4.4"/>
+    <html ID="wbsBU" href="TSP/setup/openWBS.shtm?trigger&amp;bottomUp"
+        title="    Bottom-Up Work Breakdown Structure"
+        inPackage="teamTools version 2.4.4"/>
+    <html ID="sync" href="TSP/setup/sync.class?trigger=optional&amp;master"
+        title="    Sync Work Breakdown Structure"/>
+
+    <html ID="tools" href="TSP/master_tools.shtm"
+        title="Master Project Tools"/>
+    <html ID="params" href="TSP/master_project_parameters.shtm"
+        title="    Project Parameters and Settings"/>
+    <html ID="import" href="control/importNow.class"
+        title="    Import All Data Now"/>
+    <html ID="timelog" href="control/showTimeLog?type=rollup&amp;for=[Corresponding_Project_Nodes]&amp;mergePrefixes&amp;trigger"
+        title="    View Rolled-Up Time Log"/>
+    <html ID="subproj" href="TSP/setup/subprojectList.shtm"
+        title="    Edit List of Subprojects"/>
+
+  </template>
+
+
+
+
+<!--======================================================================
+    The template for a subcomponent in a master project
+ =======================================================================-->
+
+  <template
+      name="TSP-Master:!*!:Subsystem"
+      ID="TSP/MasterNode"
+      defineRollup="no"
+      dataFile="TSP/master_node_dataFile.txt"
+      constraints="ME{}"
+      href="none"
+      >
+
+    
+
+  </template>
+
+
+
+
+<!--======================================================================
+    The template for a root project node on the team side
+ =======================================================================-->
+
+  <template
+      name="TSP-Team:!*!:TSP(SM) Project (Team)"
+      ID="TSP/TeamRoot"
+      defineRollup="no"
+      dataFile="TSP/team2_root_dataFile.txt"
+      constraints="{TSP/Rollup}"
+      >
+
+    <html ID="sum" href="cms/TSP/rollup_plan_summary"/>
+
+    <html ID="tasklist"
+        href="control/showTaskSchedule.class?trigger&amp;TSP-team"
+        title="Project Task &amp; Schedule"/>
+    <html ID="evCharts" href="reports/ev.class?tl=auto&amp;charts&amp;TSP-team"
+        title="    Earned Value Charts"/>
+    <html ID="week" href="reports/week.class?tl=auto&amp;TSP-team"
+        title="    Weekly Earned Value Report"/>
+
+    <html ID="editWBS" href="TSP/setup/openWBS.shtm?trigger&amp;forteam"
+        title="Work Breakdown Structure Editor"
+        inPackage="teamTools version 2.4.4"/>
+    <html ID="sync" href="TSP/setup/sync.class?trigger=optional&amp;team"
+        title="    Sync Work Breakdown Structure"/>
+
+    <html ID="tools" href="TSP/team_tools.shtm"
+        title="Team Project Tools"/>
+    <html ID="params" href="TSP/team_project_parameters.shtm"
+        title="    Project Parameters and Settings"/>
+    <html ID="import" href="control/importNow.class"
+        title="    Import All Data Now"/>
+    <html ID="timelog" href="control/showTimeLog?type=rollup&amp;for=[Corresponding_Project_Nodes]&amp;mergePrefixes&amp;trigger"
+        title="    View Team Time Log"/>
+    <html ID="editTeam" href="TSP/setup/openWBS.shtm?trigger&amp;team"
+        title="    Edit Team Member List"
+        inPackage="teamTools version 2.4.4"/>
+
+  </template>
+
+
+
+
+<!--======================================================================
+    The template for a project subcomponent on the team side
+ =======================================================================-->
+
+  <template
+      name="TSP-Team:!*!:Subsystem"
+      ID="TSP/TeamNode"
+      defineRollup="no"
+      dataFile="TSP/team_node_dataFile.txt"
+      constraints="ME{}"
+      href="none"
+      >
+
+    
+
+  </template>
+
+
+
+
+
+
+<!--======================================================================
+    Templates for use on the individual side.
+ =======================================================================-->
+
+
+
+
+
+
+
+
+
+
+<!--======================================================================
+    The template for a root project node on the individual side.
+ =======================================================================-->
+
+  <template
+      name="TSP-Indiv2:!*!:TSP(SM) Project"
+      ID="TSP/Indiv2Root"
+      defineRollup="no"
+      dataFile="TSP/indiv2_root_dataFile.txt"
+      autoData="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/Indiv2Task{TSP/PHASE/Misc{TSP/PHASE/Strategy{TSP/PHASE/Planning{TSP/PHASE/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/PHASE/HLD{TSP/PHASE/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/PHASE/Design{TSP/PHASE/Design_Review{TSP/PHASE/Test_Devel{TSP/PHASE/Design_Inspect{TSP/PHASE/Code{TSP/PHASE/Code_Review{TSP/PHASE/Compile{TSP/PHASE/Code_Inspect{TSP/PHASE/Test{TSP/PHASE/Int_Test{TSP/PHASE/Sys_Test{TSP/PHASE/Documentation{TSP/PHASE/Accept_Test{TSP/PHASE/Postmortem{TSP/PHASE/Product_Life}"
+      >
+
+    <html ID="sump" href="cms/TSP/indiv_plan_summary"
+        title="TSP(SM) Project Plan Summary"/>
+    <html ID="size" href="TSP/sizeForm.class"
+        title="TSP(SM) Size Inventory"/>
+    <html ID="top" href="TSP/script.htm"
+        title="TSP(SM) Process Script"/>
+
+    <html ID="tasklist"
+        href="control/showTaskSchedule.class?trigger&amp;TSP-indiv"
+        title="Project Task &amp; Schedule"/>
+    <html ID="evCharts" href="reports/ev.class?tl=auto&amp;charts&amp;TSP-indiv"
+        title="    Earned Value Charts"/>
+    <html ID="week" href="reports/week.class?tl=auto&amp;TSP-indiv"
+        title="    Weekly Earned Value Report"/>
+
+    <html ID="editWBS" href="TSP/setup/openWBS.shtm?trigger&amp;indiv"
+        title="Work Breakdown Structure Editor"
+        inPackage="teamTools version 2.4.7"/>
+    <html ID="sync" href="TSP/setup/sync.class?trigger=optional&amp;indiv"
+        title="    Sync Work Breakdown Structure"/>
+
+    <html ID="params" href="TSP/indiv_project_parameters.shtm"
+        title="Project Parameters and Settings"/>
+    <html ID="export" href="control/exportNow.class"
+        title="Export My Data Now"/>
+
+  </template>
+
+
+
+
+<!--======================================================================
+    The template for a read-only node/task on the individual side.
+    This is used to construct a read-only copy of the components in the
+    team hierarchy.
+ =======================================================================-->
+
+  <template
+      name="TSP-Indiv2:!*!:Subsystem"
+      ID="TSP/Indiv2ReadOnlyNode"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv2_empty_dataFile.txt"
+      autoData="none"
+      href="none"
+      constraints="MED{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/Indiv2Task}"
+      >
+
+  </template>
+
+
+
+
+<!--======================================================================
+    The template for a node/task on the individual side.
+ =======================================================================-->
+
+  <template
+      name="TSP-Indiv2:!*!:TSP(SM) Task"
+      ID="TSP/Indiv2Task"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv2_empty_dataFile.txt"
+      autoData="none"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/Indiv2Task}TSP/Indiv2Root}TSP/Indiv2ReadOnlyNode}TSP/Indiv2Task"
+      >
+
+  </template>
+
+
+
+
+
+
+
+
+<!--======================================================================
+    Historical templates for use on the individual side.
+ =======================================================================-->
+
+
+
+
+
+
+
+
+
+<!--======================================================================
+    The historical template for a root project node on the individual side.
+ =======================================================================-->
+
+  <template
+      name="TSP-Indiv:!*!:TSP(SM) Project"
+      ID="TSP/IndivRoot"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_root_dataFile.txt"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}"
+      >
+
+    <html ID="sump" href="TSP/plan_summary.shtm"
+        title="TSP(SM) Project Plan Summary"/>
+    <html ID="size" href="TSP/sizeForm.class"
+        title="TSP(SM) Size Inventory"/>
+    <html ID="top" href="TSP/script.htm"
+        title="TSP(SM) Process Script"/>
+
+    <html ID="tasklist"
+        href="control/showTaskSchedule.class?trigger&amp;TSP-indiv"
+        title="Project Task &amp; Schedule"/>
+    <html ID="week" href="reports/week.class?tl=auto&amp;TSP-indiv"
+        title="    Weekly Earned Value Report"/>
+
+    <html ID="editWBS" href="TSP/setup/openWBS.shtm?trigger&amp;indiv"
+        title="Work Breakdown Structure Editor"
+        inPackage="teamTools version 2.4.7"/>
+    <html ID="sync" href="TSP/setup/sync.class?trigger=optional&amp;indiv"
+        title="    Sync Work Breakdown Structure"/>
+
+    <html ID="params" href="TSP/indiv_project_parameters.shtm"
+        title="Project Parameters and Settings"/>
+    <html ID="export" href="control/exportNow.class"
+        title="Export My Data Now"/>
+
+  </template>
+
+
+
+
+<!--======================================================================
+    The historical template for a "full" node/task on the individual side.
+ =======================================================================-->
+
+  <template
+      name="TSP-Indiv:!*!:Subtask"
+      ID="TSP/IndivFullNode"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_full_dataFile.txt"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}"
+      >
+
+    
+
+
+
+
+    <phase name="Misc"
+        type="MGMT"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Misc_script"/>
+
+
+
+
+    <phase name="Strategy"
+        type="STRAT"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Strategy_script"/>
+
+
+
+
+    <phase name="Planning"
+        type="PLAN"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Planning_script"/>
+
+
+
+
+    <phase name="Reqts"
+        type="REQ"
+         
+            size="Req Pages"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Reqts_script"/>
+
+
+
+
+    <phase name="Sys Test Plan"
+        type="STP"
+         
+            size="Text Pages"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Sys_Test_Plan_script"/>
+
+
+
+
+    <phase name="Reqts Review"
+        type="REQINSP"
+         
+            size="Inspected Req Pages"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Reqts_Review_script"/>
+
+
+
+
+    <phase name="Reqts Inspect"
+        type="REQINSP"
+         
+            size="Inspected Req Pages"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Reqts_Inspect_script"/>
+
+
+
+
+    <phase name="HLD"
+        type="HLD"
+         
+            size="HLD Pages"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="HLD_script"/>
+
+
+
+
+    <phase name="Int Test Plan"
+        type="ITP"
+         
+            size="Text Pages"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Int_Test_Plan_script"/>
+
+
+
+
+    <phase name="HLD Review"
+        type="HLDRINSP"
+         
+            size="Inspected HLD Pages"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="HLD_Review_script"/>
+
+
+
+
+    <phase name="HLD Inspect"
+        type="HLDRINSP"
+         
+            size="Inspected HLD Pages"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="HLD_Inspect_script"/>
+
+
+
+
+    <phase name="Design"
+        type="DLD"
+         
+            size="DLD Lines"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Design_script"/>
+
+
+
+
+    <phase name="Design Review"
+        type="DLDR"
+         
+            size="DLD Lines"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Design_Review_script"/>
+
+
+
+
+    <phase name="Test Devel"
+        type="TD"
+         
+            size="Text Pages"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Test_Devel_script"/>
+
+
+
+
+    <phase name="Design Inspect"
+        type="DLDINSP"
+         
+            size="Inspected DLD Lines"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Design_Inspect_script"/>
+
+
+
+
+    <phase name="Code"
+        type="CODE"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Code_script"/>
+
+
+
+
+    <phase name="Code Review"
+        type="CR"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Code_Review_script"/>
+
+
+
+
+    <phase name="Compile"
+        type="COMP"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Compile_script"/>
+
+
+
+
+    <phase name="Code Inspect"
+        type="CODEINSP"
+         
+            size="Inspected New &amp; Changed LOC"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Code_Inspect_script"/>
+
+
+
+
+    <phase name="Test"
+        type="UT"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Test_script"/>
+
+
+
+
+    <phase name="Int Test"
+        type="IT"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Int_Test_script"/>
+
+
+
+
+    <phase name="Sys Test"
+        type="ST"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Sys_Test_script"/>
+
+
+
+
+    <phase name="Documentation"
+        type="DOC"
+         
+            size="Text Pages"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Documentation_script"/>
+
+
+
+
+    <phase name="Accept Test"
+        type="AT"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Accept_Test_script"/>
+
+
+
+
+    <phase name="Postmortem"
+        type="PM"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Postmortem_script"/>
+
+
+
+
+    <phase name="Product Life"
+        type="PL"
+        
+	constraints="ED{}"
+        GTACS_disabled_htmlID="Product_Life_script"/>
+
+
+
+  </template>
+
+
+
+
+<!--======================================================================
+    The historical template for a "summary" node/task on the individual side.
+ =======================================================================-->
+
+  <template
+      name="TSP-Indiv:!*!:Summary-Outline Task"
+      ID="TSP/IndivEmptyNode"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+
+    
+
+  </template>
+
+
+
+<!--======================================================================
+    The historical template for a read-only node on the individual side.
+ =======================================================================-->
+
+  <template
+      name="TSP-Indiv:!*!:Subsystem"
+      ID="TSP/IndivReadOnlyNode"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="MED{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}"
+      >
+
+    
+
+  </template>
+
+
+
+
+<!--======================================================================
+    The historical templates for each individual phase.
+ =======================================================================-->
+
+
+
+  <template
+      name="TSP-phase000:!*!:Misc"
+      ID="TSP/PHASE/Misc"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase000:!*!:Misc Task"
+      ID="TSP/IndivTask/Misc"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Misc"
+           ID="TSP/PHASE/Misc"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase001:!*!:Strategy"
+      ID="TSP/PHASE/Strategy"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase001:!*!:Strategy Task"
+      ID="TSP/IndivTask/Strategy"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Strategy"
+           ID="TSP/PHASE/Strategy"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase002:!*!:Planning"
+      ID="TSP/PHASE/Planning"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase002:!*!:Planning Task"
+      ID="TSP/IndivTask/Planning"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Planning"
+           ID="TSP/PHASE/Planning"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase003:!*!:Reqts"
+      ID="TSP/PHASE/Reqts"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase003:!*!:Reqts Task"
+      ID="TSP/IndivTask/Reqts"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Reqts"
+           ID="TSP/PHASE/Reqts"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase004:!*!:Sys Test Plan"
+      ID="TSP/PHASE/Sys_Test_Plan"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase004:!*!:Sys Test Plan Task"
+      ID="TSP/IndivTask/Sys_Test_Plan"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Sys Test Plan"
+           ID="TSP/PHASE/Sys_Test_Plan"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase005:!*!:Reqts Review"
+      ID="TSP/PHASE/Reqts_Review"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase005:!*!:Reqts Review Task"
+      ID="TSP/IndivTask/Reqts_Review"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Reqts Review"
+           ID="TSP/PHASE/Reqts_Review"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase006:!*!:Reqts Inspect"
+      ID="TSP/PHASE/Reqts_Inspect"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase006:!*!:Reqts Inspect Task"
+      ID="TSP/IndivTask/Reqts_Inspect"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Reqts Inspect"
+           ID="TSP/PHASE/Reqts_Inspect"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase007:!*!:HLD"
+      ID="TSP/PHASE/HLD"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase007:!*!:HLD Task"
+      ID="TSP/IndivTask/HLD"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="HLD"
+           ID="TSP/PHASE/HLD"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase008:!*!:Int Test Plan"
+      ID="TSP/PHASE/Int_Test_Plan"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase008:!*!:Int Test Plan Task"
+      ID="TSP/IndivTask/Int_Test_Plan"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Int Test Plan"
+           ID="TSP/PHASE/Int_Test_Plan"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase009:!*!:HLD Review"
+      ID="TSP/PHASE/HLD_Review"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase009:!*!:HLD Review Task"
+      ID="TSP/IndivTask/HLD_Review"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="HLD Review"
+           ID="TSP/PHASE/HLD_Review"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase010:!*!:HLD Inspect"
+      ID="TSP/PHASE/HLD_Inspect"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase010:!*!:HLD Inspect Task"
+      ID="TSP/IndivTask/HLD_Inspect"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="HLD Inspect"
+           ID="TSP/PHASE/HLD_Inspect"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase011:!*!:Design"
+      ID="TSP/PHASE/Design"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase011:!*!:Design Task"
+      ID="TSP/IndivTask/Design"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Design"
+           ID="TSP/PHASE/Design"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase012:!*!:Design Review"
+      ID="TSP/PHASE/Design_Review"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase012:!*!:Design Review Task"
+      ID="TSP/IndivTask/Design_Review"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Design Review"
+           ID="TSP/PHASE/Design_Review"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase013:!*!:Test Devel"
+      ID="TSP/PHASE/Test_Devel"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase013:!*!:Test Devel Task"
+      ID="TSP/IndivTask/Test_Devel"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Test Devel"
+           ID="TSP/PHASE/Test_Devel"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase014:!*!:Design Inspect"
+      ID="TSP/PHASE/Design_Inspect"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase014:!*!:Design Inspect Task"
+      ID="TSP/IndivTask/Design_Inspect"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Design Inspect"
+           ID="TSP/PHASE/Design_Inspect"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase015:!*!:Code"
+      ID="TSP/PHASE/Code"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase015:!*!:Code Task"
+      ID="TSP/IndivTask/Code"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Code"
+           ID="TSP/PHASE/Code"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase016:!*!:Code Review"
+      ID="TSP/PHASE/Code_Review"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase016:!*!:Code Review Task"
+      ID="TSP/IndivTask/Code_Review"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Code Review"
+           ID="TSP/PHASE/Code_Review"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase017:!*!:Compile"
+      ID="TSP/PHASE/Compile"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase017:!*!:Compile Task"
+      ID="TSP/IndivTask/Compile"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Compile"
+           ID="TSP/PHASE/Compile"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase018:!*!:Code Inspect"
+      ID="TSP/PHASE/Code_Inspect"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase018:!*!:Code Inspect Task"
+      ID="TSP/IndivTask/Code_Inspect"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Code Inspect"
+           ID="TSP/PHASE/Code_Inspect"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase019:!*!:Test"
+      ID="TSP/PHASE/Test"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase019:!*!:Test Task"
+      ID="TSP/IndivTask/Test"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Test"
+           ID="TSP/PHASE/Test"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase020:!*!:Int Test"
+      ID="TSP/PHASE/Int_Test"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase020:!*!:Int Test Task"
+      ID="TSP/IndivTask/Int_Test"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Int Test"
+           ID="TSP/PHASE/Int_Test"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase021:!*!:Sys Test"
+      ID="TSP/PHASE/Sys_Test"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase021:!*!:Sys Test Task"
+      ID="TSP/IndivTask/Sys_Test"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Sys Test"
+           ID="TSP/PHASE/Sys_Test"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase022:!*!:Documentation"
+      ID="TSP/PHASE/Documentation"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase022:!*!:Documentation Task"
+      ID="TSP/IndivTask/Documentation"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Documentation"
+           ID="TSP/PHASE/Documentation"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase023:!*!:Accept Test"
+      ID="TSP/PHASE/Accept_Test"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase023:!*!:Accept Test Task"
+      ID="TSP/IndivTask/Accept_Test"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Accept Test"
+           ID="TSP/PHASE/Accept_Test"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase024:!*!:Postmortem"
+      ID="TSP/PHASE/Postmortem"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase024:!*!:Postmortem Task"
+      ID="TSP/IndivTask/Postmortem"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Postmortem"
+           ID="TSP/PHASE/Postmortem"/>
+  </template>
+
+
+
+  <template
+      name="TSP-phase025:!*!:Product Life"
+      ID="TSP/PHASE/Product_Life"
+      dataFile="none"
+      href="none"
+      constraints="MED{}" />
+
+  <template
+      name="TSP-phase025:!*!:Product Life Task"
+      ID="TSP/IndivTask/Product_Life"
+      defineRollup="no"
+      defectLog="true"
+      dataFile="TSP/indiv_empty_dataFile.txt"
+      autoData="none"
+      size="New &amp; Changed LOC"
+      href="none"
+      constraints="{PSP0.1{PSP1{PSP1.1{PSP2{PSP2.1{TSP/PHASE/Misc{TSP/IndivTask/Misc{TSP/PHASE/Strategy{TSP/IndivTask/Strategy{TSP/PHASE/Planning{TSP/IndivTask/Planning{TSP/PHASE/Reqts{TSP/IndivTask/Reqts{TSP/PHASE/Sys_Test_Plan{TSP/IndivTask/Sys_Test_Plan{TSP/PHASE/Reqts_Review{TSP/IndivTask/Reqts_Review{TSP/PHASE/Reqts_Inspect{TSP/IndivTask/Reqts_Inspect{TSP/PHASE/HLD{TSP/IndivTask/HLD{TSP/PHASE/Int_Test_Plan{TSP/IndivTask/Int_Test_Plan{TSP/PHASE/HLD_Review{TSP/IndivTask/HLD_Review{TSP/PHASE/HLD_Inspect{TSP/IndivTask/HLD_Inspect{TSP/PHASE/Design{TSP/IndivTask/Design{TSP/PHASE/Design_Review{TSP/IndivTask/Design_Review{TSP/PHASE/Test_Devel{TSP/IndivTask/Test_Devel{TSP/PHASE/Design_Inspect{TSP/IndivTask/Design_Inspect{TSP/PHASE/Code{TSP/IndivTask/Code{TSP/PHASE/Code_Review{TSP/IndivTask/Code_Review{TSP/PHASE/Compile{TSP/IndivTask/Compile{TSP/PHASE/Code_Inspect{TSP/IndivTask/Code_Inspect{TSP/PHASE/Test{TSP/IndivTask/Test{TSP/PHASE/Int_Test{TSP/IndivTask/Int_Test{TSP/PHASE/Sys_Test{TSP/IndivTask/Sys_Test{TSP/PHASE/Documentation{TSP/IndivTask/Documentation{TSP/PHASE/Accept_Test{TSP/IndivTask/Accept_Test{TSP/PHASE/Postmortem{TSP/IndivTask/Postmortem{TSP/PHASE/Product_Life{TSP/IndivTask/Product_Life{TSP/IndivEmptyNode{TSP/Rollup}TSP/IndivTask/Misc}TSP/IndivTask/Strategy}TSP/IndivTask/Planning}TSP/IndivTask/Reqts}TSP/IndivTask/Sys_Test_Plan}TSP/IndivTask/Reqts_Review}TSP/IndivTask/Reqts_Inspect}TSP/IndivTask/HLD}TSP/IndivTask/Int_Test_Plan}TSP/IndivTask/HLD_Review}TSP/IndivTask/HLD_Inspect}TSP/IndivTask/Design}TSP/IndivTask/Design_Review}TSP/IndivTask/Test_Devel}TSP/IndivTask/Design_Inspect}TSP/IndivTask/Code}TSP/IndivTask/Code_Review}TSP/IndivTask/Compile}TSP/IndivTask/Code_Inspect}TSP/IndivTask/Test}TSP/IndivTask/Int_Test}TSP/IndivTask/Sys_Test}TSP/IndivTask/Documentation}TSP/IndivTask/Accept_Test}TSP/IndivTask/Postmortem}TSP/IndivTask/Product_Life}TSP/IndivRoot}TSP/IndivReadOnlyNode}TSP/IndivFullNode}TSP/IndivEmptyNode"
+      >
+    <phase name="Product Life"
+           ID="TSP/PHASE/Product_Life"/>
+  </template>
+
+
+
+
+
+
+<!--======================================================================
+    Define the rollup dataset for this process.
+  =======================================================================-->
+
+  <template
+      name="TSP-rollup-prototype"
+      imaginary="true"
+      href="none"
+      dataFile="TSP/prototype_dataFile.txt"
+      size="New &amp; Changed LOC"
+      defineRollup="TSP">
+
+
+    <phase name="Misc"
+        type="MGMT"
+        imaginary="true"/>
+
+    <phase name="Strategy"
+        type="STRAT"
+        imaginary="true"/>
+
+    <phase name="Planning"
+        type="PLAN"
+        imaginary="true"/>
+
+    <phase name="Reqts"
+        type="REQ"
+        size="Req Pages"
+        imaginary="true"/>
+
+    <phase name="Sys Test Plan"
+        type="STP"
+        size="Text Pages"
+        imaginary="true"/>
+
+    <phase name="Reqts Review"
+        type="REQINSP"
+        size="Inspected Req Pages"
+        imaginary="true"/>
+
+    <phase name="Reqts Inspect"
+        type="REQINSP"
+        size="Inspected Req Pages"
+        imaginary="true"/>
+
+    <phase name="HLD"
+        type="HLD"
+        size="HLD Pages"
+        imaginary="true"/>
+
+    <phase name="Int Test Plan"
+        type="ITP"
+        size="Text Pages"
+        imaginary="true"/>
+
+    <phase name="HLD Review"
+        type="HLDRINSP"
+        size="Inspected HLD Pages"
+        imaginary="true"/>
+
+    <phase name="HLD Inspect"
+        type="HLDRINSP"
+        size="Inspected HLD Pages"
+        imaginary="true"/>
+
+    <phase name="Design"
+        type="DLD"
+        size="DLD Lines"
+        imaginary="true"/>
+
+    <phase name="Design Review"
+        type="DLDR"
+        size="DLD Lines"
+        imaginary="true"/>
+
+    <phase name="Test Devel"
+        type="TD"
+        size="Text Pages"
+        imaginary="true"/>
+
+    <phase name="Design Inspect"
+        type="DLDINSP"
+        size="Inspected DLD Lines"
+        imaginary="true"/>
+
+    <phase name="Code"
+        type="CODE"
+        imaginary="true"/>
+
+    <phase name="Code Review"
+        type="CR"
+        imaginary="true"/>
+
+    <phase name="Compile"
+        type="COMP"
+        imaginary="true"/>
+
+    <phase name="Code Inspect"
+        type="CODEINSP"
+        size="Inspected New &amp; Changed LOC"
+        imaginary="true"/>
+
+    <phase name="Test"
+        type="UT"
+        imaginary="true"/>
+
+    <phase name="Int Test"
+        type="IT"
+        imaginary="true"/>
+
+    <phase name="Sys Test"
+        type="ST"
+        imaginary="true"/>
+
+    <phase name="Documentation"
+        type="DOC"
+        size="Text Pages"
+        imaginary="true"/>
+
+    <phase name="Accept Test"
+        type="AT"
+        imaginary="true"/>
+
+    <phase name="Postmortem"
+        type="PM"
+        imaginary="true"/>
+
+    <phase name="Product Life"
+        type="PL"
+        imaginary="true"/>
+
+
+  </template>
+
+
+
+
+<!--======================================================================
+    The template for an extra data rollup node.  This node was previously
+    provided to perform an arbitrary rollup of specific components within
+    a team project.  However, the label functionality provides a better
+    mechanism for this now, so for the time being this template type is
+    disabled (via the unsatifiable constraints {} below).
+  =======================================================================-->
+
+  <template
+      name="TSP-rollup:!*!:Rollup TSP(SM) Data"
+      ID="TSP/Rollup"
+      dataFile="TSP/rollup_dataFile.txt"
+      defineRollup="no"
+      constraints="{}"
+      >
+
+
+    <html ID="sum" href="cms/TSP/rollup_plan_summary"/>
+    <html ID="config" title="Edit Data Rollup Filter"
+          href="TSP/rollup_filter.shtm"/>
+
+    <phase name="Analyze Rollup Data"/>
+  </template>
+
+  <!-- This imaginary template prevents the AutoData mechanism from
+       mistakenly creating a data rollup template on our behalf -->
+  <template imaginary="true" name="TSP Discarded Rollup"
+            dataFile="ROLLUP:TSP" defineRollup="no"/>
+
+
+
+<!--======================================================================
+    Background tasks used by the team process.
+  =======================================================================-->
+
+  <background-task class="teamdash.templates.setup.SyncScanner"
+          settingPrefix="teamAutoSync" ordinal="2000"
+	  runAtStartup="true" whenDefault="*">
+    <sync templateID="TSP/MasterRoot" uri="TSP/setup/sync.class?run"/>
+    <sync templateID="TSP/TeamRoot" uri="TSP/setup/sync.class?run"/>
+  </background-task>
+
+  <background-task class="teamdash.templates.setup.SyncScanner"
+          settingPrefix="indivAutoSync" ordinal="2000"
+	  runAtStartup="true" whenDefault="0,12">
+    <sync templateID="TSP/IndivRoot" uri="TSP/setup/sync.class?brief"
+          alertIfToken="SYNC-IS-NEEDED"/>
+    <sync templateID="TSP/Indiv2Root" uri="TSP/setup/sync.class?brief"
+          alertIfToken="SYNC-IS-NEEDED"/>
+  </background-task>
+
+
+<!--======================================================================
+    Snippets used by the team process.
+  =======================================================================-->
+
+  <snippet id="TSP.teamSummaryPageHeader" version="1.0" hide="true">
+    <resources>CMS.Snippet.Anonymous</resources>
+    <context>TSP Indiv2 Root Tag</context>
+    <context>TSP Team Root Tag</context>
+    <context>TSP Team Node Tag</context>
+    <context>TSP Master Root Tag</context>
+    <context>TSP Master Node Tag</context>
+    <uri>/TSP/setup/summaryName.class</uri>
+    <pageFilter mode="view">teamdash.templates.setup.ProcessAdvisor</pageFilter>
+  </snippet>
+
+  <snippet id="TSP.sizeSummary" version="1.0" category="forms">
+    <resources>Team-TSP.SizeSummary</resources>
+    <context>TSP Indiv2 Root Tag</context>
+    <context>TSP Team Root Tag</context>
+    <context>TSP Team Node Tag</context>
+    <context>TSP Master Root Tag</context>
+    <context>TSP Master Node Tag</context>
+    <uri>/TSP/size_summary.shtm</uri>
+  </snippet>
+
+  <snippet id="TSP.testDbProjectMissing" version="1.0" category="advice">
+    <resources>CMS.Snippet.Anonymous</resources>
+    <context>TSP Team Root Tag</context>
+    <context>TSP Team Node Tag</context>
+    <context>TSP Master Root Tag</context>
+    <context>TSP Master Node Tag</context>
+    <uri>/TSP/setup/dbProjectMissing</uri>
+  </snippet>
+
+  
+  <snippet id="TSP.legalFooter" version="1.0" category="hidden">
+    <resources>CMS.Snippet.Anonymous</resources>
+    <context>*</context>
+    <uri>/TSP/legalFooter.htm</uri>
+  </snippet>
+  
+
+<!--======================================================================
+    Misc extensions by the team process.
+  =======================================================================-->
+
+  <noteFormat formatID="TSP-ReadOnlyMessageNoteFormat"
+          class="teamdash.templates.setup.ReadOnlyMessageNoteFormat"/>
+
+  <scriptSource class="teamdash.templates.setup.WorkflowScriptSource"
+          dataName="TSP /Project_Workflow_URL_List"/>
+
+  
+
+  <messageHandler processID="TSP"
+          class="teamdash.templates.setup.MoveTeamDirMessageHandler">
+    <include templateID="TSP/IndivRoot"/>
+    <include templateID="TSP/Indiv2Root"/>
+  </messageHandler>
+
+</dashboard-process-template>

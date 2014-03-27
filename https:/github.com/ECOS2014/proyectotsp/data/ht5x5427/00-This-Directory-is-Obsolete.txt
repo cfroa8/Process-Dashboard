@@ -1,0 +1,9 @@
+This directory is obsolete.  If was formerly used to
+store data for the project '/Project/ContadorCambios'.
+However, that data has been moved to the directory
+/Users/CarlosRoa/Documents/Documents/Process Dashboard/https:/github.com/ECOS2014/proyectotsp.git/data/ht5x5427
+
+The contents of this directory have been left intact
+while individual team members transition to the new
+directory.  After all team members have transitioned,
+this directory can be safely deleted.

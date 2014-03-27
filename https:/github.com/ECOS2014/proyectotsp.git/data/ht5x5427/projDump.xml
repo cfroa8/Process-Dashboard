@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project name='ContadorCambios' id='6447202' tid='ht5x5427:6447202' labels='Proyecto' dumpFileVersion='4.0.0' dumpTimestamp='@1395727003706'>
+  <teamMember name='Felipe Fagua' tmid='1499932539' initials='FF' startDate='@1393977600000' startCalendarDate='2014-03-05' endWeek='9' hoursPerWeek='6.0'>
+    <scheduleException week='6' hours='16.0'/>
+    <scheduleException week='8' hours='2.0'/>
+    <scheduleException week='0' hours='0.0'/>
+  </teamMember>
+  <teamMember name='Ingrid Echavarria' tmid='96158416' initials='IE' startDate='@1393977600000' startCalendarDate='2014-03-05' endWeek='9' hoursPerWeek='6.0'>
+    <scheduleException week='6' hours='16.0'/>
+    <scheduleException week='8' hours='2.0'/>
+    <scheduleException week='0' hours='0.0'/>
+  </teamMember>
+  <teamMember name='Paula Castellanos' tmid='1031199495' initials='PC' startDate='@1393977600000' startCalendarDate='2014-03-05' endWeek='9' hoursPerWeek='6.0'>
+    <scheduleException week='6' hours='16.0'/>
+    <scheduleException week='8' hours='2.0'/>
+    <scheduleException week='0' hours='0.0'/>
+  </teamMember>
+  <teamMember name='David Abril' tmid='721752606' initials='DA' startDate='@1393977600000' startCalendarDate='2014-03-05' endWeek='9' hoursPerWeek='6.0'>
+    <scheduleException week='6' hours='16.0'/>
+    <scheduleException week='8' hours='2.0'/>
+    <scheduleException week='0' hours='0.0'/>
+  </teamMember>
+  <teamMember name='Gabriel Martinez' tmid='1047116923' initials='GM' startDate='@1393977600000' startCalendarDate='2014-03-05' endWeek='9' hoursPerWeek='6.0'>
+    <scheduleException week='6' hours='16.0'/>
+    <scheduleException week='8' hours='2.0'/>
+    <scheduleException week='0' hours='0.0'/>
+  </teamMember>
+  <teamMember name='Carlos Roa' tmid='922995111' initials='CR' startDate='@1393977600000' startCalendarDate='2014-03-05' endWeek='9' hoursPerWeek='6.0'>
+    <scheduleException week='6' hours='16.0'/>
+    <scheduleException week='8' hours='2.0'/>
+    <scheduleException week='0' hours='0.0'/>
+  </teamMember>
+	<component name='Reuniones' id='6447111' tid='ht5x5427:6447111' labels='Proyecto' wid='3958074'>
+		<task name='WeekForm' id='6447088' tid='ht5x5427:6447088' labels='Proyecto' phaseName='Documentation' phaseType='DOC' deferredTime=',FF=5,IE=5,PC=5,DA=5,GM=5,CR=5,'/>
+	</component>
+	<component name='Lanzamiento1' id='6447085' tid='ht5x5427:6447085' labels='Lanzamiento1'>
+		<task name='InfoForm' id='6447087' tid='ht5x5427:6447087' labels='Lanzamiento1' phaseName='Documentation' phaseType='DOC' deferredTime=',FF=0.17,IE=0.17,PC=0.17,DA=0.17,GM=0.17,CR=0.17,'/>
+		<task name='ProjectCha' id='6447089' tid='ht5x5427:6447089' labels='Lanzamiento1' phaseName='Documentation' phaseType='DOC' deferredTime=',FF=4,IE=4,PC=4,DA=4,GM=4,CR=4,'/>
+	</component>
+	<component name='Estrategia1' id='6447086' tid='ht5x5427:6447086' labels='Estrategia1'>
+		<task name='Conceptual Design' id='6447092' tid='ht5x5427:6447092' labels='Estrategia1' phaseName='Design' phaseType='DLD' deferredTime=',FF=1,PC=1,'/>
+		<task name='STRAT' id='6447090' tid='ht5x5427:6447090' labels='Estrategia1' phaseName='Strategy' phaseType='STRAT' deferredTime=',IE=1,CR=1,'/>
+		<task name='ITL' id='6447091' tid='ht5x5427:6447091' labels='Estrategia1' phaseName='Strategy' phaseType='STRAT' deferredTime=',DA=0.5,'/>
+		<task name='Estandar Codificacion' id='6447170' tid='ht5x5427:6447170' labels='Estrategia1' phaseName='Strategy' phaseType='STRAT' deferredTime=',DA=1,'/>
+		<task name='Manual GIT' id='6447102' tid='ht5x5427:6447102' labels='Estrategia1' phaseName='Misc' phaseType='MGMT' deferredTime=',GM=1.5,'/>
+		<component name='Manual DashBoard' id='6447103' tid='ht5x5427:6447103' labels='Estrategia1'>
+			<task name='Equipo' id='6447105' tid='ht5x5427:6447105' labels='Estrategia1' phaseName='Misc' phaseType='MGMT' deferredTime=',GM=1.3333333333333333,'/>
+			<task name='Lider' id='6447106' tid='ht5x5427:6447106' labels='Estrategia1' phaseName='Misc' phaseType='MGMT' deferredTime=',GM=1.3333333333333333,'/>
+			<task name='Programador' id='6447107' tid='ht5x5427:6447107' labels='Estrategia1' phaseName='Misc' phaseType='MGMT' deferredTime=',GM=1.3333333333333333,'/>
+		</component>
+		<task name='Configuracion DashBoard' id='6447104' tid='ht5x5427:6447104' labels='Estrategia1' phaseName='Misc' phaseType='MGMT' deferredTime=',GM=1,'/>
+		<task name='Configuracion GIT' id='6447109' tid='ht5x5427:6447109' labels='Estrategia1' phaseName='Misc' phaseType='MGMT' deferredTime=',GM=1,'/>
+		<component name='Instalacion DashBoard' id='6447164' tid='ht5x5427:6447164' labels='Estrategia1'>
+			<task name='Equipo' id='6447167' tid='ht5x5427:6447167' labels='Estrategia1' phaseName='Misc' phaseType='MGMT' deferredTime=',FF=0.6,PC=0.6,DA=0.6,GM=0.6,'/>
+			<task name='Lider' id='6447168' tid='ht5x5427:6447168' labels='Estrategia1' phaseName='Misc' phaseType='MGMT' deferredTime=',CR=0.6,'/>
+			<task name='Programador' id='6447169' tid='ht5x5427:6447169' labels='Estrategia1' phaseName='Misc' phaseType='MGMT' deferredTime=',IE=0.6,'/>
+		</component>
+	</component>
+	<component name='Planning1' id='6447078' tid='ht5x5427:6447078' labels='PLAN1'>
+		<task name='SUMP' id='6447095' tid='ht5x5427:6447095' labels='PLAN1' phaseName='Planning' phaseType='PLAN' deferredTime=',IE=0.5,CR=0.5,'/>
+		<task name='SUMQ' id='6447096' tid='ht5x5427:6447096' labels='PLAN1' phaseName='Planning' phaseType='PLAN' deferredTime=',DA=0.5,'/>
+		<task name='SUMTASK' id='6447097' tid='ht5x5427:6447097' labels='PLAN1' phaseName='Planning' phaseType='PLAN' deferredTime=',IE=0.5,CR=0.5,'/>
+		<task name='SUMS' id='6447098' tid='ht5x5427:6447098' labels='PLAN1' phaseName='Planning' phaseType='PLAN' deferredTime=',IE=0.5,CR=0.5,'/>
+		<task name='TASK' id='6447100' tid='ht5x5427:6447100' labels='PLAN1' phaseName='Planning' phaseType='PLAN' deferredTime=',IE=0.5,CR=0.5,'/>
+		<task name='SCHEDULE' id='6447101' tid='ht5x5427:6447101' labels='PLAN1' phaseName='Planning' phaseType='PLAN' deferredTime=',IE=0.5,CR=0.5,'/>
+		<task name='DesignReviewCheck' id='6447174' tid='ht5x5427:6447174' labels='PLAN1' phaseName='Planning' phaseType='PLAN' deferredTime=',DA=0.5,'/>
+		<task name='CodeReviewCheck' id='6447172' tid='ht5x5427:6447172' labels='PLAN1' phaseName='Planning' phaseType='PLAN' deferredTime=',DA=0.5,'/>
+	</component>
+	<task name='Design' id='6447079' tid='ht5x5427:6447079' labels='Proyecto' phaseName='Design' phaseType='DLD' deferredTime=',FF=11.666666666666668,IE=11.666666666666668,PC=11.666666666666668,DA=11.666666666666668,GM=11.666666666666668,CR=11.666666666666668,'/>
+	<task name='Design Review' id='6447080' tid='ht5x5427:6447080' labels='Proyecto' phaseName='Design Review' phaseType='DLDR' deferredTime=',FF=5.833333333333334,IE=5.833333333333334,PC=5.833333333333334,DA=5.833333333333334,GM=5.833333333333334,CR=5.833333333333334,' inspUnits='DLD Lines' inspSize='0'/>
+	<task name='Code1' id='6447081' tid='ht5x5427:6447081' labels='Proyecto' effectivePhase='Code'>
+		<task name='ProgramComparatorGUI' id='6447062' tid='ht5x5427:6447062' labels='Proyecto' phaseName='Code' phaseType='CODE' deferredTime=',IE=1.6007342817806334,PC=1.6007342817806334,DA=1.6007342817806334,CR=1.6007342817806334,' sizeUnits='LOC' sizeBase='0' sizeDel='0' sizeMod='0' sizeAdd='500' sizeReu='0' sizeNC='500'/>
+		<task name='ProgramComparatorFacade' id='6447063' tid='ht5x5427:6447063' labels='Proyecto' phaseName='Code' phaseType='CODE' deferredTime=',IE=0.6424965580541532,' sizeUnits='LOC' sizeBase='0' sizeDel='0' sizeMod='0' sizeAdd='20' sizeReu='0' sizeNC='20'/>
+		<task name='ProgramComparator' id='6447064' tid='ht5x5427:6447064' labels='Proyecto' phaseName='Code' phaseType='CODE' deferredTime=',PC=3.212482790270766,' sizeUnits='LOC' sizeBase='0' sizeDel='0' sizeMod='0' sizeAdd='100' sizeReu='0' sizeNC='100'/>
+		<task name='FileComparator' id='6447065' tid='ht5x5427:6447065' labels='Proyecto' phaseName='Code' phaseType='CODE' deferredTime=',PC=0.6424965580541532,' sizeUnits='LOC' sizeBase='0' sizeDel='0' sizeMod='0' sizeAdd='20' sizeReu='0' sizeNC='20'/>
+		<task name='JavaFileComparator' id='6447067' tid='ht5x5427:6447067' labels='Proyecto' phaseName='Code' phaseType='CODE' deferredTime=',FF=7.495793177298454,PC=7.495793177298454,DA=7.495793177298454,' sizeUnits='LOC' sizeBase='0' sizeDel='0' sizeMod='0' sizeAdd='700' sizeReu='0' sizeNC='700'/>
+		<task name='ProgramLoader' id='6447069' tid='ht5x5427:6447069' labels='Proyecto' phaseName='Code' phaseType='CODE' deferredTime=',DA=1.606241395135383,' sizeUnits='LOC' sizeBase='0' sizeDel='0' sizeMod='0' sizeAdd='50' sizeReu='0' sizeNC='50'/>
+		<task name='FileLoader' id='6447070' tid='ht5x5427:6447070' labels='Proyecto' phaseName='Code' phaseType='CODE' deferredTime=',GM=1.606241395135383,' sizeUnits='LOC' sizeBase='0' sizeDel='0' sizeMod='0' sizeAdd='50' sizeReu='0' sizeNC='50'/>
+		<task name='ProgramPart' id='6447074' tid='ht5x5427:6447074' labels='Proyecto' phaseName='Code' phaseType='CODE' deferredTime=',IE=1.606241395135383,' sizeUnits='LOC' sizeBase='0' sizeDel='0' sizeMod='0' sizeAdd='50' sizeReu='0' sizeNC='50'/>
+		<task name='ProgramPartVersion' id='6447075' tid='ht5x5427:6447075' labels='Proyecto' phaseName='Code' phaseType='CODE' deferredTime=',IE=1.606241395135383,' sizeUnits='LOC' sizeBase='0' sizeDel='0' sizeMod='0' sizeAdd='50' sizeReu='0' sizeNC='50'/>
+		<task name='LineLabel' id='6447076' tid='ht5x5427:6447076' labels='Proyecto' phaseName='Code' phaseType='CODE' deferredTime=',CR=1.606241395135383,' sizeUnits='LOC' sizeBase='0' sizeDel='0' sizeMod='0' sizeAdd='50' sizeReu='0' sizeNC='50'/>
+		<task name='LineCounter' id='6447161' tid='ht5x5427:6447161' labels='Proyecto' phaseName='Code' phaseType='CODE' deferredTime=',IE=1.9274896741624594,' sizeUnits='LOC' sizeBase='0' sizeDel='0' sizeMod='0' sizeAdd='300' sizeReu='0' sizeNC='300'/>
+		<task name='Otros' id='6447160' tid='ht5x5427:6447160' labels='Proyecto' phaseName='Code' phaseType='CODE' deferredTime=',FF=0.45892611289582375,PC=0.45892611289582375,' sizeUnits='LOC' sizeBase='0' sizeDel='0' sizeMod='0' sizeAdd='100' sizeReu='0' sizeNC='100'/>
+		<task name='UnitTest' id='6447077' tid='ht5x5427:6447077' labels='Proyecto' phaseName='Test' phaseType='UT' deferredTime=',FF=2.3558207128652286,IE=2.3558207128652286,PC=2.3558207128652286,DA=2.3558207128652286,GM=2.3558207128652286,CR=2.3558207128652286,'/>
+	</task>
+	<task name='Code Review' id='6447082' tid='ht5x5427:6447082' labels='Proyecto' phaseName='Code Review' phaseType='CR' deferredTime=',FF=5.833333333333333,IE=5.833333333333333,PC=5.833333333333333,DA=5.833333333333333,GM=5.833333333333333,CR=5.833333333333333,' inspUnits='LOC' inspSize='3640'/>
+	<task name='Test' id='6447083' tid='ht5x5427:6447083' labels='Proyecto' phaseName='Test' phaseType='UT' deferredTime=',FF=1.6666666666666665,IE=1.6666666666666665,PC=1.6666666666666665,DA=1.6666666666666665,GM=1.6666666666666665,CR=1.6666666666666665,'/>
+	<task name='Postmortem' id='6447084' tid='ht5x5427:6447084' labels='ProgramaV1' phaseName='Postmortem' phaseType='PM' deferredTime=',FF=0.8400000000000001,PC=0.8400000000000001,DA=0.8400000000000001,CR=0.8400000000000001,'/>
+	<component name='Lanzamiento2' id='6447112' tid='ht5x5427:6447112' labels='Lanzamiento2'>
+		<task name='InfoForm' id='6447113' tid='ht5x5427:6447113' labels='Lanzamiento2' phaseName='Documentation' phaseType='DOC' deferredTime=',FF=0.33333333333333337,IE=0.33333333333333337,PC=0.33333333333333337,DA=0.33333333333333337,GM=0.33333333333333337,CR=0.33333333333333337,'/>
+		<task name='WeekForInfoFormm' id='6447114' tid='ht5x5427:6447114' labels='Lanzamiento2' phaseName='Documentation' phaseType='DOC' deferredTime=',FF=0.33333333333333337,IE=0.33333333333333337,PC=0.33333333333333337,DA=0.33333333333333337,GM=0.33333333333333337,CR=0.33333333333333337,'/>
+		<task name='ProjectCha' id='6447115' tid='ht5x5427:6447115' labels='Lanzamiento2' phaseName='Documentation' phaseType='DOC' deferredTime=',FF=0.33333333333333337,IE=0.33333333333333337,PC=0.33333333333333337,DA=0.33333333333333337,GM=0.33333333333333337,CR=0.33333333333333337,'/>
+	</component>
+	<component name='Estrategia2' id='6447116' tid='ht5x5427:6447116' labels='Estrategia2'>
+		<task name='STRAT' id='6447117' tid='ht5x5427:6447117' labels='Estrategia2' phaseName='Documentation' phaseType='DOC' deferredTime=',IE=1,'/>
+		<task name='ITL' id='6447118' tid='ht5x5427:6447118' labels='Estrategia2' phaseName='Documentation' phaseType='DOC' deferredTime=',CR=1,'/>
+		<task name='Conceptual Design' id='6447119' tid='ht5x5427:6447119' labels='Estrategia2' phaseName='Design' phaseType='DLD' deferredTime=',FF=1,'/>
+	</component>
+	<component name='Planning2' id='6447127' tid='ht5x5427:6447127' labels='PLAN2'>
+		<task name='PLAN2' id='6447128' tid='ht5x5427:6447128' labels='PLAN2' phaseName='Planning' phaseType='PLAN' deferredTime=',IE=0.2,'/>
+		<task name='SUMP' id='6447129' tid='ht5x5427:6447129' labels='PLAN2' phaseName='Planning' phaseType='PLAN' deferredTime=',IE=0.6,'/>
+		<task name='SUMQ' id='6447130' tid='ht5x5427:6447130' labels='PLAN2' phaseName='Planning' phaseType='PLAN' deferredTime=',DA=0.2,'/>
+		<task name='SUMTASK' id='6447131' tid='ht5x5427:6447131' labels='PLAN2' phaseName='Planning' phaseType='PLAN' deferredTime=',IE=0.6,'/>
+		<task name='SUMS' id='6447132' tid='ht5x5427:6447132' labels='PLAN2' phaseName='Planning' phaseType='PLAN' deferredTime=',IE=0.2,'/>
+		<task name='TASK' id='6447133' tid='ht5x5427:6447133' labels='PLAN2' phaseName='Planning' phaseType='PLAN' deferredTime=',IE=0.6,'/>
+		<task name='SCHEDULE' id='6447134' tid='ht5x5427:6447134' labels='PLAN2' phaseName='Planning' phaseType='PLAN' deferredTime=',IE=0.6,'/>
+	</component>
+	<task name='Design2' id='6447135' tid='ht5x5427:6447135' labels='Proyecto' phaseName='Design' phaseType='DLD' deferredTime=',FF=1.25,IE=1.25,PC=1.25,DA=1.25,GM=1.25,CR=1.25,'/>
+	<task name='Design Review2' id='6447136' tid='ht5x5427:6447136' labels='Proyecto' phaseName='Design Review' phaseType='DLDR' deferredTime=',FF=0.6666666666666666,IE=0.6666666666666666,PC=0.6666666666666666,DA=0.6666666666666666,GM=0.6666666666666666,CR=0.6666666666666666,' inspUnits='DLD Lines' inspSize='0'/>
+	<task name='Code2' id='6447175' tid='ht5x5427:6447175' labels='Proyecto' effectivePhase='Code'>
+		<task name='VersionFileManager' id='6447072' tid='ht5x5427:6447072' labels='Proyecto' phaseName='Code' phaseType='CODE' deferredTime=',FF=1.5,' sizeUnits='LOC' sizeBase='0' sizeDel='0' sizeMod='0' sizeAdd='50' sizeReu='0' sizeNC='50'/>
+		<task name='VersionManager' id='6447071' tid='ht5x5427:6447071' labels='Proyecto' phaseName='Code' phaseType='CODE' deferredTime=',IE=1.5,' sizeUnits='LOC' sizeBase='0' sizeDel='0' sizeMod='0' sizeAdd='50' sizeReu='0' sizeNC='50'/>
+		<task name='ProgramVersion' id='6447073' tid='ht5x5427:6447073' labels='Proyecto' phaseName='Code' phaseType='CODE' deferredTime=',GM=2.25,CR=2.25,' sizeUnits='LOC' sizeBase='0' sizeDel='0' sizeMod='0' sizeAdd='150' sizeReu='0' sizeNC='150'/>
+	</task>
+	<task name='Code Review2' id='6447155' tid='ht5x5427:6447155' labels='Proyecto' phaseName='Code Review' phaseType='CR' deferredTime=',FF=0.7000000000000001,IE=0.7000000000000001,PC=0.7000000000000001,DA=0.7000000000000001,GM=0.7000000000000001,CR=0.7000000000000001,' inspUnits='LOC' inspSize='3640'/>
+	<task name='Test2' id='6447156' tid='ht5x5427:6447156' labels='Proyecto' phaseName='Test' phaseType='UT' deferredTime=',FF=0.7,IE=0.7,PC=0.7,DA=0.7,GM=0.7,CR=0.7,'/>
+	<task name='Postmortem2' id='6447157' tid='ht5x5427:6447157' labels='Programa_final' phaseName='Postmortem' phaseType='PM' deferredTime=',FF=0.8,PC=0.8,DA=0.8,CR=0.8,'/>
+	<task name='Code3' id='6447137' tid='ht5x5427:6447137' labels='Proyecto' effectivePhase='Code'>
+		<task name='CSharpComparator' id='6447068' tid='ht5x5427:6447068' labels='Proyecto' phaseName='Code' phaseType='CODE' deferredTime=',unassigned=70,' sizeUnits='LOC' sizeBase='0' sizeDel='0' sizeMod='0' sizeAdd='700' sizeReu='0' sizeNC='700'/>
+		<task name='CPlusPlusComparator' id='6447066' tid='ht5x5427:6447066' labels='Proyecto' phaseName='Code' phaseType='CODE' deferredTime=',unassigned=70,' sizeUnits='LOC' sizeBase='0' sizeDel='0' sizeMod='0' sizeAdd='700' sizeReu='0' sizeNC='700'/>
+	</task>
+</project>

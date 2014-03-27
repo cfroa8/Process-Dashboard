@@ -1,0 +1,8 @@
+<wbsModel>
+  <wbsNode name='Team Project' id='11729328' type='Project' indentLevel='0' expanded='true'>
+    <attr name='createdWithVersion' value='4.0.0'/>
+  </wbsNode>
+    <wbsNode name='Software Component' id='11729325' type='Software Component' indentLevel='1' expanded='true'>
+      <attr name='Time Per Person' value='0.0'/>
+    </wbsNode>
+</wbsModel>

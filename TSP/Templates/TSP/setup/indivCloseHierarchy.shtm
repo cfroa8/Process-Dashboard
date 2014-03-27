@@ -1,0 +1,39 @@
+<html><!--#do-not-translate-->
+<head>
+<title>Team Project Setup Wizard</title>
+<link rel=stylesheet type='text/css' href='/dash/teamStart.css'>
+</head>
+<body>
+
+<img align="left" src="/Images/team.jpg" width=50 height=50>
+
+<!--#if [setup//Node_Name] -->
+ <!--#if [setup//Node_Location] eq '/' -->
+ <h1>/<!--#echo [setup//Node_Name] --></h1>
+ <!--#else -->
+ <h1><!--#echo [setup//Node_Location] -->/<!--#echo [setup//Node_Name] --></h1>
+ <!--#endif-->
+<!--#else-->
+ <h1><!--#echo var=PATH_TRANSLATED --></h1>
+<!--#endif-->
+
+<h2>Close Hierarchy Editor</h2>
+
+<form action='wizard.class' method='post'>
+<input type='hidden' name='page' value='indivShowConfirm'>
+
+<p>To join the team project, this wizard will need to modify your
+hierarchy.  Unfortunately, this wizard cannot modify the hierarchy
+while the hierarchy editor is open.</p>
+
+<p>Please close the hierarchy editor, then press the &quot;Next&quot;
+button.</p>
+
+<table width='100%'><tr><td width='100%' align='right' nowrap>
+<input type=button name=back value='Back'
+       onClick='history.back();'>&nbsp;&nbsp;
+<input type=submit name=next value='Next'>
+</td></tr></table>
+
+</form>
+</body>

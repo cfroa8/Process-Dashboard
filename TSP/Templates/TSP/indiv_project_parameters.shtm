@@ -1,0 +1,566 @@
+<html><!--#do-not-translate-->
+<head>
+<title>Team Project Parameters and Settings</title>
+<link rel=stylesheet type="text/css" href="style.css">
+<style>
+#settingsExportBanner {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    padding: 10px;
+    width: 410px;
+    border: 1px solid black;
+    background-color: #faa;
+}
+</style>
+</head>
+<body>
+
+<h1><!--#echo PATH_TRANSLATED --></h1>
+
+
+
+<h2>Team Project Parameters and Settings</h2>
+
+<form>
+
+<input type="hidden" class="notTeamSetting"
+    name="[EXPORT_FILE/Last_Export_Timestamp]d">
+<input type=hidden name=requiredTag
+
+       VALUE="TSP Indiv Root Tag"
+
+>
+
+
+<table>
+
+<tr>
+<td>Team Project ID</td>
+<td><input type="text" size="50" class="notTeamSetting" name="[Project_ID]rs"></td>
+</tr>
+
+<!--#if showTeamDir || ![Team_Directory_URL_Only] -->
+<tr>
+<td>Team Project Network Directory</td>
+<td><input type="text" size="50" class="notTeamSetting" name="[Team_Directory]s"></td>
+
+</tr>
+
+<tr>
+<td>Team Project Network Directory (UNC)</td>
+<td><input type="text" size="50" class="notTeamSetting" name="[Team_Directory_UNC]s"></td>
+</tr>
+<!--#endif-->
+
+<!--#if showDataUrl || [Team_Data_Directory_URL] -->
+<tr>
+<td>Team Project Network Directory (URL)</td>
+<td><input type="text" size="50" class="notTeamSetting" name="[Team_Data_Directory_URL]s"></td>
+</tr>
+<!--#endif-->
+
+<tr>
+<td>Project Earned Value Task List</td>
+<td><input type=text size=50 name="[Project_Schedule_Name]rs"></td>
+</tr>
+
+
+<tr>
+<td>Your Name</td>
+<td><input type=text size=50 name="/Owner	s"></td>
+</tr>
+
+<tr>
+<td>Your Initials</td>
+<td><input type=text size=50 name="Indiv_Initials	s"></td>
+</tr>
+
+<tr>
+<td>Your Data Export Filename</td>
+<td><input type=text size=50 name="EXPORT_FILE	s"></td>
+</tr>
+
+<tr title="When this box is checked, the dashboard will no longer notify you about the need to sync this project's WBS, and will no longer export data for this project automatically on shutdown.">
+<td COLSPAN=2>If you are no longer working on this project, check this box
+<input type=checkbox name="[Project_Is_Done]d"></td>
+</tr>
+
+
+</table>
+
+
+
+
+<!--#include file="setup/selectPspRollup" parse=t -->
+<!--#if PSP_ROLLUP_SELECTOR -->
+
+<h2>PSP Task Planning</h2>
+
+<table cellpadding=3>
+
+<tr>
+<td>PSP tasks in this project should base their "Plan" column and PROBE
+calculations on this set of "To Date" data:</td>
+</tr>
+
+<tr>
+<td class=indented><b>Default:</b>
+<!--#echo var="PSP_ROLLUP_SELECTOR" encoding="none" --></td>
+</tr>
+
+<tr>
+<td class=indented>Prompt after syncing new PSP tasks
+<input type=checkbox name="[/Prompt_for_PSP_Subset_On_WBS_Sync]"></td>
+</tr>
+
+</table>
+
+<!--#endif-->
+
+
+
+
+
+
+<h2>Quality Profile Parameters</h2>
+
+<table>
+
+<tr>
+<td class=indented>Design time as a % of coding time</td>
+<td><input type=text size=7 name="[Target Design/Code Ratio]%u"></td>
+</tr>
+
+<tr>
+<td class=indented>Code review time as a % of code time</td>
+<td><input type=text size=7 name="[Target Code Review/Code Ratio]%u"></td>
+</tr>
+
+<tr>
+<td class=indented>Compile defects/KLOC</td>
+<td><input type=text size=7 name="[Target Compile Defect Density]u"></td>
+</tr>
+
+<tr>
+<td class=indented>Unit test defects/KLOC</td>
+<td><input type=text size=7 name="[Target Test Defect Density]u"></td>
+</tr>
+
+<tr>
+<td class=indented>Design review time as a % of design time</td>
+<td><input type=text size=7 name="[Target Design Review/Design Ratio]%u"></td>
+</tr>
+
+</table>
+
+
+<h2>Estimated Phase Yields</h2>
+
+<table>
+
+
+
+
+
+<tr>
+<td class=indented>Planning</td>
+<td><input type=text size=7 name="[Planning/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Requirements</td>
+<td><input type=text size=7 name="[Reqts/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>System Test Plan</td>
+<td><input type=text size=7 name="[Sys Test Plan/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Requirements Review</td>
+<td><input type=text size=7 name="[Reqts Review/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Requirements Inspection</td>
+<td><input type=text size=7 name="[Reqts Inspect/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>High-Level Design</td>
+<td><input type=text size=7 name="[HLD/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Integration Test Plan</td>
+<td><input type=text size=7 name="[Int Test Plan/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>HLD Review</td>
+<td><input type=text size=7 name="[HLD Review/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>HLD Inspection</td>
+<td><input type=text size=7 name="[HLD Inspect/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Detailed Design</td>
+<td><input type=text size=7 name="[Design/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Detailed Design Review</td>
+<td><input type=text size=7 name="[Design Review/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Test Development</td>
+<td><input type=text size=7 name="[Test Devel/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Detailed Design Inspection</td>
+<td><input type=text size=7 name="[Design Inspect/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Code</td>
+<td><input type=text size=7 name="[Code/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Code Review</td>
+<td><input type=text size=7 name="[Code Review/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Compile</td>
+<td><input type=text size=7 name="[Compile/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Code Inspection</td>
+<td><input type=text size=7 name="[Code Inspect/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Unit Test</td>
+<td><input type=text size=7 name="[Test/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Build and Integration Test</td>
+<td><input type=text size=7 name="[Int Test/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>System Test</td>
+<td><input type=text size=7 name="[Sys Test/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Documentation</td>
+<td><input type=text size=7 name="[Documentation/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Acceptance Test</td>
+<td><input type=text size=7 name="[Accept Test/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+
+<tr>
+<td class=indented>Product Life</td>
+<td><input type=text size=7 name="[Product Life/Estimated % Phase Yield]%u"></td>
+</tr>
+
+
+
+
+</table>
+
+
+<h2>Estimated Defect Injection Rates</h2>
+
+<table>
+
+
+
+
+
+<tr>
+<td class=indented>Planning</td>
+<td><input type=text size=7 name="[Planning/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Requirements</td>
+<td><input type=text size=7 name="[Reqts/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>System Test Plan</td>
+<td><input type=text size=7 name="[Sys Test Plan/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Requirements Review</td>
+<td><input type=text size=7 name="[Reqts Review/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Requirements Inspection</td>
+<td><input type=text size=7 name="[Reqts Inspect/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>High-Level Design</td>
+<td><input type=text size=7 name="[HLD/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Integration Test Plan</td>
+<td><input type=text size=7 name="[Int Test Plan/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>HLD Review</td>
+<td><input type=text size=7 name="[HLD Review/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>HLD Inspection</td>
+<td><input type=text size=7 name="[HLD Inspect/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Detailed Design</td>
+<td><input type=text size=7 name="[Design/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Detailed Design Review</td>
+<td><input type=text size=7 name="[Design Review/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Test Development</td>
+<td><input type=text size=7 name="[Test Devel/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Detailed Design Inspection</td>
+<td><input type=text size=7 name="[Design Inspect/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Code</td>
+<td><input type=text size=7 name="[Code/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Code Review</td>
+<td><input type=text size=7 name="[Code Review/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Compile</td>
+<td><input type=text size=7 name="[Compile/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Code Inspection</td>
+<td><input type=text size=7 name="[Code Inspect/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Unit Test</td>
+<td><input type=text size=7 name="[Test/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Build and Integration Test</td>
+<td><input type=text size=7 name="[Int Test/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>System Test</td>
+<td><input type=text size=7 name="[Sys Test/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Documentation</td>
+<td><input type=text size=7 name="[Documentation/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+<tr>
+<td class=indented>Acceptance Test</td>
+<td><input type=text size=7 name="[Accept Test/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+
+<tr>
+<td class=indented>Product Life</td>
+<td><input type=text size=7 name="[Product Life/Estimated Defects Injected per Hour]4u"></td>
+</tr>
+
+
+
+
+</table>
+
+
+
+
+
+
+
+</form>
+
+<hr>
+
+<script src="/data.js">
+document.writeln("<P>Problem loading the data.js script!");
+</script>
+
+
+
+</body>
+</html>

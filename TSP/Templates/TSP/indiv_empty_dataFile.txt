@@ -1,0 +1,88 @@
+// 
+//  This is the datafile for an empty TSP(SM) process node.
+//
+
+#include <TSP/indiv_full_dataFile.txt> exclude (
+
+    [Misc/node],
+    [Misc/leaf],
+
+    [Strategy/node],
+    [Strategy/leaf],
+
+    [Planning/node],
+    [Planning/leaf],
+
+    [Reqts/node],
+    [Reqts/leaf],
+
+    [Sys Test Plan/node],
+    [Sys Test Plan/leaf],
+
+    [Reqts Review/node],
+    [Reqts Review/leaf],
+
+    [Reqts Inspect/node],
+    [Reqts Inspect/leaf],
+
+    [HLD/node],
+    [HLD/leaf],
+
+    [Int Test Plan/node],
+    [Int Test Plan/leaf],
+
+    [HLD Review/node],
+    [HLD Review/leaf],
+
+    [HLD Inspect/node],
+    [HLD Inspect/leaf],
+
+    [Design/node],
+    [Design/leaf],
+
+    [Design Review/node],
+    [Design Review/leaf],
+
+    [Test Devel/node],
+    [Test Devel/leaf],
+
+    [Design Inspect/node],
+    [Design Inspect/leaf],
+
+    [Code/node],
+    [Code/leaf],
+
+    [Code Review/node],
+    [Code Review/leaf],
+
+    [Compile/node],
+    [Compile/leaf],
+
+    [Code Inspect/node],
+    [Code Inspect/leaf],
+
+    [Test/node],
+    [Test/leaf],
+
+    [Int Test/node],
+    [Int Test/leaf],
+
+    [Sys Test/node],
+    [Sys Test/leaf],
+
+    [Documentation/node],
+    [Documentation/leaf],
+
+    [Accept Test/node],
+    [Accept Test/leaf],
+
+    [Postmortem/node],
+    [Postmortem/leaf],
+
+    [Product Life/node],
+    [Product Life/leaf],
+
+    [TSP/IndivFullNode Tag]
+)
+
+[Completed] = null;

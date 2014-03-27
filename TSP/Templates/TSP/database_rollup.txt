@@ -1,0 +1,480 @@
+// 
+// Data file that redefines rollup calculations to use the database
+//
+
+[Database-Driven Rollup Tag] = tag;
+
+
+/*
+ * Calculate values that help us to determine the filter that is in
+ * effect for this rollup
+ */
+[DB_Project_Keys] = dbLookupProjects([DB_Project_ID_List]);
+[DB_Project_Missing_Error_Flag] = iff(filter([_] < 0, [DB_Project_Keys]),
+    true, false);
+
+[DB_WBS_Key] = dbLookupWbsElement([DB_WBS_Relative_Path],
+    [DB_WBS_Relative_Path_ID]);
+
+[DB_Label_Group] = iff(!defined([Filtered_Task_Labels]), null,
+    dbLabelFilterGroup([DB_Project_Keys], [Filtered_Task_Labels]));
+
+
+[DB_Filter_Criteria] = list(
+    "##Project in", [DB_Project_Keys],
+    "##WBS Element", [DB_WBS_Key],
+    "##Label Group", [DB_Label_Group]
+    );
+
+
+/*
+ * Sum phase data for time and defects
+ */
+[DB_Time_By_Phase] = dbSumTimeByPhase([Process_ID], [DB_Filter_Criteria]);
+[DB_Defects_By_Phase] = dbSumDefectsByPhase(
+    [Process_ID], [DB_Filter_Criteria]);
+
+/*
+ * Create data elements for each phase to extract time and defect
+ * data from the database result set
+ */
+
+[Misc/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Misc", "Plan"), 0);
+[Misc/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Misc", "Actual"), 0);
+
+[Misc/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Misc",
+    "Type=Injected", "Count"), 0);
+[Misc/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Misc",
+    "Type=Removed", "Count"), 0);
+
+[Strategy/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Strategy", "Plan"), 0);
+[Strategy/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Strategy", "Actual"), 0);
+
+[Strategy/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Strategy",
+    "Type=Injected", "Count"), 0);
+[Strategy/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Strategy",
+    "Type=Removed", "Count"), 0);
+
+[Planning/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Planning", "Plan"), 0);
+[Planning/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Planning", "Actual"), 0);
+
+[Planning/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Planning",
+    "Type=Injected", "Count"), 0);
+[Planning/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Planning",
+    "Type=Removed", "Count"), 0);
+
+[Reqts/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Reqts", "Plan"), 0);
+[Reqts/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Reqts", "Actual"), 0);
+
+[Reqts/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Reqts",
+    "Type=Injected", "Count"), 0);
+[Reqts/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Reqts",
+    "Type=Removed", "Count"), 0);
+
+[Sys Test Plan/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Sys Test Plan", "Plan"), 0);
+[Sys Test Plan/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Sys Test Plan", "Actual"), 0);
+
+[Sys Test Plan/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Sys Test Plan",
+    "Type=Injected", "Count"), 0);
+[Sys Test Plan/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Sys Test Plan",
+    "Type=Removed", "Count"), 0);
+
+[Reqts Review/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Reqts Review", "Plan"), 0);
+[Reqts Review/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Reqts Review", "Actual"), 0);
+
+[Reqts Review/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Reqts Review",
+    "Type=Injected", "Count"), 0);
+[Reqts Review/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Reqts Review",
+    "Type=Removed", "Count"), 0);
+
+[Reqts Inspect/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Reqts Inspect", "Plan"), 0);
+[Reqts Inspect/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Reqts Inspect", "Actual"), 0);
+
+[Reqts Inspect/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Reqts Inspect",
+    "Type=Injected", "Count"), 0);
+[Reqts Inspect/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Reqts Inspect",
+    "Type=Removed", "Count"), 0);
+
+[HLD/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=HLD", "Plan"), 0);
+[HLD/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=HLD", "Actual"), 0);
+
+[HLD/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=HLD",
+    "Type=Injected", "Count"), 0);
+[HLD/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=HLD",
+    "Type=Removed", "Count"), 0);
+
+[Int Test Plan/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Int Test Plan", "Plan"), 0);
+[Int Test Plan/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Int Test Plan", "Actual"), 0);
+
+[Int Test Plan/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Int Test Plan",
+    "Type=Injected", "Count"), 0);
+[Int Test Plan/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Int Test Plan",
+    "Type=Removed", "Count"), 0);
+
+[HLD Review/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=HLD Review", "Plan"), 0);
+[HLD Review/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=HLD Review", "Actual"), 0);
+
+[HLD Review/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=HLD Review",
+    "Type=Injected", "Count"), 0);
+[HLD Review/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=HLD Review",
+    "Type=Removed", "Count"), 0);
+
+[HLD Inspect/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=HLD Inspect", "Plan"), 0);
+[HLD Inspect/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=HLD Inspect", "Actual"), 0);
+
+[HLD Inspect/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=HLD Inspect",
+    "Type=Injected", "Count"), 0);
+[HLD Inspect/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=HLD Inspect",
+    "Type=Removed", "Count"), 0);
+
+[Design/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Design", "Plan"), 0);
+[Design/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Design", "Actual"), 0);
+
+[Design/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Design",
+    "Type=Injected", "Count"), 0);
+[Design/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Design",
+    "Type=Removed", "Count"), 0);
+
+[Design Review/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Design Review", "Plan"), 0);
+[Design Review/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Design Review", "Actual"), 0);
+
+[Design Review/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Design Review",
+    "Type=Injected", "Count"), 0);
+[Design Review/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Design Review",
+    "Type=Removed", "Count"), 0);
+
+[Test Devel/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Test Devel", "Plan"), 0);
+[Test Devel/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Test Devel", "Actual"), 0);
+
+[Test Devel/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Test Devel",
+    "Type=Injected", "Count"), 0);
+[Test Devel/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Test Devel",
+    "Type=Removed", "Count"), 0);
+
+[Design Inspect/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Design Inspect", "Plan"), 0);
+[Design Inspect/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Design Inspect", "Actual"), 0);
+
+[Design Inspect/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Design Inspect",
+    "Type=Injected", "Count"), 0);
+[Design Inspect/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Design Inspect",
+    "Type=Removed", "Count"), 0);
+
+[Code/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Code", "Plan"), 0);
+[Code/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Code", "Actual"), 0);
+
+[Code/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Code",
+    "Type=Injected", "Count"), 0);
+[Code/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Code",
+    "Type=Removed", "Count"), 0);
+
+[Code Review/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Code Review", "Plan"), 0);
+[Code Review/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Code Review", "Actual"), 0);
+
+[Code Review/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Code Review",
+    "Type=Injected", "Count"), 0);
+[Code Review/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Code Review",
+    "Type=Removed", "Count"), 0);
+
+[Compile/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Compile", "Plan"), 0);
+[Compile/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Compile", "Actual"), 0);
+
+[Compile/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Compile",
+    "Type=Injected", "Count"), 0);
+[Compile/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Compile",
+    "Type=Removed", "Count"), 0);
+
+[Code Inspect/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Code Inspect", "Plan"), 0);
+[Code Inspect/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Code Inspect", "Actual"), 0);
+
+[Code Inspect/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Code Inspect",
+    "Type=Injected", "Count"), 0);
+[Code Inspect/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Code Inspect",
+    "Type=Removed", "Count"), 0);
+
+[Test/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Test", "Plan"), 0);
+[Test/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Test", "Actual"), 0);
+
+[Test/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Test",
+    "Type=Injected", "Count"), 0);
+[Test/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Test",
+    "Type=Removed", "Count"), 0);
+
+[Int Test/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Int Test", "Plan"), 0);
+[Int Test/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Int Test", "Actual"), 0);
+
+[Int Test/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Int Test",
+    "Type=Injected", "Count"), 0);
+[Int Test/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Int Test",
+    "Type=Removed", "Count"), 0);
+
+[Sys Test/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Sys Test", "Plan"), 0);
+[Sys Test/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Sys Test", "Actual"), 0);
+
+[Sys Test/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Sys Test",
+    "Type=Injected", "Count"), 0);
+[Sys Test/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Sys Test",
+    "Type=Removed", "Count"), 0);
+
+[Documentation/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Documentation", "Plan"), 0);
+[Documentation/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Documentation", "Actual"), 0);
+
+[Documentation/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Documentation",
+    "Type=Injected", "Count"), 0);
+[Documentation/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Documentation",
+    "Type=Removed", "Count"), 0);
+
+[Accept Test/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Accept Test", "Plan"), 0);
+[Accept Test/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Accept Test", "Actual"), 0);
+
+[Accept Test/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Accept Test",
+    "Type=Injected", "Count"), 0);
+[Accept Test/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Accept Test",
+    "Type=Removed", "Count"), 0);
+
+[Postmortem/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Postmortem", "Plan"), 0);
+[Postmortem/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Postmortem", "Actual"), 0);
+
+[Postmortem/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Postmortem",
+    "Type=Injected", "Count"), 0);
+[Postmortem/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Postmortem",
+    "Type=Removed", "Count"), 0);
+
+[Product Life/Estimated Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Product Life", "Plan"), 0);
+[Product Life/Time] = nvl(dbGetResultValue(
+    [DB_Time_By_Phase], "Phase=Product Life", "Actual"), 0);
+
+[Product Life/Defects Injected] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Product Life",
+    "Type=Injected", "Count"), 0);
+[Product Life/Defects Removed] = nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Product Life",
+    "Type=Removed", "Count"), 0);
+
+
+
+
+/*
+ * Provide special handling for "Uncategorized" time - time that doesn't
+ * match any of our expected phases
+ */
+
+[Estimated Time] = nvl(dbGetResultValue([DB_Time_By_Phase], "sum(Plan)"), 0);
+[Time] = nvl(dbGetResultValue([DB_Time_By_Phase], "sum(Actual)"), 0);
+
+[Uncategorized/Estimated Time] = [Estimated Time] -
+    sumFor("Estimated Time", [Phase_List]);
+[Uncategorized/Time] = [Time] - sumFor("Time", [Phase_List]);
+
+
+/*
+ * Provide special handling for before/after development defects
+ */
+[Before Development/Defects Injected] == nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=Before Development",
+    "Type=Injected", "Count"), 0);
+[After Development/Defects Removed] == nvl(dbGetResultValue(
+    [DB_Defects_By_Phase], "Phase=After Development",
+    "Type=Removed", "Count"), 0);
+
+
+/*
+ * Gather summed size data from the database, and allocate it to individual
+ * data elements
+ */
+
+[DB_Size_Data] = dbSumSize([DB_Filter_Criteria]);
+
+
+
+[Estimated Text Pages] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=Text Pages", "Type=Plan", "A&M"), 0);
+[Text Pages] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=Text Pages", "Type=Actual", "A&M"), 0);
+
+
+
+[Estimated Req Pages] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=Req Pages", "Type=Plan", "A&M"), 0);
+[Req Pages] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=Req Pages", "Type=Actual", "A&M"), 0);
+
+
+
+[Estimated HLD Pages] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=HLD Pages", "Type=Plan", "A&M"), 0);
+[HLD Pages] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=HLD Pages", "Type=Actual", "A&M"), 0);
+
+
+
+[Estimated DLD Lines] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=DLD Lines", "Type=Plan", "A&M"), 0);
+[DLD Lines] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=DLD Lines", "Type=Actual", "A&M"), 0);
+
+
+
+[Estimated New & Changed LOC] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=LOC", "Type=Plan", "A&M"), 0);
+[New & Changed LOC] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=LOC", "Type=Actual", "A&M"), 0);
+
+
+
+
+/*
+ * Provide special handling for the various LOC accounting types
+ */
+
+
+[Estimated Base LOC] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=LOC", "Type=Plan", "Base"), 0);
+[Base LOC] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=LOC", "Type=Actual", "Base"), 0);
+
+[Estimated Deleted LOC] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=LOC", "Type=Plan", "Deleted"), 0);
+[Deleted LOC] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=LOC", "Type=Actual", "Deleted"), 0);
+
+[Estimated Modified LOC] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=LOC", "Type=Plan", "Modified"), 0);
+[Modified LOC] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=LOC", "Type=Actual", "Modified"), 0);
+
+[Estimated Added LOC] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=LOC", "Type=Plan", "Added"), 0);
+[Added LOC] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=LOC", "Type=Actual", "Added"), 0);
+
+[Estimated Reused LOC] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=LOC", "Type=Plan", "Reused"), 0);
+[Reused LOC] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=LOC", "Type=Actual", "Reused"), 0);
+
+[Estimated Total LOC] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=LOC", "Type=Plan", "Total"), 0);
+[Total LOC] = nvl(dbGetResultValue(
+    [DB_Size_Data], "Metric=LOC", "Type=Actual", "Total"), 0);
+
+
+
+/*
+ * A small number of low-value metrics cannot be calculated using the data
+ * that is in the warehouse today.  Disable those calculations for now,
+ * and focus on providing value to users.
+ */
+
+[Disabled_Rollup_Calc] == "#VALUE!    This number is no longer calculated for " &
+    "the team rollup in this version of the dashboard. Please contact the " &
+    "Process Dashboard development team if you need access to this metric.";
+[Estimated Object LOC] = [Disabled_Rollup_Calc];
+[Object LOC] = [Disabled_Rollup_Calc];
+[Estimated New Reused LOC] = [Disabled_Rollup_Calc];
+[New Reused LOC] = [Disabled_Rollup_Calc];
+[Estimated % New Reused] = [Disabled_Rollup_Calc];
+[% New Reused] = [Disabled_Rollup_Calc];
+
+
+[Rollup_List] = "none";

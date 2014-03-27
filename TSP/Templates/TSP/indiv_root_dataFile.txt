@@ -1,0 +1,11 @@
+// 
+// Data file for an individual TSP(SM) project.
+//
+
+#include <TSP/indiv_empty_dataFile.txt> exclude (
+    [TSP/IndivEmptyNode Tag]
+)
+#include <TSP/indiv_root_data.txt>
+
+[Team_Project_Migration_Needed] =
+    lookup([Team_Settings_Node] & "Is_New_Style_Team_Project");

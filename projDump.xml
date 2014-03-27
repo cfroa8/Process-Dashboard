@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project name='Team Project' id='11729328' tid='null:11729328' labels='none' dumpFileVersion='4.0.0' dumpTimestamp='@1395674559178'>
+  <teamMember name='Felipe Fagua' tmid='621687580' initials='FF' startDate='@1393459200000' startCalendarDate='2014-02-27' hoursPerWeek='6.0'/>
+  <teamMember name='David Abril' tmid='1565581119' initials='DA' startDate='@1393459200000' startCalendarDate='2014-02-27' hoursPerWeek='6.0'/>
+  <teamMember name='Gabriel MArtinez' tmid='672957010' initials='GM' startDate='@1393459200000' startCalendarDate='2014-02-27' hoursPerWeek='6.0'/>
+  <teamMember name='Ingrid Echavarria' tmid='348145319' initials='IE' startDate='@1393459200000' startCalendarDate='2014-02-27' hoursPerWeek='6.0'/>
+  <teamMember name='Paula Castellanos' tmid='2143167693' initials='PC' startDate='@1393459200000' startCalendarDate='2014-02-27' hoursPerWeek='6.0'/>
+  <teamMember name='Carlos Roa' tmid='408342438' initials='CR' startDate='@1393459200000' startCalendarDate='2014-02-27' hoursPerWeek='6.0'/>
+	<component name='Software Component' id='11729325' tid='null:11729325' labels='none'/>
+</project>

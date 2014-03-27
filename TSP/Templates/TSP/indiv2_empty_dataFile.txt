@@ -1,0 +1,163 @@
+// 
+//  This is the datafile for an empty TSP(SM) process node.
+//
+
+[TSP Tag] = tag;
+[Process_ID] = "TSP";
+[TSP Rollup Eligible] = tag;
+[node] = tag;
+[leaf] = tag;
+[Auto_Delete_Top_Down/Estimated Time] = tag;
+
+[Time] == 0;
+
+[Project_WBS_ID] = [../Project_WBS_ID] &/ pathTail([^]);
+
+/*
+ * Data elements to capture process-specific phase and node type information
+ */
+[TSP /Effective_Phase] = unlock(inherit("TSP /Effective_Phase"));
+[Effective_Phase] = [TSP /Effective_Phase];
+
+[Node_Type] = indirect(
+    iff([leaf] && endsWith("/Indiv2Task", hierTemplateID()),
+        "TSP /Effective_Phase", "/TSP /No_Node_Type"));
+
+
+
+/*
+ * Namespace the time and defect data for this task.
+ */
+[TSP Namespaced Data] = tag;
+
+[TSP /Estimated Time] = [Estimated Time];
+[TSP /Time] = [Time];
+
+[Defect_Data_Namespace] = "TSP ";
+
+
+
+/*
+ * Calculate size metrics for this task.
+ */
+
+[Local_Sized_Object_List//All] =
+    filter(([^] == chopPath(chopPath([_]))), inherit("Sized_Object_List"));
+
+[Local_Sized_Object_List//Text Pages] =
+    filter(eval("[Sized_Object_Units] == \"Text Pages\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Estimated Text Pages] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//Text Pages]);
+
+[Text Pages] =
+    0 + sumFor("Size", [Local_Sized_Object_List//Text Pages]);
+
+
+[Local_Sized_Object_List//Inspected Text Pages] =
+    filter(eval("[Sized_Object_Units] == \"Inspected Text Pages\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Estimated Inspected Text Pages] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//Inspected Text Pages]);
+
+[Inspected Text Pages] =
+    0 + sumFor("Size", [Local_Sized_Object_List//Inspected Text Pages]);
+
+
+
+[Local_Sized_Object_List//Req Pages] =
+    filter(eval("[Sized_Object_Units] == \"Req Pages\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Estimated Req Pages] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//Req Pages]);
+
+[Req Pages] =
+    0 + sumFor("Size", [Local_Sized_Object_List//Req Pages]);
+
+
+[Local_Sized_Object_List//Inspected Req Pages] =
+    filter(eval("[Sized_Object_Units] == \"Inspected Req Pages\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Estimated Inspected Req Pages] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//Inspected Req Pages]);
+
+[Inspected Req Pages] =
+    0 + sumFor("Size", [Local_Sized_Object_List//Inspected Req Pages]);
+
+
+
+[Local_Sized_Object_List//HLD Pages] =
+    filter(eval("[Sized_Object_Units] == \"HLD Pages\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Estimated HLD Pages] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//HLD Pages]);
+
+[HLD Pages] =
+    0 + sumFor("Size", [Local_Sized_Object_List//HLD Pages]);
+
+
+[Local_Sized_Object_List//Inspected HLD Pages] =
+    filter(eval("[Sized_Object_Units] == \"Inspected HLD Pages\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Estimated Inspected HLD Pages] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//Inspected HLD Pages]);
+
+[Inspected HLD Pages] =
+    0 + sumFor("Size", [Local_Sized_Object_List//Inspected HLD Pages]);
+
+
+
+[Local_Sized_Object_List//DLD Lines] =
+    filter(eval("[Sized_Object_Units] == \"DLD Lines\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Estimated DLD Lines] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//DLD Lines]);
+
+[DLD Lines] =
+    0 + sumFor("Size", [Local_Sized_Object_List//DLD Lines]);
+
+
+[Local_Sized_Object_List//Inspected DLD Lines] =
+    filter(eval("[Sized_Object_Units] == \"Inspected DLD Lines\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Estimated Inspected DLD Lines] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//Inspected DLD Lines]);
+
+[Inspected DLD Lines] =
+    0 + sumFor("Size", [Local_Sized_Object_List//Inspected DLD Lines]);
+
+
+
+[Local_Sized_Object_List//New & Changed LOC] =
+    filter(eval("[Sized_Object_Units] == \"New & Changed LOC\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Estimated New & Changed LOC] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//New & Changed LOC]);
+
+[New & Changed LOC] =
+    0 + sumFor("Size", [Local_Sized_Object_List//New & Changed LOC]);
+
+
+[Local_Sized_Object_List//Inspected New & Changed LOC] =
+    filter(eval("[Sized_Object_Units] == \"Inspected New & Changed LOC\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Estimated Inspected New & Changed LOC] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//Inspected New & Changed LOC]);
+
+[Inspected New & Changed LOC] =
+    0 + sumFor("Size", [Local_Sized_Object_List//Inspected New & Changed LOC]);
+
+
+
+
+

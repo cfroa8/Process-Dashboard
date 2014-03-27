@@ -1,0 +1,28 @@
+= Percent Defect Free query
+
+title=Percent Defect Free
+for=.
+transpose=true
+categoryLabels=vertical
+units==%
+h0==Phase
+
+d1==Compile/% Defect Free
+h1==Compile
+
+d2==Test/% Defect Free
+h2==Test
+
+d3==Int Test/% Defect Free
+h3==Int Test
+
+d4==Sys Test/% Defect Free
+h4==Sys Test
+
+d5==Accept Test/% Defect Free
+h5==Accept Test
+
+d6==Product Life/% Defect Free
+h6==Product Life
+
+

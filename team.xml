@@ -1,0 +1,8 @@
+<teamList firstDayOfWeek='5' referenceDate='@1393794000000'>
+  <teamMember name='Felipe Fagua' tmid='621687580' initials='FF' color='#9933ff' startDate='@1393459200000' startWeek='0' hoursPerWeek='6.0'/>
+  <teamMember name='David Abril' tmid='1565581119' initials='DA' color='#6666ff' startDate='@1393459200000' startWeek='0' hoursPerWeek='6.0'/>
+  <teamMember name='Gabriel MArtinez' tmid='672957010' initials='GM' color='#00ccff' startDate='@1393459200000' startWeek='0' hoursPerWeek='6.0'/>
+  <teamMember name='Ingrid Echavarria' tmid='348145319' initials='IE' color='#66ff99' startDate='@1393459200000' startWeek='0' hoursPerWeek='6.0'/>
+  <teamMember name='Paula Castellanos' tmid='2143167693' initials='PC' color='#ffff66' startDate='@1393459200000' startWeek='0' hoursPerWeek='6.0'/>
+  <teamMember name='Carlos Roa' tmid='408342438' initials='CR' color='#ffcc66' startDate='@1393459200000' startWeek='0' hoursPerWeek='6.0'/>
+</teamList>

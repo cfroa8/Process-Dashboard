@@ -1,0 +1,346 @@
+// 
+// Data definitions that are common to both new- and old-style individual
+// TSP(SM) projects.
+//
+
+#include <TSP/root_data.txt>
+
+[TSP Indiv Root Tag] = tag;
+
+[Indiv_Initials] = "tttt";
+[Indiv_Export_Filename] = [Indiv_Initials] & "-data.pdash";
+[EXPORT_FILE] = 
+    iff([Team_Data_Directory],
+        [Team_Data_Directory] & [file_sep] & [Indiv_Export_Filename],
+    iff([Team_Data_Directory_URL],
+        [Indiv_Export_Filename],
+    ""));
+
+[EXPORT_FILE/Server_URL] = [Team_Data_Directory_URL];
+[EXPORT_FILE/Instructions] = iff(
+    [Exporting_Namespaced_Phase_Metrics],
+        "file:/TSP/metricsExportFilter.xml",
+        "file:/TSP/metricsExportFilterOld.xml");
+[EXPORT_FILE/Disabled] = [Project_Is_Done]
+    || lookup([Team_Settings_Node] & "Disable_Indiv_Auto_Export");
+
+[Sync_Full_WBS] = 0;
+[Autosync_Disabled] = [Project_Is_Done]
+    || lookup([Team_Settings_Node] & "Disable_Indiv_Auto_Sync");
+
+[Task_Labels] = [Synchronized_Task_Labels];
+
+[Effective_Defect_Phase_List] = "PlanningReqtsSys Test PlanReqts ReviewReqts InspectHLDInt Test PlanHLD ReviewHLD InspectDesignDesign ReviewTest DevelDesign InspectCodeCode ReviewCompileCode InspectTestInt TestSys TestDocumentationAccept TestProduct Life";
+
+[Size_Metric_API_Handler] = "mcfSizeMetricApiHandler";
+
+[Team_Project_Conversion_Needed] =
+    iff([Team_Project_Target_PID] != [Team_Process_PID],
+        [Team_Project_Target_PID], null);
+
+// find sized objects in this project
+
+[Sized_Object_List] = search(".", "Sized_Object_Units");
+
+
+
+/*
+ * Lookup team settings data for this project
+ */
+
+[/Team_Settings_Node_List] = search("/", "Team_Settings");
+[Team_Settings_Node] = 
+    index(0, filter([Project_ID] == lookup([_] &/ "Project_ID"),
+                    [/Team_Settings_Node_List])) & "/Team_Settings /";
+
+[Defect Type Standard Contents] = 
+    lookup([Team_Settings_Node] & "Defect_Type_Standard");
+
+[WBS_Read_Only] = 
+    not lookup([Team_Settings_Node] & "Allow_Indiv_WBS_Editing");
+
+[Team_Project_Target_PID] =
+    lookup([Team_Settings_Node] & "Team_Process_PID");
+
+[Phase_Display_Filter_List] =
+    lookup([Team_Settings_Node] & "Phase_Display_Filter_List");
+
+// Inherit quality metric parameters from the team settings, or choose
+// appropriate defaults if the team settings are unavailable.
+
+[Target Design/Code Ratio] = nvlz(
+    lookup([Team_Settings_Node] & "Target Design/Code Ratio"), 1.0);
+
+[Target Design Review/Design Ratio] = nvlz(
+    lookup([Team_Settings_Node] &"Target Design Review/Design Ratio"), 0.5);
+
+[Target Code Review/Code Ratio] = nvlz(
+    lookup([Team_Settings_Node] & "Target Code Review/Code Ratio"), 0.5);
+
+[Target Test Defect Density] = nvlz(
+    lookup([Team_Settings_Node] & "Target Test Defect Density"), 5);
+
+[Target Compile Defect Density] = nvlz(
+    lookup([Team_Settings_Node] & "Target Compile Defect Density"), 10);
+
+[Misc/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Misc/Estimated % Phase Yield"),
+     0
+    );
+[Misc/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Misc/Estimated Defects Injected per Hour"),
+     0
+    );
+[Strategy/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Strategy/Estimated % Phase Yield"),
+     0
+    );
+[Strategy/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Strategy/Estimated Defects Injected per Hour"),
+     0
+    );
+[Planning/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Planning/Estimated % Phase Yield"),
+     0
+    );
+[Planning/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Planning/Estimated Defects Injected per Hour"),
+     0
+    );
+[Reqts/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Reqts/Estimated % Phase Yield"),
+     0
+    );
+[Reqts/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Reqts/Estimated Defects Injected per Hour"),
+     0.25
+    );
+[Sys Test Plan/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Sys Test Plan/Estimated % Phase Yield"),
+     0
+    );
+[Sys Test Plan/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Sys Test Plan/Estimated Defects Injected per Hour"),
+     0
+    );
+[Reqts Review/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Reqts Review/Estimated % Phase Yield"),
+     0.70
+    );
+[Reqts Review/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Reqts Review/Estimated Defects Injected per Hour"),
+     0
+    );
+[Reqts Inspect/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Reqts Inspect/Estimated % Phase Yield"),
+     0.70
+    );
+[Reqts Inspect/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Reqts Inspect/Estimated Defects Injected per Hour"),
+     0
+    );
+[HLD/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "HLD/Estimated % Phase Yield"),
+     0
+    );
+[HLD/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "HLD/Estimated Defects Injected per Hour"),
+     0.25
+    );
+[Int Test Plan/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Int Test Plan/Estimated % Phase Yield"),
+     0
+    );
+[Int Test Plan/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Int Test Plan/Estimated Defects Injected per Hour"),
+     0
+    );
+[HLD Review/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "HLD Review/Estimated % Phase Yield"),
+     0.70
+    );
+[HLD Review/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "HLD Review/Estimated Defects Injected per Hour"),
+     0
+    );
+[HLD Inspect/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "HLD Inspect/Estimated % Phase Yield"),
+     0.70
+    );
+[HLD Inspect/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "HLD Inspect/Estimated Defects Injected per Hour"),
+     0
+    );
+[Design/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Design/Estimated % Phase Yield"),
+     0
+    );
+[Design/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Design/Estimated Defects Injected per Hour"),
+     0.75
+    );
+[Design Review/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Design Review/Estimated % Phase Yield"),
+     0.70
+    );
+[Design Review/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Design Review/Estimated Defects Injected per Hour"),
+     0
+    );
+[Test Devel/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Test Devel/Estimated % Phase Yield"),
+     0
+    );
+[Test Devel/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Test Devel/Estimated Defects Injected per Hour"),
+     0
+    );
+[Design Inspect/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Design Inspect/Estimated % Phase Yield"),
+     0.70
+    );
+[Design Inspect/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Design Inspect/Estimated Defects Injected per Hour"),
+     0
+    );
+[Code/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Code/Estimated % Phase Yield"),
+     0
+    );
+[Code/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Code/Estimated Defects Injected per Hour"),
+     2
+    );
+[Code Review/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Code Review/Estimated % Phase Yield"),
+     0.70
+    );
+[Code Review/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Code Review/Estimated Defects Injected per Hour"),
+     0
+    );
+[Compile/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Compile/Estimated % Phase Yield"),
+     0.50
+    );
+[Compile/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Compile/Estimated Defects Injected per Hour"),
+     0.3
+    );
+[Code Inspect/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Code Inspect/Estimated % Phase Yield"),
+     0.70
+    );
+[Code Inspect/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Code Inspect/Estimated Defects Injected per Hour"),
+     0
+    );
+[Test/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Test/Estimated % Phase Yield"),
+     0.90
+    );
+[Test/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Test/Estimated Defects Injected per Hour"),
+     0.067
+    );
+[Int Test/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Int Test/Estimated % Phase Yield"),
+     0.80
+    );
+[Int Test/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Int Test/Estimated Defects Injected per Hour"),
+     0
+    );
+[Sys Test/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Sys Test/Estimated % Phase Yield"),
+     0.80
+    );
+[Sys Test/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Sys Test/Estimated Defects Injected per Hour"),
+     0
+    );
+[Documentation/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Documentation/Estimated % Phase Yield"),
+     0
+    );
+[Documentation/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Documentation/Estimated Defects Injected per Hour"),
+     0
+    );
+[Accept Test/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Accept Test/Estimated % Phase Yield"),
+     0
+    );
+[Accept Test/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Accept Test/Estimated Defects Injected per Hour"),
+     0
+    );
+[Postmortem/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Postmortem/Estimated % Phase Yield"),
+     0
+    );
+[Postmortem/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Postmortem/Estimated Defects Injected per Hour"),
+     0
+    );
+[Product Life/Estimated % Phase Yield] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Product Life/Estimated % Phase Yield"),
+     0
+    );
+[Product Life/Estimated Defects Injected per Hour] = 
+    nvl(lookup([Team_Settings_Node] &
+        "Product Life/Estimated Defects Injected per Hour"),
+     0
+    );
+

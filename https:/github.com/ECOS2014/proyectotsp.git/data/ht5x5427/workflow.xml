@@ -1,0 +1,6 @@
+<wbsModel>
+  <wbsNode name='Common Workflows' id='3958076' type='Project' indentLevel='0' expanded='true'>
+    <attr name='createdWithVersion' value='4.0.0'/>
+  </wbsNode>
+    <wbsNode name='Software Component' id='3958074' type='Software Component' indentLevel='1' expanded='true'/>
+</wbsModel>

@@ -1,0 +1,491 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<pdashCmsPage>
+
+<pageTitle>TSP(SM) Rollup Plan Summary</pageTitle>
+
+<pageHeading>
+
+<snippet instanceId="1" type="TSP.teamSummaryPageHeader" version="1.0" />
+
+</pageHeading>
+
+
+<snippet instanceId="100" type="pdash.sectionHeading" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <param name="Name">Earned Value</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="101" type="pdash.evReport" version="1.0" />
+
+<snippet instanceId="102" type="pdash.sectionHeading" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <param name="Name">Plan Summary</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="103" type="pdash.metricsTable" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <enum name="Metric">
+    <item>
+      <param name="DataName">Productivity</param>
+      <param name="DisplayName">Productivity (LOC/Hr)</param>
+    </item>
+    <item>
+      <param name="DataName">Time Estimating Error</param>
+    </item>
+    <item>
+      <param name="DataName">Size Estimating Error</param>
+    </item>
+    <item>
+      <param name="DataName">Time</param>
+    </item>
+    <item>
+      <param name="DataName">CPI</param>
+      <param name="DisplayName">CPI (Cost-Performance Index)</param>
+    </item>
+  </enum>
+  <param name="Heading">Overall Metrics</param>
+  <param name="Label">Summary</param>
+  <param name="ShowActualCol">on</param>
+  <param name="ShowPlanCol">on</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="104" type="pdash.metricsTable" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <enum name="Metric">
+    <item>
+      <param name="DataName">Text Pages</param>
+    </item>
+    <item>
+      <param name="DataName">Req Pages</param>
+      <param name="DisplayName">Requirements Pages</param>
+    </item>
+    <item>
+      <param name="DataName">HLD Pages</param>
+    </item>
+    <item>
+      <param name="DataName">DLD Lines</param>
+      <param name="DisplayName">Detailed Design Lines</param>
+    </item>
+    <item>
+      <param name="DataName">Base LOC</param>
+    </item>
+    <item>
+      <param name="DataName">Deleted LOC</param>
+      <param name="DisplayName"> Deleted LOC</param>
+    </item>
+    <item>
+      <param name="DataName">Modified LOC</param>
+      <param name="DisplayName"> Modified LOC</param>
+    </item>
+    <item>
+      <param name="DataName">Added LOC</param>
+      <param name="DisplayName"> Added LOC</param>
+    </item>
+    <item>
+      <param name="DataName">Reused LOC</param>
+      <param name="DisplayName"> Reused LOC</param>
+    </item>
+    <item>
+      <param name="DataName">New &amp; Changed LOC</param>
+    </item>
+    <item>
+      <param name="DataName">Total LOC</param>
+    </item>
+    <item>
+      <param name="DataName">New Reused LOC</param>
+    </item>
+    <item>
+      <param name="DataName">Object LOC</param>
+    </item>
+    <item>
+      <param name="DataName">% Reused</param>
+    </item>
+    <item>
+      <param name="DataName">% New Reused</param>
+    </item>
+  </enum>
+  <param name="Heading">Size</param>
+  <param name="ShowActualCol">on</param>
+  <param name="ShowPlanCol">on</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="105" type="pdash.metricsPhaseTable" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <enum name="Metric">
+    <item>
+      <param name="DataName">Time</param>
+    </item>
+  </enum>
+  <param name="Heading">Time</param>
+  <param name="Label">Time in Phase</param>
+  <param name="PhaseGroup">All</param>
+  <param name="ShowActualCol">on</param>
+  <param name="ShowActualPctCol">on</param>
+  <param name="ShowPlanCol">on</param>
+  <param name="ShowTotalRow">on</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="106" type="pdash.metricsPhaseTable" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <enum name="Metric">
+    <item>
+      <param name="DataName">Defects Injected</param>
+    </item>
+  </enum>
+  <param name="Heading">Defects Injected</param>
+  <param name="Label">Defects Injected</param>
+  <param name="PhaseGroup">All</param>
+  <param name="ShowActualCol">on</param>
+  <param name="ShowActualPctCol">on</param>
+  <param name="ShowPlanCol">on</param>
+  <param name="ShowTotalRow">on</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="107" type="pdash.metricsPhaseTable" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <enum name="Metric">
+    <item>
+      <param name="DataName">Defects Removed</param>
+    </item>
+  </enum>
+  <param name="Heading">Defects Removed</param>
+  <param name="Label">Defects Removed</param>
+  <param name="PhaseGroup">All</param>
+  <param name="ShowActualCol">on</param>
+  <param name="ShowActualPctCol">on</param>
+  <param name="ShowPlanCol">on</param>
+  <param name="ShowTotalRow">on</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="108" type="pdash.sectionHeading" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <param name="Name">Quality Summary</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="110" type="pdash.metricsTable" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <enum name="Metric">
+    <item>
+      <param name="DataName">Reqts Review/Defect Density</param>
+      <param name="DisplayName"> Requirements Review</param>
+    </item>
+    <item>
+      <param name="DataName">Reqts Inspect/Defect Density</param>
+      <param name="DisplayName"> Requirements Inspection</param>
+    </item>
+    <item>
+      <param name="DataName">HLD Review/Defect Density</param>
+      <param name="DisplayName"> HLD Review</param>
+    </item>
+    <item>
+      <param name="DataName">HLD Inspect/Defect Density</param>
+      <param name="DisplayName"> HLD Inspection</param>
+    </item>
+  </enum>
+  <param name="Heading">Defect Density</param>
+  <param name="Label">Defects/Page</param>
+  <param name="ShowActualCol">on</param>
+  <param name="ShowPlanCol">on</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="111" type="pdash.metricsTable" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <enum name="Metric">
+    <item>
+      <param name="DataName">Design Review/Defect Density</param>
+      <param name="DisplayName"> Detailed Design Review</param>
+    </item>
+    <item>
+      <param name="DataName">Design Inspect/Defect Density</param>
+      <param name="DisplayName"> Detailed Design Inspection</param>
+    </item>
+    <item>
+      <param name="DataName">Code Review/Defect Density</param>
+      <param name="DisplayName"> Code Review</param>
+    </item>
+    <item>
+      <param name="DataName">Compile/Defect Density</param>
+      <param name="DisplayName"> Compile</param>
+    </item>
+    <item>
+      <param name="DataName">Code Inspect/Defect Density</param>
+      <param name="DisplayName"> Code Inspection</param>
+    </item>
+    <item>
+      <param name="DataName">Test/Defect Density</param>
+      <param name="DisplayName"> Unit Test</param>
+    </item>
+    <item>
+      <param name="DataName">Int Test/Defect Density</param>
+      <param name="DisplayName"> Build and Integration Test</param>
+    </item>
+    <item>
+      <param name="DataName">Sys Test/Defect Density</param>
+      <param name="DisplayName"> System Test</param>
+    </item>
+    <item>
+      <param name="DataName">Accept Test/Defect Density</param>
+      <param name="DisplayName"> Acceptance Test</param>
+    </item>
+    <item>
+      <param name="DataName">Product Life/Defect Density</param>
+      <param name="DisplayName"> Product Life</param>
+    </item>
+    <item>
+      <param name="DataName">Total Development /Defect Density</param>
+      <param name="DisplayName">Total Development</param>
+    </item>
+    <item>
+      <param name="DataName">Defect Density</param>
+      <param name="DisplayName">Total</param>
+    </item>
+  </enum>
+  <param name="Label">Defects/KLOC</param>
+  <param name="ShowActualCol">on</param>
+  <param name="ShowPlanCol">on</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="112" type="pdash.metricsTable" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <enum name="Metric">
+    <item>
+      <param name="DataName">Design Review vs Test/Defect Ratio</param>
+      <param name="DisplayName"> Detailed Design Review/Unit Test</param>
+    </item>
+    <item>
+      <param name="DataName">Code Review vs Compile/Defect Ratio</param>
+      <param name="DisplayName"> Code Review/Compile</param>
+    </item>
+  </enum>
+  <param name="Heading">Phase Ratios</param>
+  <param name="Label">Defect Ratios</param>
+  <param name="ShowActualCol">on</param>
+  <param name="ShowPlanCol">on</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="113" type="pdash.metricsTable" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <enum name="Metric">
+    <item>
+      <param name="DataName">Text Pages/Appraisal Time Ratio</param>
+      <param name="DisplayName"> Text Pages (Appraisal/Development)</param>
+    </item>
+    <item>
+      <param name="DataName">Req Pages/Appraisal Time Ratio</param>
+      <param name="DisplayName"> Requirements Pages (Appraisal/Development)</param>
+    </item>
+    <item>
+      <param name="DataName">HLD Pages/Appraisal Time Ratio</param>
+      <param name="DisplayName"> HLD Pages (Appraisal/Development)</param>
+    </item>
+    <item>
+      <param name="DataName">Design vs Code/Time Ratio</param>
+      <param name="DisplayName"> Detailed Design/Code</param>
+    </item>
+    <item>
+      <param name="DataName">Design Review vs Design/Time Ratio</param>
+      <param name="DisplayName"> DLD Review/Detailed Design</param>
+    </item>
+    <item>
+      <param name="DataName">Code Review vs Code/Time Ratio</param>
+      <param name="DisplayName"> Code Review/Code</param>
+    </item>
+  </enum>
+  <param name="Label">Development Time Ratios</param>
+  <param name="ShowActualCol">on</param>
+  <param name="ShowPlanCol">on</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="114" type="pdash.metricsPhaseTable" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <enum name="Metric">
+    <item>
+      <param name="DataName">Appraisal Rate</param>
+    </item>
+  </enum>
+  <param name="Heading">Inspection / Review Rates</param>
+  <param name="PhaseGroup">Appraisal</param>
+  <param name="ShowActualCol">on</param>
+  <param name="ShowPlanCol">on</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="115" type="pdash.metricsTable" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <enum name="Metric">
+    <item>
+      <param name="DataName">% Appraisal COQ</param>
+    </item>
+    <item>
+      <param name="DataName">% Failure COQ</param>
+    </item>
+    <item>
+      <param name="DataName">AFR</param>
+    </item>
+  </enum>
+  <param name="Heading">Cost of Quality</param>
+  <param name="ShowActualCol">on</param>
+  <param name="ShowPlanCol">on</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="116" type="pdash.metricsPhaseTable" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <enum name="Metric">
+    <item>
+      <param name="DataName">% Phase Yield</param>
+    </item>
+  </enum>
+  <param name="Heading">Phase Yields</param>
+  <param name="PhaseGroup">All</param>
+  <param name="ShowActualCol">on</param>
+  <param name="ShowPlanCol">on</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="117" type="pdash.metricsPhaseTable" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <enum name="Metric">
+    <item>
+      <param name="DataName">% Process Yield</param>
+    </item>
+  </enum>
+  <param name="Heading">Process Yields</param>
+  <param name="Label">% Removed Before:</param>
+  <param name="PhaseGroup">Failure</param>
+  <param name="ShowActualCol">on</param>
+  <param name="ShowPlanCol">on</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="118" type="pdash.metricsPhaseTable" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <enum name="Metric">
+    <item>
+      <param name="DataName">Defects Injected per Hour</param>
+    </item>
+  </enum>
+  <param name="Heading">Defect Injection Rates</param>
+  <param name="Label">Defects Injected per Hour</param>
+  <param name="PhaseGroup">All</param>
+  <param name="ShowActualCol">on</param>
+  <param name="ShowPlanCol">on</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="119" type="pdash.metricsPhaseTable" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <enum name="Metric">
+    <item>
+      <param name="DataName">Defects Removed per Hour</param>
+    </item>
+  </enum>
+  <param name="Heading">Defect Removal Rates</param>
+  <param name="Label">Defects Removed per Hour</param>
+  <param name="PhaseGroup">All</param>
+  <param name="ShowActualCol">on</param>
+  <param name="ShowPlanCol">on</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="120" type="pdash.sectionHeading" version="1.0" persister="xml.v1"><![CDATA[
+<parameters>
+  <param name="Name">Analysis Charts</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="122" type="pdash.phaseChart" version="1.0" persister="xml.v1"><![CDATA[
+<parameters>
+  <enum name="Metric">
+    <item>
+      <param name="DataName">Estimated Defect Density</param>
+      <param name="DisplayName">Plan</param>
+    </item>
+    <item>
+      <param name="DataName">Defect Density</param>
+      <param name="DisplayName">Actual</param>
+    </item>
+  </enum>
+  <param name="ChartType">Line</param>
+  <param name="PhaseGroup">Quality</param>
+  <param name="Title">Defect Removal Profile</param>
+  <param name="YAxisLabel">Defects / KLOC</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="123" type="pdash.radarChart" version="1.0" persister="xml.v1"><![CDATA[
+<parameters>
+  <enum name="Metric">
+    <item>
+      <param name="DataName">Design vs Code/Estimated Time Ratio</param>
+      <param name="DisplayName">Design / Code Time</param>
+      <param name="TargetValue">Target Design/Code Ratio</param>
+    </item>
+    <item>
+      <param name="DataName">Code Review vs Code/Estimated Time Ratio</param>
+      <param name="DisplayName">Code Review Time</param>
+      <param name="TargetValue">Target Code Review/Code Ratio</param>
+    </item>
+    <item>
+      <param name="DataName">Compile/Estimated Defect Density</param>
+      <param name="DisplayName">Compile Defects / KLOC</param>
+      <param name="ReverseAxis">on</param>
+      <param name="TargetValue">Target Compile Defect Density</param>
+    </item>
+    <item>
+      <param name="DataName">Test/Estimated Defect Density</param>
+      <param name="DisplayName">Unit Test Defects / KLOC</param>
+      <param name="ReverseAxis">on</param>
+      <param name="TargetValue">Target Test Defect Density</param>
+    </item>
+    <item>
+      <param name="DataName">Design Review vs Design/Estimated Time Ratio</param>
+      <param name="DisplayName">Design Review Time</param>
+      <param name="TargetValue">Target Design Review/Design Ratio</param>
+    </item>
+  </enum>
+  <param name="Title">Planned Quality Profile</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="124" type="pdash.radarChart" version="1.0" persister="xml.v1"><![CDATA[
+<parameters>
+  <enum name="Metric">
+    <item>
+      <param name="DataName">Design vs Code/Time Ratio</param>
+      <param name="DisplayName">Design / Code Time</param>
+      <param name="TargetValue">Target Design/Code Ratio</param>
+    </item>
+    <item>
+      <param name="DataName">Code Review vs Code/Time Ratio</param>
+      <param name="DisplayName">Code Review Time</param>
+      <param name="TargetValue">Target Code Review/Code Ratio</param>
+    </item>
+    <item>
+      <param name="DataName">Compile/Defect Density</param>
+      <param name="DisplayName">Compile Defects / KLOC</param>
+      <param name="ReverseAxis">on</param>
+      <param name="TargetValue">Target Compile Defect Density</param>
+    </item>
+    <item>
+      <param name="DataName">Test/Defect Density</param>
+      <param name="DisplayName">Unit Test Defects / KLOC</param>
+      <param name="ReverseAxis">on</param>
+      <param name="TargetValue">Target Test Defect Density</param>
+    </item>
+    <item>
+      <param name="DataName">Design Review vs Design/Time Ratio</param>
+      <param name="DisplayName">Design Review Time</param>
+      <param name="TargetValue">Target Design Review/Design Ratio</param>
+    </item>
+  </enum>
+  <param name="Title">Quality Profile</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="125" type="pdash.sectionHeading" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <param name="Name">Defect Reports</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="126" type="pdash.defectFixTimes" version="1.0" persister="xml.v1"><![CDATA[<parameters />]]></snippet>
+
+<snippet instanceId="127" type="pdash.defectsByPhaseAndType" version="1.0" persister="xml.v1"><![CDATA[<parameters />]]></snippet>
+
+<snippet instanceId="128" type="pdash.defectsByCompiler" version="1.0" persister="xml.v1"><![CDATA[<parameters />]]></snippet>
+
+<snippet instanceId="129" type="pdash.defectsPareto" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <param name="Show_Fix_Time">on</param>
+  <param name="Show_Num_Defects">on</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="130" type="pdash.sectionHeading" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <param name="Name">Defect Log</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="131" type="pdash.defectLog" version="1.0" />
+
+<snippet instanceId="132" type="pdash.sectionHeading" version="1.0" persister="xml.v1"><![CDATA[<parameters>
+  <param name="Name">Add Your Own Sections Here</param>
+</parameters>]]></snippet>
+
+<snippet instanceId="133" type="pdash.editHelp" version="1.0" />
+
+<pageFooter>
+
+<snippet instanceId="2" type="TSP.legalFooter" version="1.0" />
+
+</pageFooter>
+
+</pdashCmsPage>

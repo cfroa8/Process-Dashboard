@@ -1,0 +1,1640 @@
+//
+// This datafile defines the prototype for the TSP(SM) process.
+//
+
+[TSP Tag] = tag;
+undefine([Use_Rollup]);
+[/TSP/Project List] = search("/", "TSP Rollup Eligible");
+[/PSP/Project List] = search("/", "PSP Rollup Eligible");
+[/TSP/Full Project List] = setUnion([/TSP/Project List], [/PSP/Project List]);
+
+[Process_ID] = "TSP";
+[Has Compile Phase] = TAG;
+
+/*
+ * Explicitly define each size metric, in case we have size metrics that
+ * are "orphaned" (not associated with any phase).  Also, define the
+ * relationship between inspected size metrics and base size metrics: you
+ * typically inspect what was produced.
+ */
+
+
+[Estimated Text Pages] = ?0;
+[Text Pages] = ?0;
+[Text Pages Estimating Error] = 
+    ([Text Pages] - [Estimated Text Pages]) / [Estimated Text Pages];
+[Estimated Aggregate Text Pages] = [Estimated Text Pages];
+[Aggregate Text Pages] = [Text Pages];
+
+[Estimated Inspected Text Pages] = iff([Text Pages], [Text Pages], [Estimated Text Pages]) + 0;
+[Inspected Text Pages] = [Text Pages] + 0;
+
+[Estimated Req Pages] = ?0;
+[Req Pages] = ?0;
+[Req Pages Estimating Error] = 
+    ([Req Pages] - [Estimated Req Pages]) / [Estimated Req Pages];
+[Estimated Aggregate Req Pages] = [Estimated Req Pages];
+[Aggregate Req Pages] = [Req Pages];
+
+[Estimated Inspected Req Pages] = iff([Req Pages], [Req Pages], [Estimated Req Pages]) + 0;
+[Inspected Req Pages] = [Req Pages] + 0;
+
+[Estimated HLD Pages] = ?0;
+[HLD Pages] = ?0;
+[HLD Pages Estimating Error] = 
+    ([HLD Pages] - [Estimated HLD Pages]) / [Estimated HLD Pages];
+[Estimated Aggregate HLD Pages] = [Estimated HLD Pages];
+[Aggregate HLD Pages] = [HLD Pages];
+
+[Estimated Inspected HLD Pages] = iff([HLD Pages], [HLD Pages], [Estimated HLD Pages]) + 0;
+[Inspected HLD Pages] = [HLD Pages] + 0;
+
+[Estimated DLD Lines] = ?0;
+[DLD Lines] = ?0;
+[DLD Lines Estimating Error] = 
+    ([DLD Lines] - [Estimated DLD Lines]) / [Estimated DLD Lines];
+[Estimated Aggregate DLD Lines] = [Estimated DLD Lines];
+[Aggregate DLD Lines] = [DLD Lines];
+
+[Estimated Inspected DLD Lines] = iff([DLD Lines], [DLD Lines], [Estimated DLD Lines]) + 0;
+[Inspected DLD Lines] = [DLD Lines] + 0;
+
+[Estimated New & Changed LOC] = ?0;
+[New & Changed LOC] = ?0;
+[New & Changed LOC Estimating Error] = 
+    ([New & Changed LOC] - [Estimated New & Changed LOC]) / [Estimated New & Changed LOC];
+[Estimated Aggregate New & Changed LOC] = [Estimated New & Changed LOC];
+[Aggregate New & Changed LOC] = [New & Changed LOC];
+
+[Estimated Inspected New & Changed LOC] = iff([New & Changed LOC], [New & Changed LOC], [Estimated New & Changed LOC]) + 0;
+[Inspected New & Changed LOC] = [New & Changed LOC] + 0;
+
+
+
+/*
+ * The standard functions assume that aggregate metrics equal regular
+ * metrics.  This is true for all of the metrics except LOC, which use
+ * KLOC as an aggregate metric.
+ */
+
+[New & Changed KLOC] = [New & Changed LOC] / 1000;
+[Estimated New & Changed KLOC] = [Estimated New & Changed LOC] / 1000;
+[Inspected New & Changed KLOC] = [Inspected New & Changed LOC] / 1000;
+[Estimated Inspected New & Changed KLOC] =
+    [Estimated Inspected New & Changed LOC] / 1000;
+
+[Aggregate New & Changed LOC] = [New & Changed KLOC];
+[Estimated Aggregate New & Changed LOC] = [Estimated New & Changed KLOC];
+[Aggregate Inspected New & Changed LOC] = [Inspected New & Changed KLOC];
+[Estimated Aggregate Inspected New & Changed LOC] =
+    [Estimated Inspected New & Changed KLOC];
+
+[Size] = [New & Changed LOC];
+[Aggregate Size] = [New & Changed KLOC];
+[Estimated Size] = [Estimated New & Changed LOC];
+[Estimated Aggregate Size] = [Estimated New & Changed KLOC];
+[Size Estimating Error] = [New & Changed LOC Estimating Error];
+
+
+
+/*
+ * DLD Lines seem to be inconsistently handled in the TSP.  They seem to
+ * be used only for calculating review/inspection rates; if they aren't
+ * present New & Changed KLOC is used instead. In any rate, New & Changed
+ * KLOC is always used instead of DLD Lines for calculating defect densities.
+ */
+
+[Aggregate DLD Lines] = [New & Changed KLOC];
+[Estimated Aggregate DLD Lines] = [Estimated New & Changed KLOC];
+[Aggregate Inspected DLD Lines] = [Inspected New & Changed KLOC];
+[Estimated Aggregate Inspected DLD Lines] =
+    [Estimated Inspected New & Changed KLOC];
+
+[Effective_Estimated Inspected DLD Lines] =
+    nvlz([Estimated Inspected DLD Lines], 
+         [Estimated Inspected New & Changed LOC]);
+[Effective_Inspected DLD Lines] =
+    nvlz([Inspected DLD Lines], 
+         [Inspected New & Changed LOC]);
+[Effective_Estimated DLD Lines] =
+    nvlz([Estimated DLD Lines], 
+         [Estimated New & Changed LOC]);
+[Effective_DLD Lines] =
+    nvlz([DLD Lines], 
+         [New & Changed LOC]);
+
+
+[Design/Estimated Appraisal Rate] =
+        60 * [Effective_Estimated DLD Lines] /
+        [Design/Estimated Time];
+    [Design/Appraisal Rate] =
+        60 * [Effective_DLD Lines] /
+        [Design/Time];
+
+[Design Review/Estimated Appraisal Rate] =
+        60 * [Effective_Estimated DLD Lines] /
+        [Design Review/Estimated Time];
+    [Design Review/Appraisal Rate] =
+        60 * [Effective_DLD Lines] /
+        [Design Review/Time];
+
+[Design Inspect/Estimated Appraisal Rate] =
+        60 * [Effective_Estimated Inspected DLD Lines] /
+        [Design Inspect/Estimated Time];
+    [Design Inspect/Appraisal Rate] =
+        60 * [Effective_Inspected DLD Lines] /
+        [Design Inspect/Time];
+
+
+
+
+/*
+ * Ask for rollups of the individual types of LOC.
+ */
+
+[Estimated Base LOC] = 0;
+[Base LOC] = 0;
+
+[Estimated Deleted LOC] = 0;
+[Deleted LOC] = 0;
+
+[Estimated Modified LOC] = 0;
+[Modified LOC] = 0;
+
+[Estimated Added LOC] = 0;
+[Added LOC] = 0;
+
+[Estimated Reused LOC] = 0;
+[Reused LOC] = 0;
+
+[Estimated New & Changed LOC] = 0;
+[New & Changed LOC] = 0;
+
+[Estimated Total LOC] = 0;
+[Total LOC] = 0;
+
+[Estimated New Reused LOC] = 0;
+[New Reused LOC] = 0;
+
+[Estimated Object LOC] = 0;
+[Object LOC] = 0;
+
+
+[Estimated % Reused] = [Estimated Reused LOC] / [Estimated Total LOC];
+[Estimated % New Reused] =
+        [Estimated New Reused LOC] / [Estimated New & Changed LOC];
+
+[% Reused]     = [Reused LOC]     / [Total LOC];
+[% New Reused] = [New Reused LOC] / [New & Changed LOC];
+
+
+/*
+ * Calculate phase and process yields
+ */
+
+[Misc/Estimated Defects_Injected_So_Far] =
+            [Before Development/Estimated Defects Injected] +
+            [Misc/Estimated Defects Injected];
+        [Misc/Estimated Defects_Removed_So_Far] =
+            [Misc/Estimated Defects Removed];
+        
+    
+
+[Misc/Defects_Injected_So_Far] =
+            [Before Development/Defects Injected] +
+            [Misc/Defects Injected];
+        [Misc/Defects_Removed_So_Far] =
+            [Misc/Defects Removed];
+        [Misc/% Phase Yield] =
+            [Misc/Defects Removed] /
+            [Misc/Defects Injected];
+        
+    
+
+[Strategy/Estimated Defects_Injected_So_Far] =
+            [Strategy/Estimated Defects Injected] +
+            [Misc/Estimated Defects_Injected_So_Far];
+        [Strategy/Estimated Defects_Removed_So_Far] =
+            [Strategy/Estimated Defects Removed] +
+            [Misc/Estimated Defects_Removed_So_Far];
+        [Strategy/Estimated % Process Yield] =
+            [Misc/Estimated Defects_Removed_So_Far] /
+            [Misc/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Strategy/Defects_Injected_So_Far] =
+            [Strategy/Defects Injected] +
+            [Misc/Defects_Injected_So_Far];
+        [Strategy/Defects_Removed_So_Far] =
+            [Strategy/Defects Removed] +
+            [Misc/Defects_Removed_So_Far];
+        [Strategy/% Phase Yield] =
+            [Strategy/Defects Removed] /
+	    ( [Strategy/Defects_Injected_So_Far] -
+	      [Misc/Defects_Removed_So_Far] );
+        [Strategy/% Process Yield] =
+            [Misc/Defects_Removed_So_Far] /
+            [Misc/Defects_Injected_So_Far];
+        
+    
+
+[Planning/Estimated Defects_Injected_So_Far] =
+            [Planning/Estimated Defects Injected] +
+            [Strategy/Estimated Defects_Injected_So_Far];
+        [Planning/Estimated Defects_Removed_So_Far] =
+            [Planning/Estimated Defects Removed] +
+            [Strategy/Estimated Defects_Removed_So_Far];
+        [Planning/Estimated % Process Yield] =
+            [Strategy/Estimated Defects_Removed_So_Far] /
+            [Strategy/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Planning/Defects_Injected_So_Far] =
+            [Planning/Defects Injected] +
+            [Strategy/Defects_Injected_So_Far];
+        [Planning/Defects_Removed_So_Far] =
+            [Planning/Defects Removed] +
+            [Strategy/Defects_Removed_So_Far];
+        [Planning/% Phase Yield] =
+            [Planning/Defects Removed] /
+	    ( [Planning/Defects_Injected_So_Far] -
+	      [Strategy/Defects_Removed_So_Far] );
+        [Planning/% Process Yield] =
+            [Strategy/Defects_Removed_So_Far] /
+            [Strategy/Defects_Injected_So_Far];
+        
+    
+
+[Reqts/Estimated Defects_Injected_So_Far] =
+            [Reqts/Estimated Defects Injected] +
+            [Planning/Estimated Defects_Injected_So_Far];
+        [Reqts/Estimated Defects_Removed_So_Far] =
+            [Reqts/Estimated Defects Removed] +
+            [Planning/Estimated Defects_Removed_So_Far];
+        [Reqts/Estimated % Process Yield] =
+            [Planning/Estimated Defects_Removed_So_Far] /
+            [Planning/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Reqts/Defects_Injected_So_Far] =
+            [Reqts/Defects Injected] +
+            [Planning/Defects_Injected_So_Far];
+        [Reqts/Defects_Removed_So_Far] =
+            [Reqts/Defects Removed] +
+            [Planning/Defects_Removed_So_Far];
+        [Reqts/% Phase Yield] =
+            [Reqts/Defects Removed] /
+	    ( [Reqts/Defects_Injected_So_Far] -
+	      [Planning/Defects_Removed_So_Far] );
+        [Reqts/% Process Yield] =
+            [Planning/Defects_Removed_So_Far] /
+            [Planning/Defects_Injected_So_Far];
+        
+    
+
+[Sys Test Plan/Estimated Defects_Injected_So_Far] =
+            [Sys Test Plan/Estimated Defects Injected] +
+            [Reqts/Estimated Defects_Injected_So_Far];
+        [Sys Test Plan/Estimated Defects_Removed_So_Far] =
+            [Sys Test Plan/Estimated Defects Removed] +
+            [Reqts/Estimated Defects_Removed_So_Far];
+        [Sys Test Plan/Estimated % Process Yield] =
+            [Reqts/Estimated Defects_Removed_So_Far] /
+            [Reqts/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Sys Test Plan/Defects_Injected_So_Far] =
+            [Sys Test Plan/Defects Injected] +
+            [Reqts/Defects_Injected_So_Far];
+        [Sys Test Plan/Defects_Removed_So_Far] =
+            [Sys Test Plan/Defects Removed] +
+            [Reqts/Defects_Removed_So_Far];
+        [Sys Test Plan/% Phase Yield] =
+            [Sys Test Plan/Defects Removed] /
+	    ( [Sys Test Plan/Defects_Injected_So_Far] -
+	      [Reqts/Defects_Removed_So_Far] );
+        [Sys Test Plan/% Process Yield] =
+            [Reqts/Defects_Removed_So_Far] /
+            [Reqts/Defects_Injected_So_Far];
+        
+    
+
+[Reqts Review/Estimated Defects_Injected_So_Far] =
+            [Reqts Review/Estimated Defects Injected] +
+            [Sys Test Plan/Estimated Defects_Injected_So_Far];
+        [Reqts Review/Estimated Defects_Removed_So_Far] =
+            [Reqts Review/Estimated Defects Removed] +
+            [Sys Test Plan/Estimated Defects_Removed_So_Far];
+        [Reqts Review/Estimated % Process Yield] =
+            [Sys Test Plan/Estimated Defects_Removed_So_Far] /
+            [Sys Test Plan/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Reqts Review/Defects_Injected_So_Far] =
+            [Reqts Review/Defects Injected] +
+            [Sys Test Plan/Defects_Injected_So_Far];
+        [Reqts Review/Defects_Removed_So_Far] =
+            [Reqts Review/Defects Removed] +
+            [Sys Test Plan/Defects_Removed_So_Far];
+        [Reqts Review/% Phase Yield] =
+            [Reqts Review/Defects Removed] /
+	    ( [Reqts Review/Defects_Injected_So_Far] -
+	      [Sys Test Plan/Defects_Removed_So_Far] );
+        [Reqts Review/% Process Yield] =
+            [Sys Test Plan/Defects_Removed_So_Far] /
+            [Sys Test Plan/Defects_Injected_So_Far];
+        
+    
+
+[Reqts Inspect/Estimated Defects_Injected_So_Far] =
+            [Reqts Inspect/Estimated Defects Injected] +
+            [Reqts Review/Estimated Defects_Injected_So_Far];
+        [Reqts Inspect/Estimated Defects_Removed_So_Far] =
+            [Reqts Inspect/Estimated Defects Removed] +
+            [Reqts Review/Estimated Defects_Removed_So_Far];
+        [Reqts Inspect/Estimated % Process Yield] =
+            [Reqts Review/Estimated Defects_Removed_So_Far] /
+            [Reqts Review/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Reqts Inspect/Defects_Injected_So_Far] =
+            [Reqts Inspect/Defects Injected] +
+            [Reqts Review/Defects_Injected_So_Far];
+        [Reqts Inspect/Defects_Removed_So_Far] =
+            [Reqts Inspect/Defects Removed] +
+            [Reqts Review/Defects_Removed_So_Far];
+        [Reqts Inspect/% Phase Yield] =
+            [Reqts Inspect/Defects Removed] /
+	    ( [Reqts Inspect/Defects_Injected_So_Far] -
+	      [Reqts Review/Defects_Removed_So_Far] );
+        [Reqts Inspect/% Process Yield] =
+            [Reqts Review/Defects_Removed_So_Far] /
+            [Reqts Review/Defects_Injected_So_Far];
+        
+    
+
+[HLD/Estimated Defects_Injected_So_Far] =
+            [HLD/Estimated Defects Injected] +
+            [Reqts Inspect/Estimated Defects_Injected_So_Far];
+        [HLD/Estimated Defects_Removed_So_Far] =
+            [HLD/Estimated Defects Removed] +
+            [Reqts Inspect/Estimated Defects_Removed_So_Far];
+        [HLD/Estimated % Process Yield] =
+            [Reqts Inspect/Estimated Defects_Removed_So_Far] /
+            [Reqts Inspect/Estimated Defects_Injected_So_Far];
+        
+    
+
+[HLD/Defects_Injected_So_Far] =
+            [HLD/Defects Injected] +
+            [Reqts Inspect/Defects_Injected_So_Far];
+        [HLD/Defects_Removed_So_Far] =
+            [HLD/Defects Removed] +
+            [Reqts Inspect/Defects_Removed_So_Far];
+        [HLD/% Phase Yield] =
+            [HLD/Defects Removed] /
+	    ( [HLD/Defects_Injected_So_Far] -
+	      [Reqts Inspect/Defects_Removed_So_Far] );
+        [HLD/% Process Yield] =
+            [Reqts Inspect/Defects_Removed_So_Far] /
+            [Reqts Inspect/Defects_Injected_So_Far];
+        
+    
+
+[Int Test Plan/Estimated Defects_Injected_So_Far] =
+            [Int Test Plan/Estimated Defects Injected] +
+            [HLD/Estimated Defects_Injected_So_Far];
+        [Int Test Plan/Estimated Defects_Removed_So_Far] =
+            [Int Test Plan/Estimated Defects Removed] +
+            [HLD/Estimated Defects_Removed_So_Far];
+        [Int Test Plan/Estimated % Process Yield] =
+            [HLD/Estimated Defects_Removed_So_Far] /
+            [HLD/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Int Test Plan/Defects_Injected_So_Far] =
+            [Int Test Plan/Defects Injected] +
+            [HLD/Defects_Injected_So_Far];
+        [Int Test Plan/Defects_Removed_So_Far] =
+            [Int Test Plan/Defects Removed] +
+            [HLD/Defects_Removed_So_Far];
+        [Int Test Plan/% Phase Yield] =
+            [Int Test Plan/Defects Removed] /
+	    ( [Int Test Plan/Defects_Injected_So_Far] -
+	      [HLD/Defects_Removed_So_Far] );
+        [Int Test Plan/% Process Yield] =
+            [HLD/Defects_Removed_So_Far] /
+            [HLD/Defects_Injected_So_Far];
+        
+    
+
+[HLD Review/Estimated Defects_Injected_So_Far] =
+            [HLD Review/Estimated Defects Injected] +
+            [Int Test Plan/Estimated Defects_Injected_So_Far];
+        [HLD Review/Estimated Defects_Removed_So_Far] =
+            [HLD Review/Estimated Defects Removed] +
+            [Int Test Plan/Estimated Defects_Removed_So_Far];
+        [HLD Review/Estimated % Process Yield] =
+            [Int Test Plan/Estimated Defects_Removed_So_Far] /
+            [Int Test Plan/Estimated Defects_Injected_So_Far];
+        
+    
+
+[HLD Review/Defects_Injected_So_Far] =
+            [HLD Review/Defects Injected] +
+            [Int Test Plan/Defects_Injected_So_Far];
+        [HLD Review/Defects_Removed_So_Far] =
+            [HLD Review/Defects Removed] +
+            [Int Test Plan/Defects_Removed_So_Far];
+        [HLD Review/% Phase Yield] =
+            [HLD Review/Defects Removed] /
+	    ( [HLD Review/Defects_Injected_So_Far] -
+	      [Int Test Plan/Defects_Removed_So_Far] );
+        [HLD Review/% Process Yield] =
+            [Int Test Plan/Defects_Removed_So_Far] /
+            [Int Test Plan/Defects_Injected_So_Far];
+        
+    
+
+[HLD Inspect/Estimated Defects_Injected_So_Far] =
+            [HLD Inspect/Estimated Defects Injected] +
+            [HLD Review/Estimated Defects_Injected_So_Far];
+        [HLD Inspect/Estimated Defects_Removed_So_Far] =
+            [HLD Inspect/Estimated Defects Removed] +
+            [HLD Review/Estimated Defects_Removed_So_Far];
+        [HLD Inspect/Estimated % Process Yield] =
+            [HLD Review/Estimated Defects_Removed_So_Far] /
+            [HLD Review/Estimated Defects_Injected_So_Far];
+        
+    
+
+[HLD Inspect/Defects_Injected_So_Far] =
+            [HLD Inspect/Defects Injected] +
+            [HLD Review/Defects_Injected_So_Far];
+        [HLD Inspect/Defects_Removed_So_Far] =
+            [HLD Inspect/Defects Removed] +
+            [HLD Review/Defects_Removed_So_Far];
+        [HLD Inspect/% Phase Yield] =
+            [HLD Inspect/Defects Removed] /
+	    ( [HLD Inspect/Defects_Injected_So_Far] -
+	      [HLD Review/Defects_Removed_So_Far] );
+        [HLD Inspect/% Process Yield] =
+            [HLD Review/Defects_Removed_So_Far] /
+            [HLD Review/Defects_Injected_So_Far];
+        
+    
+
+[Design/Estimated Defects_Injected_So_Far] =
+            [Design/Estimated Defects Injected] +
+            [HLD Inspect/Estimated Defects_Injected_So_Far];
+        [Design/Estimated Defects_Removed_So_Far] =
+            [Design/Estimated Defects Removed] +
+            [HLD Inspect/Estimated Defects_Removed_So_Far];
+        [Design/Estimated % Process Yield] =
+            [HLD Inspect/Estimated Defects_Removed_So_Far] /
+            [HLD Inspect/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Design/Defects_Injected_So_Far] =
+            [Design/Defects Injected] +
+            [HLD Inspect/Defects_Injected_So_Far];
+        [Design/Defects_Removed_So_Far] =
+            [Design/Defects Removed] +
+            [HLD Inspect/Defects_Removed_So_Far];
+        [Design/% Phase Yield] =
+            [Design/Defects Removed] /
+	    ( [Design/Defects_Injected_So_Far] -
+	      [HLD Inspect/Defects_Removed_So_Far] );
+        [Design/% Process Yield] =
+            [HLD Inspect/Defects_Removed_So_Far] /
+            [HLD Inspect/Defects_Injected_So_Far];
+        
+    
+
+[Design Review/Estimated Defects_Injected_So_Far] =
+            [Design Review/Estimated Defects Injected] +
+            [Design/Estimated Defects_Injected_So_Far];
+        [Design Review/Estimated Defects_Removed_So_Far] =
+            [Design Review/Estimated Defects Removed] +
+            [Design/Estimated Defects_Removed_So_Far];
+        [Design Review/Estimated % Process Yield] =
+            [Design/Estimated Defects_Removed_So_Far] /
+            [Design/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Design Review/Defects_Injected_So_Far] =
+            [Design Review/Defects Injected] +
+            [Design/Defects_Injected_So_Far];
+        [Design Review/Defects_Removed_So_Far] =
+            [Design Review/Defects Removed] +
+            [Design/Defects_Removed_So_Far];
+        [Design Review/% Phase Yield] =
+            [Design Review/Defects Removed] /
+	    ( [Design Review/Defects_Injected_So_Far] -
+	      [Design/Defects_Removed_So_Far] );
+        [Design Review/% Process Yield] =
+            [Design/Defects_Removed_So_Far] /
+            [Design/Defects_Injected_So_Far];
+        
+    
+
+[Test Devel/Estimated Defects_Injected_So_Far] =
+            [Test Devel/Estimated Defects Injected] +
+            [Design Review/Estimated Defects_Injected_So_Far];
+        [Test Devel/Estimated Defects_Removed_So_Far] =
+            [Test Devel/Estimated Defects Removed] +
+            [Design Review/Estimated Defects_Removed_So_Far];
+        [Test Devel/Estimated % Process Yield] =
+            [Design Review/Estimated Defects_Removed_So_Far] /
+            [Design Review/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Test Devel/Defects_Injected_So_Far] =
+            [Test Devel/Defects Injected] +
+            [Design Review/Defects_Injected_So_Far];
+        [Test Devel/Defects_Removed_So_Far] =
+            [Test Devel/Defects Removed] +
+            [Design Review/Defects_Removed_So_Far];
+        [Test Devel/% Phase Yield] =
+            [Test Devel/Defects Removed] /
+	    ( [Test Devel/Defects_Injected_So_Far] -
+	      [Design Review/Defects_Removed_So_Far] );
+        [Test Devel/% Process Yield] =
+            [Design Review/Defects_Removed_So_Far] /
+            [Design Review/Defects_Injected_So_Far];
+        
+    
+
+[Design Inspect/Estimated Defects_Injected_So_Far] =
+            [Design Inspect/Estimated Defects Injected] +
+            [Test Devel/Estimated Defects_Injected_So_Far];
+        [Design Inspect/Estimated Defects_Removed_So_Far] =
+            [Design Inspect/Estimated Defects Removed] +
+            [Test Devel/Estimated Defects_Removed_So_Far];
+        [Design Inspect/Estimated % Process Yield] =
+            [Test Devel/Estimated Defects_Removed_So_Far] /
+            [Test Devel/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Design Inspect/Defects_Injected_So_Far] =
+            [Design Inspect/Defects Injected] +
+            [Test Devel/Defects_Injected_So_Far];
+        [Design Inspect/Defects_Removed_So_Far] =
+            [Design Inspect/Defects Removed] +
+            [Test Devel/Defects_Removed_So_Far];
+        [Design Inspect/% Phase Yield] =
+            [Design Inspect/Defects Removed] /
+	    ( [Design Inspect/Defects_Injected_So_Far] -
+	      [Test Devel/Defects_Removed_So_Far] );
+        [Design Inspect/% Process Yield] =
+            [Test Devel/Defects_Removed_So_Far] /
+            [Test Devel/Defects_Injected_So_Far];
+        
+    
+
+[Code/Estimated Defects_Injected_So_Far] =
+            [Code/Estimated Defects Injected] +
+            [Design Inspect/Estimated Defects_Injected_So_Far];
+        [Code/Estimated Defects_Removed_So_Far] =
+            [Code/Estimated Defects Removed] +
+            [Design Inspect/Estimated Defects_Removed_So_Far];
+        [Code/Estimated % Process Yield] =
+            [Design Inspect/Estimated Defects_Removed_So_Far] /
+            [Design Inspect/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Code/Defects_Injected_So_Far] =
+            [Code/Defects Injected] +
+            [Design Inspect/Defects_Injected_So_Far];
+        [Code/Defects_Removed_So_Far] =
+            [Code/Defects Removed] +
+            [Design Inspect/Defects_Removed_So_Far];
+        [Code/% Phase Yield] =
+            [Code/Defects Removed] /
+	    ( [Code/Defects_Injected_So_Far] -
+	      [Design Inspect/Defects_Removed_So_Far] );
+        [Code/% Process Yield] =
+            [Design Inspect/Defects_Removed_So_Far] /
+            [Design Inspect/Defects_Injected_So_Far];
+        
+    
+
+[Code Review/Estimated Defects_Injected_So_Far] =
+            [Code Review/Estimated Defects Injected] +
+            [Code/Estimated Defects_Injected_So_Far];
+        [Code Review/Estimated Defects_Removed_So_Far] =
+            [Code Review/Estimated Defects Removed] +
+            [Code/Estimated Defects_Removed_So_Far];
+        [Code Review/Estimated % Process Yield] =
+            [Code/Estimated Defects_Removed_So_Far] /
+            [Code/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Code Review/Defects_Injected_So_Far] =
+            [Code Review/Defects Injected] +
+            [Code/Defects_Injected_So_Far];
+        [Code Review/Defects_Removed_So_Far] =
+            [Code Review/Defects Removed] +
+            [Code/Defects_Removed_So_Far];
+        [Code Review/% Phase Yield] =
+            [Code Review/Defects Removed] /
+	    ( [Code Review/Defects_Injected_So_Far] -
+	      [Code/Defects_Removed_So_Far] );
+        [Code Review/% Process Yield] =
+            [Code/Defects_Removed_So_Far] /
+            [Code/Defects_Injected_So_Far];
+        
+    
+
+[Compile/Estimated Defects_Injected_So_Far] =
+            [Compile/Estimated Defects Injected] +
+            [Code Review/Estimated Defects_Injected_So_Far];
+        [Compile/Estimated Defects_Removed_So_Far] =
+            [Compile/Estimated Defects Removed] +
+            [Code Review/Estimated Defects_Removed_So_Far];
+        [Compile/Estimated % Process Yield] =
+            [Code Review/Estimated Defects_Removed_So_Far] /
+            [Code Review/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Compile/Defects_Injected_So_Far] =
+            [Compile/Defects Injected] +
+            [Code Review/Defects_Injected_So_Far];
+        [Compile/Defects_Removed_So_Far] =
+            [Compile/Defects Removed] +
+            [Code Review/Defects_Removed_So_Far];
+        [Compile/% Phase Yield] =
+            [Compile/Defects Removed] /
+	    ( [Compile/Defects_Injected_So_Far] -
+	      [Code Review/Defects_Removed_So_Far] );
+        [Compile/% Process Yield] =
+            [Code Review/Defects_Removed_So_Far] /
+            [Code Review/Defects_Injected_So_Far];
+        
+    
+
+[Code Inspect/Estimated Defects_Injected_So_Far] =
+            [Code Inspect/Estimated Defects Injected] +
+            [Compile/Estimated Defects_Injected_So_Far];
+        [Code Inspect/Estimated Defects_Removed_So_Far] =
+            [Code Inspect/Estimated Defects Removed] +
+            [Compile/Estimated Defects_Removed_So_Far];
+        [Code Inspect/Estimated % Process Yield] =
+            [Compile/Estimated Defects_Removed_So_Far] /
+            [Compile/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Code Inspect/Defects_Injected_So_Far] =
+            [Code Inspect/Defects Injected] +
+            [Compile/Defects_Injected_So_Far];
+        [Code Inspect/Defects_Removed_So_Far] =
+            [Code Inspect/Defects Removed] +
+            [Compile/Defects_Removed_So_Far];
+        [Code Inspect/% Phase Yield] =
+            [Code Inspect/Defects Removed] /
+	    ( [Code Inspect/Defects_Injected_So_Far] -
+	      [Compile/Defects_Removed_So_Far] );
+        [Code Inspect/% Process Yield] =
+            [Compile/Defects_Removed_So_Far] /
+            [Compile/Defects_Injected_So_Far];
+        
+    
+
+[Test/Estimated Defects_Injected_So_Far] =
+            [Test/Estimated Defects Injected] +
+            [Code Inspect/Estimated Defects_Injected_So_Far];
+        [Test/Estimated Defects_Removed_So_Far] =
+            [Test/Estimated Defects Removed] +
+            [Code Inspect/Estimated Defects_Removed_So_Far];
+        [Test/Estimated % Process Yield] =
+            [Code Inspect/Estimated Defects_Removed_So_Far] /
+            [Code Inspect/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Test/Defects_Injected_So_Far] =
+            [Test/Defects Injected] +
+            [Code Inspect/Defects_Injected_So_Far];
+        [Test/Defects_Removed_So_Far] =
+            [Test/Defects Removed] +
+            [Code Inspect/Defects_Removed_So_Far];
+        [Test/% Phase Yield] =
+            [Test/Defects Removed] /
+	    ( [Test/Defects_Injected_So_Far] -
+	      [Code Inspect/Defects_Removed_So_Far] );
+        [Test/% Process Yield] =
+            [Code Inspect/Defects_Removed_So_Far] /
+            [Code Inspect/Defects_Injected_So_Far];
+        
+    
+
+[Int Test/Estimated Defects_Injected_So_Far] =
+            [Int Test/Estimated Defects Injected] +
+            [Test/Estimated Defects_Injected_So_Far];
+        [Int Test/Estimated Defects_Removed_So_Far] =
+            [Int Test/Estimated Defects Removed] +
+            [Test/Estimated Defects_Removed_So_Far];
+        [Int Test/Estimated % Process Yield] =
+            [Test/Estimated Defects_Removed_So_Far] /
+            [Test/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Int Test/Defects_Injected_So_Far] =
+            [Int Test/Defects Injected] +
+            [Test/Defects_Injected_So_Far];
+        [Int Test/Defects_Removed_So_Far] =
+            [Int Test/Defects Removed] +
+            [Test/Defects_Removed_So_Far];
+        [Int Test/% Phase Yield] =
+            [Int Test/Defects Removed] /
+	    ( [Int Test/Defects_Injected_So_Far] -
+	      [Test/Defects_Removed_So_Far] );
+        [Int Test/% Process Yield] =
+            [Test/Defects_Removed_So_Far] /
+            [Test/Defects_Injected_So_Far];
+        
+    
+
+[Sys Test/Estimated Defects_Injected_So_Far] =
+            [Sys Test/Estimated Defects Injected] +
+            [Int Test/Estimated Defects_Injected_So_Far];
+        [Sys Test/Estimated Defects_Removed_So_Far] =
+            [Sys Test/Estimated Defects Removed] +
+            [Int Test/Estimated Defects_Removed_So_Far];
+        [Sys Test/Estimated % Process Yield] =
+            [Int Test/Estimated Defects_Removed_So_Far] /
+            [Int Test/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Sys Test/Defects_Injected_So_Far] =
+            [Sys Test/Defects Injected] +
+            [Int Test/Defects_Injected_So_Far];
+        [Sys Test/Defects_Removed_So_Far] =
+            [Sys Test/Defects Removed] +
+            [Int Test/Defects_Removed_So_Far];
+        [Sys Test/% Phase Yield] =
+            [Sys Test/Defects Removed] /
+	    ( [Sys Test/Defects_Injected_So_Far] -
+	      [Int Test/Defects_Removed_So_Far] );
+        [Sys Test/% Process Yield] =
+            [Int Test/Defects_Removed_So_Far] /
+            [Int Test/Defects_Injected_So_Far];
+        
+    
+
+[Documentation/Estimated Defects_Injected_So_Far] =
+            [Documentation/Estimated Defects Injected] +
+            [Sys Test/Estimated Defects_Injected_So_Far];
+        [Documentation/Estimated Defects_Removed_So_Far] =
+            [Documentation/Estimated Defects Removed] +
+            [Sys Test/Estimated Defects_Removed_So_Far];
+        [Documentation/Estimated % Process Yield] =
+            [Sys Test/Estimated Defects_Removed_So_Far] /
+            [Sys Test/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Documentation/Defects_Injected_So_Far] =
+            [Documentation/Defects Injected] +
+            [Sys Test/Defects_Injected_So_Far];
+        [Documentation/Defects_Removed_So_Far] =
+            [Documentation/Defects Removed] +
+            [Sys Test/Defects_Removed_So_Far];
+        [Documentation/% Phase Yield] =
+            [Documentation/Defects Removed] /
+	    ( [Documentation/Defects_Injected_So_Far] -
+	      [Sys Test/Defects_Removed_So_Far] );
+        [Documentation/% Process Yield] =
+            [Sys Test/Defects_Removed_So_Far] /
+            [Sys Test/Defects_Injected_So_Far];
+        
+    
+
+[Accept Test/Estimated Defects_Injected_So_Far] =
+            [Accept Test/Estimated Defects Injected] +
+            [Documentation/Estimated Defects_Injected_So_Far];
+        [Accept Test/Estimated Defects_Removed_So_Far] =
+            [Accept Test/Estimated Defects Removed] +
+            [Documentation/Estimated Defects_Removed_So_Far];
+        [Accept Test/Estimated % Process Yield] =
+            [Documentation/Estimated Defects_Removed_So_Far] /
+            [Documentation/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Accept Test/Defects_Injected_So_Far] =
+            [Accept Test/Defects Injected] +
+            [Documentation/Defects_Injected_So_Far];
+        [Accept Test/Defects_Removed_So_Far] =
+            [Accept Test/Defects Removed] +
+            [Documentation/Defects_Removed_So_Far];
+        [Accept Test/% Phase Yield] =
+            [Accept Test/Defects Removed] /
+	    ( [Accept Test/Defects_Injected_So_Far] -
+	      [Documentation/Defects_Removed_So_Far] );
+        [Accept Test/% Process Yield] =
+            [Documentation/Defects_Removed_So_Far] /
+            [Documentation/Defects_Injected_So_Far];
+        
+    
+
+[Postmortem/Estimated Defects_Injected_So_Far] =
+            [Postmortem/Estimated Defects Injected] +
+            [Accept Test/Estimated Defects_Injected_So_Far];
+        [Postmortem/Estimated Defects_Removed_So_Far] =
+            [Postmortem/Estimated Defects Removed] +
+            [Accept Test/Estimated Defects_Removed_So_Far];
+        [Postmortem/Estimated % Process Yield] =
+            [Accept Test/Estimated Defects_Removed_So_Far] /
+            [Accept Test/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Postmortem/Defects_Injected_So_Far] =
+            [Postmortem/Defects Injected] +
+            [Accept Test/Defects_Injected_So_Far];
+        [Postmortem/Defects_Removed_So_Far] =
+            [Postmortem/Defects Removed] +
+            [Accept Test/Defects_Removed_So_Far];
+        [Postmortem/% Phase Yield] =
+            [Postmortem/Defects Removed] /
+	    ( [Postmortem/Defects_Injected_So_Far] -
+	      [Accept Test/Defects_Removed_So_Far] );
+        [Postmortem/% Process Yield] =
+            [Accept Test/Defects_Removed_So_Far] /
+            [Accept Test/Defects_Injected_So_Far];
+        
+    
+
+[Product Life/Estimated Defects_Injected_So_Far] =
+            [Product Life/Estimated Defects Injected] +
+            [Postmortem/Estimated Defects_Injected_So_Far];
+        [Product Life/Estimated Defects_Removed_So_Far] =
+            [Product Life/Estimated Defects Removed] +
+            [Postmortem/Estimated Defects_Removed_So_Far];
+        [Product Life/Estimated % Process Yield] =
+            [Postmortem/Estimated Defects_Removed_So_Far] /
+            [Postmortem/Estimated Defects_Injected_So_Far];
+        
+    
+
+[Product Life/Defects_Injected_So_Far] =
+            [Product Life/Defects Injected] +
+            [Postmortem/Defects_Injected_So_Far];
+        [Product Life/Defects_Removed_So_Far] =
+            [Product Life/Defects Removed] +
+            [Postmortem/Defects_Removed_So_Far];
+        [Product Life/% Phase Yield] =
+            [Product Life/Defects Removed] /
+	    ( [Product Life/Defects_Injected_So_Far] -
+	      [Postmortem/Defects_Removed_So_Far] );
+        [Product Life/% Process Yield] =
+            [Postmortem/Defects_Removed_So_Far] /
+            [Postmortem/Defects_Injected_So_Far];
+        
+    
+
+
+[Before Development/Estimated Defects Injected] == 0;
+
+
+/*
+ * Inherit estimated phase yields and defect injection rates from settings
+ * elsewhere
+ */
+[Misc/Estimated % Phase Yield] = 
+    inherit("Misc/Estimated % Phase Yield");
+[Misc/Estimated Defects Injected per Hour] = 
+    inherit("Misc/Estimated Defects Injected per Hour");
+[Strategy/Estimated % Phase Yield] = 
+    inherit("Strategy/Estimated % Phase Yield");
+[Strategy/Estimated Defects Injected per Hour] = 
+    inherit("Strategy/Estimated Defects Injected per Hour");
+[Planning/Estimated % Phase Yield] = 
+    inherit("Planning/Estimated % Phase Yield");
+[Planning/Estimated Defects Injected per Hour] = 
+    inherit("Planning/Estimated Defects Injected per Hour");
+[Reqts/Estimated % Phase Yield] = 
+    inherit("Reqts/Estimated % Phase Yield");
+[Reqts/Estimated Defects Injected per Hour] = 
+    inherit("Reqts/Estimated Defects Injected per Hour");
+[Sys Test Plan/Estimated % Phase Yield] = 
+    inherit("Sys Test Plan/Estimated % Phase Yield");
+[Sys Test Plan/Estimated Defects Injected per Hour] = 
+    inherit("Sys Test Plan/Estimated Defects Injected per Hour");
+[Reqts Review/Estimated % Phase Yield] = 
+    inherit("Reqts Review/Estimated % Phase Yield");
+[Reqts Review/Estimated Defects Injected per Hour] = 
+    inherit("Reqts Review/Estimated Defects Injected per Hour");
+[Reqts Inspect/Estimated % Phase Yield] = 
+    inherit("Reqts Inspect/Estimated % Phase Yield");
+[Reqts Inspect/Estimated Defects Injected per Hour] = 
+    inherit("Reqts Inspect/Estimated Defects Injected per Hour");
+[HLD/Estimated % Phase Yield] = 
+    inherit("HLD/Estimated % Phase Yield");
+[HLD/Estimated Defects Injected per Hour] = 
+    inherit("HLD/Estimated Defects Injected per Hour");
+[Int Test Plan/Estimated % Phase Yield] = 
+    inherit("Int Test Plan/Estimated % Phase Yield");
+[Int Test Plan/Estimated Defects Injected per Hour] = 
+    inherit("Int Test Plan/Estimated Defects Injected per Hour");
+[HLD Review/Estimated % Phase Yield] = 
+    inherit("HLD Review/Estimated % Phase Yield");
+[HLD Review/Estimated Defects Injected per Hour] = 
+    inherit("HLD Review/Estimated Defects Injected per Hour");
+[HLD Inspect/Estimated % Phase Yield] = 
+    inherit("HLD Inspect/Estimated % Phase Yield");
+[HLD Inspect/Estimated Defects Injected per Hour] = 
+    inherit("HLD Inspect/Estimated Defects Injected per Hour");
+[Design/Estimated % Phase Yield] = 
+    inherit("Design/Estimated % Phase Yield");
+[Design/Estimated Defects Injected per Hour] = 
+    inherit("Design/Estimated Defects Injected per Hour");
+[Design Review/Estimated % Phase Yield] = 
+    inherit("Design Review/Estimated % Phase Yield");
+[Design Review/Estimated Defects Injected per Hour] = 
+    inherit("Design Review/Estimated Defects Injected per Hour");
+[Test Devel/Estimated % Phase Yield] = 
+    inherit("Test Devel/Estimated % Phase Yield");
+[Test Devel/Estimated Defects Injected per Hour] = 
+    inherit("Test Devel/Estimated Defects Injected per Hour");
+[Design Inspect/Estimated % Phase Yield] = 
+    inherit("Design Inspect/Estimated % Phase Yield");
+[Design Inspect/Estimated Defects Injected per Hour] = 
+    inherit("Design Inspect/Estimated Defects Injected per Hour");
+[Code/Estimated % Phase Yield] = 
+    inherit("Code/Estimated % Phase Yield");
+[Code/Estimated Defects Injected per Hour] = 
+    inherit("Code/Estimated Defects Injected per Hour");
+[Code Review/Estimated % Phase Yield] = 
+    inherit("Code Review/Estimated % Phase Yield");
+[Code Review/Estimated Defects Injected per Hour] = 
+    inherit("Code Review/Estimated Defects Injected per Hour");
+[Compile/Estimated % Phase Yield] = 
+    inherit("Compile/Estimated % Phase Yield");
+[Compile/Estimated Defects Injected per Hour] = 
+    inherit("Compile/Estimated Defects Injected per Hour");
+[Code Inspect/Estimated % Phase Yield] = 
+    inherit("Code Inspect/Estimated % Phase Yield");
+[Code Inspect/Estimated Defects Injected per Hour] = 
+    inherit("Code Inspect/Estimated Defects Injected per Hour");
+[Test/Estimated % Phase Yield] = 
+    inherit("Test/Estimated % Phase Yield");
+[Test/Estimated Defects Injected per Hour] = 
+    inherit("Test/Estimated Defects Injected per Hour");
+[Int Test/Estimated % Phase Yield] = 
+    inherit("Int Test/Estimated % Phase Yield");
+[Int Test/Estimated Defects Injected per Hour] = 
+    inherit("Int Test/Estimated Defects Injected per Hour");
+[Sys Test/Estimated % Phase Yield] = 
+    inherit("Sys Test/Estimated % Phase Yield");
+[Sys Test/Estimated Defects Injected per Hour] = 
+    inherit("Sys Test/Estimated Defects Injected per Hour");
+[Documentation/Estimated % Phase Yield] = 
+    inherit("Documentation/Estimated % Phase Yield");
+[Documentation/Estimated Defects Injected per Hour] = 
+    inherit("Documentation/Estimated Defects Injected per Hour");
+[Accept Test/Estimated % Phase Yield] = 
+    inherit("Accept Test/Estimated % Phase Yield");
+[Accept Test/Estimated Defects Injected per Hour] = 
+    inherit("Accept Test/Estimated Defects Injected per Hour");
+[Postmortem/Estimated % Phase Yield] = 
+    inherit("Postmortem/Estimated % Phase Yield");
+[Postmortem/Estimated Defects Injected per Hour] = 
+    inherit("Postmortem/Estimated Defects Injected per Hour");
+[Product Life/Estimated % Phase Yield] = 
+    inherit("Product Life/Estimated % Phase Yield");
+[Product Life/Estimated Defects Injected per Hour] = 
+    inherit("Product Life/Estimated Defects Injected per Hour");
+
+
+
+/*
+ * Calculate estimated defect injection counts from defect injection rates.
+ */
+[Misc/Estimated Defects Injected] = 
+    [Misc/Estimated Defects Injected per Hour] *
+    [Misc/Estimated Time] / 60;
+[Strategy/Estimated Defects Injected] = 
+    [Strategy/Estimated Defects Injected per Hour] *
+    [Strategy/Estimated Time] / 60;
+[Planning/Estimated Defects Injected] = 
+    [Planning/Estimated Defects Injected per Hour] *
+    [Planning/Estimated Time] / 60;
+[Reqts/Estimated Defects Injected] = 
+    [Reqts/Estimated Defects Injected per Hour] *
+    [Reqts/Estimated Time] / 60;
+[Sys Test Plan/Estimated Defects Injected] = 
+    [Sys Test Plan/Estimated Defects Injected per Hour] *
+    [Sys Test Plan/Estimated Time] / 60;
+[Reqts Review/Estimated Defects Injected] = 
+    [Reqts Review/Estimated Defects Injected per Hour] *
+    [Reqts Review/Estimated Time] / 60;
+[Reqts Inspect/Estimated Defects Injected] = 
+    [Reqts Inspect/Estimated Defects Injected per Hour] *
+    [Reqts Inspect/Estimated Time] / 60;
+[HLD/Estimated Defects Injected] = 
+    [HLD/Estimated Defects Injected per Hour] *
+    [HLD/Estimated Time] / 60;
+[Int Test Plan/Estimated Defects Injected] = 
+    [Int Test Plan/Estimated Defects Injected per Hour] *
+    [Int Test Plan/Estimated Time] / 60;
+[HLD Review/Estimated Defects Injected] = 
+    [HLD Review/Estimated Defects Injected per Hour] *
+    [HLD Review/Estimated Time] / 60;
+[HLD Inspect/Estimated Defects Injected] = 
+    [HLD Inspect/Estimated Defects Injected per Hour] *
+    [HLD Inspect/Estimated Time] / 60;
+[Design/Estimated Defects Injected] = 
+    [Design/Estimated Defects Injected per Hour] *
+    [Design/Estimated Time] / 60;
+[Design Review/Estimated Defects Injected] = 
+    [Design Review/Estimated Defects Injected per Hour] *
+    [Design Review/Estimated Time] / 60;
+[Test Devel/Estimated Defects Injected] = 
+    [Test Devel/Estimated Defects Injected per Hour] *
+    [Test Devel/Estimated Time] / 60;
+[Design Inspect/Estimated Defects Injected] = 
+    [Design Inspect/Estimated Defects Injected per Hour] *
+    [Design Inspect/Estimated Time] / 60;
+[Code/Estimated Defects Injected] = 
+    [Code/Estimated Defects Injected per Hour] *
+    [Code/Estimated Time] / 60;
+[Code Review/Estimated Defects Injected] = 
+    [Code Review/Estimated Defects Injected per Hour] *
+    [Code Review/Estimated Time] / 60;
+[Compile/Estimated Defects Injected] = 
+    [Compile/Estimated Defects Injected per Hour] *
+    [Compile/Estimated Time] / 60;
+[Code Inspect/Estimated Defects Injected] = 
+    [Code Inspect/Estimated Defects Injected per Hour] *
+    [Code Inspect/Estimated Time] / 60;
+[Test/Estimated Defects Injected] = 
+    [Test/Estimated Defects Injected per Hour] *
+    [Test/Estimated Time] / 60;
+[Int Test/Estimated Defects Injected] = 
+    [Int Test/Estimated Defects Injected per Hour] *
+    [Int Test/Estimated Time] / 60;
+[Sys Test/Estimated Defects Injected] = 
+    [Sys Test/Estimated Defects Injected per Hour] *
+    [Sys Test/Estimated Time] / 60;
+[Documentation/Estimated Defects Injected] = 
+    [Documentation/Estimated Defects Injected per Hour] *
+    [Documentation/Estimated Time] / 60;
+[Accept Test/Estimated Defects Injected] = 
+    [Accept Test/Estimated Defects Injected per Hour] *
+    [Accept Test/Estimated Time] / 60;
+[Postmortem/Estimated Defects Injected] = 
+    [Postmortem/Estimated Defects Injected per Hour] *
+    [Postmortem/Estimated Time] / 60;
+[Product Life/Estimated Defects Injected] = 
+    [Product Life/Estimated Defects Injected per Hour] *
+    [Product Life/Estimated Time] / 60;
+
+
+
+/*
+ * Calculate estimated defect removal counts from estimated phase yields
+ */
+[Misc/Estimated Defects Removed] =
+    [Misc/Estimated % Phase Yield] *
+    ( [Misc/Estimated Defects_Injected_So_Far]
+       );
+[Strategy/Estimated Defects Removed] =
+    [Strategy/Estimated % Phase Yield] *
+    ( [Strategy/Estimated Defects_Injected_So_Far]
+      - [Misc/Estimated Defects_Removed_So_Far]
+       );
+[Planning/Estimated Defects Removed] =
+    [Planning/Estimated % Phase Yield] *
+    ( [Planning/Estimated Defects_Injected_So_Far]
+      - [Strategy/Estimated Defects_Removed_So_Far]
+       );
+[Reqts/Estimated Defects Removed] =
+    [Reqts/Estimated % Phase Yield] *
+    ( [Reqts/Estimated Defects_Injected_So_Far]
+      - [Planning/Estimated Defects_Removed_So_Far]
+       );
+[Sys Test Plan/Estimated Defects Removed] =
+    [Sys Test Plan/Estimated % Phase Yield] *
+    ( [Sys Test Plan/Estimated Defects_Injected_So_Far]
+      - [Reqts/Estimated Defects_Removed_So_Far]
+       );
+[Reqts Review/Estimated Defects Removed] =
+    [Reqts Review/Estimated % Phase Yield] *
+    ( [Reqts Review/Estimated Defects_Injected_So_Far]
+      - [Sys Test Plan/Estimated Defects_Removed_So_Far]
+       );
+[Reqts Inspect/Estimated Defects Removed] =
+    [Reqts Inspect/Estimated % Phase Yield] *
+    ( [Reqts Inspect/Estimated Defects_Injected_So_Far]
+      - [Reqts Review/Estimated Defects_Removed_So_Far]
+       );
+[HLD/Estimated Defects Removed] =
+    [HLD/Estimated % Phase Yield] *
+    ( [HLD/Estimated Defects_Injected_So_Far]
+      - [Reqts Inspect/Estimated Defects_Removed_So_Far]
+       );
+[Int Test Plan/Estimated Defects Removed] =
+    [Int Test Plan/Estimated % Phase Yield] *
+    ( [Int Test Plan/Estimated Defects_Injected_So_Far]
+      - [HLD/Estimated Defects_Removed_So_Far]
+       );
+[HLD Review/Estimated Defects Removed] =
+    [HLD Review/Estimated % Phase Yield] *
+    ( [HLD Review/Estimated Defects_Injected_So_Far]
+      - [Int Test Plan/Estimated Defects_Removed_So_Far]
+       );
+[HLD Inspect/Estimated Defects Removed] =
+    [HLD Inspect/Estimated % Phase Yield] *
+    ( [HLD Inspect/Estimated Defects_Injected_So_Far]
+      - [HLD Review/Estimated Defects_Removed_So_Far]
+       );
+[Design/Estimated Defects Removed] =
+    [Design/Estimated % Phase Yield] *
+    ( [Design/Estimated Defects_Injected_So_Far]
+      - [HLD Inspect/Estimated Defects_Removed_So_Far]
+       );
+[Design Review/Estimated Defects Removed] =
+    [Design Review/Estimated % Phase Yield] *
+    ( [Design Review/Estimated Defects_Injected_So_Far]
+      - [Design/Estimated Defects_Removed_So_Far]
+       );
+[Test Devel/Estimated Defects Removed] =
+    [Test Devel/Estimated % Phase Yield] *
+    ( [Test Devel/Estimated Defects_Injected_So_Far]
+      - [Design Review/Estimated Defects_Removed_So_Far]
+       );
+[Design Inspect/Estimated Defects Removed] =
+    [Design Inspect/Estimated % Phase Yield] *
+    ( [Design Inspect/Estimated Defects_Injected_So_Far]
+      - [Test Devel/Estimated Defects_Removed_So_Far]
+       );
+[Code/Estimated Defects Removed] =
+    [Code/Estimated % Phase Yield] *
+    ( [Code/Estimated Defects_Injected_So_Far]
+      - [Design Inspect/Estimated Defects_Removed_So_Far]
+       );
+[Code Review/Estimated Defects Removed] =
+    [Code Review/Estimated % Phase Yield] *
+    ( [Code Review/Estimated Defects_Injected_So_Far]
+      - [Code/Estimated Defects_Removed_So_Far]
+       );
+[Compile/Estimated Defects Removed] =
+    [Compile/Estimated % Phase Yield] *
+    ( [Compile/Estimated Defects_Injected_So_Far]
+      - [Code Review/Estimated Defects_Removed_So_Far]
+       );
+[Code Inspect/Estimated Defects Removed] =
+    [Code Inspect/Estimated % Phase Yield] *
+    ( [Code Inspect/Estimated Defects_Injected_So_Far]
+      - [Compile/Estimated Defects_Removed_So_Far]
+       );
+[Test/Estimated Defects Removed] =
+    [Test/Estimated % Phase Yield] *
+    ( [Test/Estimated Defects_Injected_So_Far]
+      - [Code Inspect/Estimated Defects_Removed_So_Far]
+       );
+[Int Test/Estimated Defects Removed] =
+    [Int Test/Estimated % Phase Yield] *
+    ( [Int Test/Estimated Defects_Injected_So_Far]
+      - [Test/Estimated Defects_Removed_So_Far]
+       );
+[Sys Test/Estimated Defects Removed] =
+    [Sys Test/Estimated % Phase Yield] *
+    ( [Sys Test/Estimated Defects_Injected_So_Far]
+      - [Int Test/Estimated Defects_Removed_So_Far]
+       );
+[Documentation/Estimated Defects Removed] =
+    [Documentation/Estimated % Phase Yield] *
+    ( [Documentation/Estimated Defects_Injected_So_Far]
+      - [Sys Test/Estimated Defects_Removed_So_Far]
+       );
+[Accept Test/Estimated Defects Removed] =
+    [Accept Test/Estimated % Phase Yield] *
+    ( [Accept Test/Estimated Defects_Injected_So_Far]
+      - [Documentation/Estimated Defects_Removed_So_Far]
+       );
+[Postmortem/Estimated Defects Removed] =
+    [Postmortem/Estimated % Phase Yield] *
+    ( [Postmortem/Estimated Defects_Injected_So_Far]
+      - [Accept Test/Estimated Defects_Removed_So_Far]
+       );
+[Product Life/Estimated Defects Removed] =
+    [Product Life/Estimated % Phase Yield] *
+    ( [Product Life/Estimated Defects_Injected_So_Far]
+      - [Postmortem/Estimated Defects_Removed_So_Far]
+       );
+
+
+
+
+/*
+ * Calculate the number of defects injected / removed in development.
+ */
+
+[/TSP/Development_Phase_List] = "MiscStrategyPlanningReqtsSys Test PlanReqts ReviewReqts InspectHLDInt Test PlanHLD ReviewHLD InspectDesignDesign ReviewTest DevelDesign InspectCodeCode ReviewCompileCode InspectTestInt TestSys TestDocumentationPostmortem";
+
+[Total Development /Estimated Defects Injected] =
+    sumFor("Estimated Defects Injected", [/TSP/Development_Phase_List]);
+[Total Development /Defects Injected] =
+    sumFor("Defects Injected", [/TSP/Development_Phase_List]);
+[Total Development /Estimated Defects Removed] =
+    sumFor("Estimated Defects Removed", [/TSP/Development_Phase_List]);
+[Total Development /Defects Removed] =
+    sumFor("Defects Removed", [/TSP/Development_Phase_List]);
+
+// Calculate defect densities for development
+
+[Total Development /Estimated Defect Density] =
+    [Total Development /Estimated Defects Removed] /
+    [Estimated New & Changed KLOC];
+[Total Development /Defect Density] =
+    [Total Development /Defects Removed] / [New & Changed KLOC];
+
+
+/*
+ * Make lists of the phases in this process, organized by phase-type.
+ */
+
+[/TSP/MGMT_Phase_List] = "Misc";
+[/TSP/STRAT_Phase_List] = "Strategy";
+[/TSP/PLAN_Phase_List] = "Planning";
+[/TSP/REQ_Phase_List] = "Reqts";
+[/TSP/STP_Phase_List] = "Sys Test Plan";
+[/TSP/REQINSP_Phase_List] = "Reqts ReviewReqts Inspect";
+[/TSP/HLD_Phase_List] = "HLD";
+[/TSP/ITP_Phase_List] = "Int Test Plan";
+[/TSP/HLDRINSP_Phase_List] = "HLD ReviewHLD Inspect";
+[/TSP/DLD_Phase_List] = "Design";
+[/TSP/DLDR_Phase_List] = "Design Review";
+[/TSP/TD_Phase_List] = "Test Devel";
+[/TSP/DLDINSP_Phase_List] = "Design Inspect";
+[/TSP/CODE_Phase_List] = "Code";
+[/TSP/CR_Phase_List] = "Code Review";
+[/TSP/COMP_Phase_List] = "Compile";
+[/TSP/CODEINSP_Phase_List] = "Code Inspect";
+[/TSP/UT_Phase_List] = "Test";
+[/TSP/PM_Phase_List] = "Postmortem";
+[/TSP/IT_Phase_List] = "Int Test";
+[/TSP/ST_Phase_List] = "Sys Test";
+[/TSP/DOC_Phase_List] = "Documentation";
+[/TSP/AT_Phase_List] = "Accept Test";
+[/TSP/PL_Phase_List] = "Product Life";
+
+
+
+
+/*
+ * Make a list of the custom size metrics in this process
+ */
+
+[/TSP/Custom_Size_Metric_List] = "Text PagesReq PagesHLD Pages";
+
+
+
+/*
+ * Calculate defect ratios
+ */
+
+[DLDR_vs_UT/Estimated Defect Ratio] =
+      sumFor("Estimated Defects Removed", [/TSP/DLDR_Phase_List]) / 
+      sumFor("Estimated Defects Removed", [/TSP/UT_Phase_List]);
+[Design Review vs Test/Estimated Defect Ratio] =
+      [DLDR_vs_UT/Estimated Defect Ratio];
+[CR_vs_COMP/Estimated Defect Ratio] =
+      sumFor("Estimated Defects Removed", [/TSP/CR_Phase_List]) / 
+      sumFor("Estimated Defects Removed", [/TSP/COMP_Phase_List]);
+[Code Review vs Compile/Estimated Defect Ratio] =
+      [CR_vs_COMP/Estimated Defect Ratio];
+[DLDR_vs_UT/Defect Ratio] =
+      sumFor("Defects Removed", [/TSP/DLDR_Phase_List]) / 
+      sumFor("Defects Removed", [/TSP/UT_Phase_List]);
+[Design Review vs Test/Defect Ratio] =
+      [DLDR_vs_UT/Defect Ratio];
+[CR_vs_COMP/Defect Ratio] =
+      sumFor("Defects Removed", [/TSP/CR_Phase_List]) / 
+      sumFor("Defects Removed", [/TSP/COMP_Phase_List]);
+[Code Review vs Compile/Defect Ratio] =
+      [CR_vs_COMP/Defect Ratio];
+
+
+
+
+/*
+ * Calculate development time ratios.
+ */
+
+[/TSP/Text Pages_Development_Phase_List] = "Sys Test PlanInt Test PlanTest DevelDocumentation";
+[/TSP/Text Pages_Appraisal_Phase_List] = "";
+[/TSP/Text Pages_Phase_List] = "Sys Test PlanInt Test PlanTest DevelDocumentation";
+[/TSP/Req Pages_Development_Phase_List] = "Reqts";
+[/TSP/Req Pages_Appraisal_Phase_List] = "Reqts ReviewReqts Inspect";
+[/TSP/Req Pages_Phase_List] = "ReqtsReqts ReviewReqts Inspect";
+[/TSP/HLD Pages_Development_Phase_List] = "HLD";
+[/TSP/HLD Pages_Appraisal_Phase_List] = "HLD ReviewHLD Inspect";
+[/TSP/HLD Pages_Phase_List] = "HLDHLD ReviewHLD Inspect";
+
+[/TSP/DLD Lines_Development_Phase_List] = "Design";
+[/TSP/DLD Lines_Appraisal_Phase_List] = "Design ReviewDesign Inspect";
+[/TSP/New & Changed LOC_Phase_List] = "MiscStrategyPlanningDesignDesign ReviewDesign InspectCodeCode ReviewCompileCode InspectTestInt TestSys TestAccept TestPostmortemProduct Life";
+[/TSP/All_Sizes_Development_Phase_List] = "ReqtsSys Test PlanHLDInt Test PlanDesignTest DevelCodeDocumentation";
+
+
+[Text Pages/Estimated Appraisal Time Ratio] =
+      sumFor("Estimated Time", [/TSP/Text Pages_Appraisal_Phase_List]) / 
+      sumFor("Estimated Time", [/TSP/Text Pages_Development_Phase_List]);
+[Req Pages/Estimated Appraisal Time Ratio] =
+      sumFor("Estimated Time", [/TSP/Req Pages_Appraisal_Phase_List]) / 
+      sumFor("Estimated Time", [/TSP/Req Pages_Development_Phase_List]);
+[HLD Pages/Estimated Appraisal Time Ratio] =
+      sumFor("Estimated Time", [/TSP/HLD Pages_Appraisal_Phase_List]) / 
+      sumFor("Estimated Time", [/TSP/HLD Pages_Development_Phase_List]);
+
+
+[DLD_vs_CODE/Estimated Time Ratio] =
+      sumFor("Estimated Time", [/TSP/DLD_Phase_List]) / 
+      sumFor("Estimated Time", [/TSP/CODE_Phase_List]);
+[Design vs Code/Estimated Time Ratio] =
+      [DLD_vs_CODE/Estimated Time Ratio];
+
+[DLDR_vs_DLD/Estimated Time Ratio] =
+      sumFor("Estimated Time", [/TSP/DLDR_Phase_List]) / 
+      sumFor("Estimated Time", [/TSP/DLD_Phase_List]);
+[Design Review vs Design/Estimated Time Ratio] =
+      [DLDR_vs_DLD/Estimated Time Ratio];
+
+[CR_vs_CODE/Estimated Time Ratio] =
+      sumFor("Estimated Time", [/TSP/CR_Phase_List]) / 
+      sumFor("Estimated Time", [/TSP/CODE_Phase_List]);
+[Code Review vs Code/Estimated Time Ratio] =
+      [CR_vs_CODE/Estimated Time Ratio];
+[Text Pages/Appraisal Time Ratio] =
+      sumFor("Time", [/TSP/Text Pages_Appraisal_Phase_List]) / 
+      sumFor("Time", [/TSP/Text Pages_Development_Phase_List]);
+[Req Pages/Appraisal Time Ratio] =
+      sumFor("Time", [/TSP/Req Pages_Appraisal_Phase_List]) / 
+      sumFor("Time", [/TSP/Req Pages_Development_Phase_List]);
+[HLD Pages/Appraisal Time Ratio] =
+      sumFor("Time", [/TSP/HLD Pages_Appraisal_Phase_List]) / 
+      sumFor("Time", [/TSP/HLD Pages_Development_Phase_List]);
+
+
+[DLD_vs_CODE/Time Ratio] =
+      sumFor("Time", [/TSP/DLD_Phase_List]) / 
+      sumFor("Time", [/TSP/CODE_Phase_List]);
+[Design vs Code/Time Ratio] =
+      [DLD_vs_CODE/Time Ratio];
+
+[DLDR_vs_DLD/Time Ratio] =
+      sumFor("Time", [/TSP/DLDR_Phase_List]) / 
+      sumFor("Time", [/TSP/DLD_Phase_List]);
+[Design Review vs Design/Time Ratio] =
+      [DLDR_vs_DLD/Time Ratio];
+
+[CR_vs_CODE/Time Ratio] =
+      sumFor("Time", [/TSP/CR_Phase_List]) / 
+      sumFor("Time", [/TSP/CODE_Phase_List]);
+[Code Review vs Code/Time Ratio] =
+      [CR_vs_CODE/Time Ratio];
+
+
+[/TSP/DRP_Phase_List] = "Design ReviewDesign InspectCode ReviewCompileCode InspectTestInt TestSys TestAccept TestProduct Life";
+
+
+/*
+ * Productivity calculations for individual size metrics
+ */
+
+[Estimated New & Changed LOC Productivity] =
+      [Estimated New & Changed LOC] * 60 /
+      sumFor("Estimated Time", [/TSP/New & Changed LOC_Phase_List]);
+[Estimated End to End New & Changed LOC Productivity] =
+      [Estimated New & Changed LOC] * 60 / [Estimated Time];
+[Estimated Text Pages Productivity] =
+      [Estimated Text Pages] * 60 /
+      sumFor("Estimated Time", [/TSP/Text Pages_Phase_List]);
+[Estimated End to End Text Pages Productivity] =
+      [Estimated Text Pages] * 60 / [Estimated Time];
+[Estimated Req Pages Productivity] =
+      [Estimated Req Pages] * 60 /
+      sumFor("Estimated Time", [/TSP/Req Pages_Phase_List]);
+[Estimated End to End Req Pages Productivity] =
+      [Estimated Req Pages] * 60 / [Estimated Time];
+[Estimated HLD Pages Productivity] =
+      [Estimated HLD Pages] * 60 /
+      sumFor("Estimated Time", [/TSP/HLD Pages_Phase_List]);
+[Estimated End to End HLD Pages Productivity] =
+      [Estimated HLD Pages] * 60 / [Estimated Time];
+
+
+[New & Changed LOC Productivity] =
+      [New & Changed LOC] * 60 /
+      sumFor("Time", [/TSP/New & Changed LOC_Phase_List]);
+[End to End New & Changed LOC Productivity] =
+      [New & Changed LOC] * 60 / [Time];
+[Text Pages Productivity] =
+      [Text Pages] * 60 /
+      sumFor("Time", [/TSP/Text Pages_Phase_List]);
+[End to End Text Pages Productivity] =
+      [Text Pages] * 60 / [Time];
+[Req Pages Productivity] =
+      [Req Pages] * 60 /
+      sumFor("Time", [/TSP/Req Pages_Phase_List]);
+[End to End Req Pages Productivity] =
+      [Req Pages] * 60 / [Time];
+[HLD Pages Productivity] =
+      [HLD Pages] * 60 /
+      sumFor("Time", [/TSP/HLD Pages_Phase_List]);
+[End to End HLD Pages Productivity] =
+      [HLD Pages] * 60 / [Time];
+
+
+
+
+
+/*
+ * Calculations for the quality profile
+ */
+
+
+
+[QP_Estimated DLD_Time] = sumFor("Estimated Time", [/TSP/DLD_Phase_List]);
+[QP_Estimated DLDR_Time] = sumFor("Estimated Time", [/TSP/DLDR_Phase_List]);
+[QP_Estimated CODE_Time] = sumFor("Estimated Time", [/TSP/CODE_Phase_List]);
+[QP_Estimated CR_Time] = sumFor("Estimated Time", [/TSP/CR_Phase_List]);
+[QP_Estimated COMP_Def]= sumFor("Estimated Defect Density", [/TSP/COMP_Phase_List]);
+[QP_Estimated UT_Def] = sumFor("Estimated Defect Density", [/TSP/UT_Phase_List]);
+
+[Estimated Quality_Profile_1] = nvl([QP_Estimated DLD_Time] /
+    ([QP_Estimated CODE_Time] * inherit("Target Design/Code Ratio")), 1);
+
+[Estimated Quality_Profile_2] = nvl([QP_Estimated CR_Time] /
+    ([QP_Estimated CODE_Time] * inherit("Target Code Review/Code Ratio")), 1);
+
+[Estimated Quality_Profile_3] = nvl(2 / (1 + [QP_Estimated COMP_Def] /
+    inherit("Target Compile Defect Density")), 1);
+
+[Estimated Quality_Profile_4] = nvl(2 / (1 + [QP_Estimated UT_Def] /
+    inherit("Target Test Defect Density")), 1);
+
+[Estimated Quality_Profile_5] = nvl([QP_Estimated DLDR_Time] /
+    ([QP_Estimated DLD_Time] * inherit("Target Design Review/Design Ratio")),
+    1);
+
+[Estimated PQI] = 
+    min(1, max(0, [Estimated Quality_Profile_1])) *
+    min(1, max(0, [Estimated Quality_Profile_2])) *
+    min(1, max(0, [Estimated Quality_Profile_3])) *
+    min(1, max(0, [Estimated Quality_Profile_4])) *
+    min(1, max(0, [Estimated Quality_Profile_5]));
+
+
+
+[QP_DLD_Time] = sumFor("Time", [/TSP/DLD_Phase_List]);
+[QP_DLDR_Time] = sumFor("Time", [/TSP/DLDR_Phase_List]);
+[QP_CODE_Time] = sumFor("Time", [/TSP/CODE_Phase_List]);
+[QP_CR_Time] = sumFor("Time", [/TSP/CR_Phase_List]);
+[QP_COMP_Def]= sumFor("Defect Density", [/TSP/COMP_Phase_List]);
+[QP_UT_Def] = sumFor("Defect Density", [/TSP/UT_Phase_List]);
+
+[Quality_Profile_1] = nvl([QP_DLD_Time] /
+    ([QP_CODE_Time] * inherit("Target Design/Code Ratio")), 1);
+
+[Quality_Profile_2] = nvl([QP_CR_Time] /
+    ([QP_CODE_Time] * inherit("Target Code Review/Code Ratio")), 1);
+
+[Quality_Profile_3] = nvl(2 / (1 + [QP_COMP_Def] /
+    inherit("Target Compile Defect Density")), 1);
+
+[Quality_Profile_4] = nvl(2 / (1 + [QP_UT_Def] /
+    inherit("Target Test Defect Density")), 1);
+
+[Quality_Profile_5] = nvl([QP_DLDR_Time] /
+    ([QP_DLD_Time] * inherit("Target Design Review/Design Ratio")),
+    1);
+
+[PQI] = 
+    min(1, max(0, [Quality_Profile_1])) *
+    min(1, max(0, [Quality_Profile_2])) *
+    min(1, max(0, [Quality_Profile_3])) *
+    min(1, max(0, [Quality_Profile_4])) *
+    min(1, max(0, [Quality_Profile_5]));
+
+
+
+/*
+ * Store the full names of the phases for reference.
+ */
+[/TSP/Misc/Phase_Long_Name] =
+    "Management and Miscellaneous";
+[/TSP/Strategy/Phase_Long_Name] =
+    "Launch and Strategy";
+[/TSP/Planning/Phase_Long_Name] =
+    "Planning";
+[/TSP/Reqts/Phase_Long_Name] =
+    "Requirements";
+[/TSP/Sys Test Plan/Phase_Long_Name] =
+    "System Test Plan";
+[/TSP/Reqts Review/Phase_Long_Name] =
+    "Requirements Review";
+[/TSP/Reqts Inspect/Phase_Long_Name] =
+    "Requirements Inspection";
+[/TSP/HLD/Phase_Long_Name] =
+    "High-Level Design";
+[/TSP/Int Test Plan/Phase_Long_Name] =
+    "Integration Test Plan";
+[/TSP/HLD Review/Phase_Long_Name] =
+    "HLD Review";
+[/TSP/HLD Inspect/Phase_Long_Name] =
+    "HLD Inspection";
+[/TSP/Design/Phase_Long_Name] =
+    "Detailed Design";
+[/TSP/Design Review/Phase_Long_Name] =
+    "Detailed Design Review";
+[/TSP/Test Devel/Phase_Long_Name] =
+    "Test Development";
+[/TSP/Design Inspect/Phase_Long_Name] =
+    "Detailed Design Inspection";
+[/TSP/Code/Phase_Long_Name] =
+    "Code";
+[/TSP/Code Review/Phase_Long_Name] =
+    "Code Review";
+[/TSP/Compile/Phase_Long_Name] =
+    "Compile";
+[/TSP/Code Inspect/Phase_Long_Name] =
+    "Code Inspection";
+[/TSP/Test/Phase_Long_Name] =
+    "Unit Test";
+[/TSP/Int Test/Phase_Long_Name] =
+    "Build and Integration Test";
+[/TSP/Sys Test/Phase_Long_Name] =
+    "System Test";
+[/TSP/Documentation/Phase_Long_Name] =
+    "Documentation";
+[/TSP/Accept Test/Phase_Long_Name] =
+    "Acceptance Test";
+[/TSP/Postmortem/Phase_Long_Name] =
+    "Postmortem";
+[/TSP/Product Life/Phase_Long_Name] =
+    "Product Life";
+
+
+/*
+ * Store the colors of the phases if they were specified.
+ */
+[/TSP/Misc/Phase_Color] == "#bbbbbb";
+[/TSP/Strategy/Phase_Color] == "#e6be8c";
+[/TSP/Planning/Phase_Color] == "#bf9f75";
+[/TSP/Reqts/Phase_Color] == "#00ffff";
+[/TSP/Sys Test Plan/Phase_Color] == "#8cba8c";
+[/TSP/Reqts Review/Phase_Color] == "#00bfbf";
+[/TSP/Reqts Inspect/Phase_Color] == "#008080";
+[/TSP/HLD/Phase_Color] == "#cc66ff";
+[/TSP/Int Test Plan/Phase_Color] == "#658765";
+[/TSP/HLD Review/Phase_Color] == "#990099";
+[/TSP/HLD Inspect/Phase_Color] == "#660066";
+[/TSP/Design/Phase_Color] == "#aaaaff";
+[/TSP/Design Review/Phase_Color] == "#6666ff";
+[/TSP/Test Devel/Phase_Color] == "#4d664d";
+[/TSP/Design Inspect/Phase_Color] == "#4545ac";
+[/TSP/Code/Phase_Color] == "#66ff66";
+[/TSP/Code Review/Phase_Color] == "#00c000";
+[/TSP/Compile/Phase_Color] == "#ffcc00";
+[/TSP/Code Inspect/Phase_Color] == "#008c00";
+[/TSP/Test/Phase_Color] == "#ff9900";
+[/TSP/Int Test/Phase_Color] == "#ee4900";
+[/TSP/Sys Test/Phase_Color] == "#dd0000";
+[/TSP/Documentation/Phase_Color] == "#bdb76b";
+[/TSP/Accept Test/Phase_Color] == "#aa0000";
+[/TSP/Postmortem/Phase_Color] == "#996633";
+[/TSP/Product Life/Phase_Color] == "#888888";
+/*
+ * Enable display of the earned value "week" form.
+ */
+[/Enable_EV_Week_form] = TAG;
+
+/*
+ * Provide a hook for customized external document integration.
+ */
+[FILES_XML] = ",/TSP/files.xml,/TSP/files2.xml,";
+
+
+

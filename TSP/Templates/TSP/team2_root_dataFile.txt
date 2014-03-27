@@ -1,0 +1,64 @@
+// 
+// Data file for a team project for TSP(SM)
+//
+
+#include <TSP/team_root_dataFile.txt>
+undefine([Simple Project Tag]);
+
+[TSP Team2 Root Tag] = tag;
+
+[Individuals_Using_Stubless_Phases] = true;
+
+
+/*
+ * Possibly rewrite rollup calculations to work against the database.
+ */
+#ifdef DATABASE_PLUGIN
+
+[DB_Project_ID_List] == [Project_ID];
+[DB_WBS_Relative_Path] = [Project_WBS_ID//Relative_Path_Filter];
+[DB_WBS_Relative_Path_ID] = [Earned_Value//Merged_Path_Filter];
+
+[IMPORT_FILE/Instructions] = list([Project_ID],
+    "file:/TSP/importFilterSpecDB.xml");
+
+#ifdef DATABASE_PLUGIN
+
+#include <TSP/database_rollup.txt>
+
+undefine([Namespaced_Rollup_List], 
+[Namespaced_Rollup_List/Misc],
+[Namespaced_Rollup_List/Strategy],
+[Namespaced_Rollup_List/Planning],
+[Namespaced_Rollup_List/Reqts],
+[Namespaced_Rollup_List/Sys Test Plan],
+[Namespaced_Rollup_List/Reqts Review],
+[Namespaced_Rollup_List/Reqts Inspect],
+[Namespaced_Rollup_List/HLD],
+[Namespaced_Rollup_List/Int Test Plan],
+[Namespaced_Rollup_List/HLD Review],
+[Namespaced_Rollup_List/HLD Inspect],
+[Namespaced_Rollup_List/Design],
+[Namespaced_Rollup_List/Design Review],
+[Namespaced_Rollup_List/Test Devel],
+[Namespaced_Rollup_List/Design Inspect],
+[Namespaced_Rollup_List/Code],
+[Namespaced_Rollup_List/Code Review],
+[Namespaced_Rollup_List/Compile],
+[Namespaced_Rollup_List/Code Inspect],
+[Namespaced_Rollup_List/Test],
+[Namespaced_Rollup_List/Int Test],
+[Namespaced_Rollup_List/Sys Test],
+[Namespaced_Rollup_List/Documentation],
+[Namespaced_Rollup_List/Accept Test],
+[Namespaced_Rollup_List/Postmortem],
+[Namespaced_Rollup_List/Product Life],
+
+    [Namespaced_Rollup_List/Uncategorized],
+    [Unadorned_Rollup_List],
+    [Printable_Rollup_List]);
+
+#endif
+
+
+#endif

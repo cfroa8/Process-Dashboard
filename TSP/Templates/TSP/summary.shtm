@@ -1,0 +1,11 @@
+<html><head>
+<!--#if [TSP Master Root Tag] || [TSP Team Root Tag] -->
+  
+    <meta http-equiv="Refresh" CONTENT="0;URL=../cms/TSP/rollup_plan_summary">
+  
+<!--#elif [TSP Indiv2 Root Tag] -->
+    <meta http-equiv="Refresh" CONTENT="0;URL=../cms/TSP/indiv_plan_summary">
+<!--#else-->
+    <meta http-equiv="Refresh" CONTENT="0;URL=plan_summary.shtm">
+<!--#endif-->
+</head><body>&nbsp;</body></html>

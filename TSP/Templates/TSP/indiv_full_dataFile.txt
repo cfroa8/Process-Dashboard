@@ -1,0 +1,616 @@
+//
+// This is the datafile for the TSP(SM) process.
+//
+
+#include <TSP/prototype_dataFile.txt> exclude (
+    ".*So_Far", ".*Phase Yield", ".*Process Yield",
+    ".*Time Ratio", ".*Defect Ratio", "Total Development /.*",
+     ".*Quality_Profile.*", "QP_.*",
+//    [TSP-rollup-prototype],
+    [TSP-rollup-prototype Tag]
+)
+[Project_WBS_ID] = [../Project_WBS_ID] &/ pathTail([^]);
+
+
+/*
+ * Get a list of the subtasks immediately underneath this task.
+ */
+[Subtask_List] = filter(startsWith([^] & "/"),
+	                [/TSP/Full Project List]);
+[Immediate_Subtask_List] = filter(chopPath() == [^], [Subtask_List]);
+
+/*
+ * Get a list of the phases immediately underneath this task.
+ */
+[Immediate_Phase_List] = filter(indirect([_] &/ "node"), [Phase_List]);
+
+/*
+ * Redefine the child list to include phases and subtasks. This will cause
+ * time and defect totals to include subtasks.
+ */
+[Child_List] = [Phase_List] & [Immediate_Subtask_List];
+
+
+/*
+ * Redefine Estimated Time for user convenience purposes.  If there is
+ * only one immediate subtask, or only one immediate phase, the resulting
+ * Estimated Time will be an alias to that item, and will therefore be 
+ * editable.
+ */
+[Estimated Time] = sumFor("Estimated Time",
+                          [Immediate_Subtask_List], [Immediate_Phase_List]);
+
+
+/*
+ * Calculate accumulated size metrics.
+ */
+
+[Local_Sized_Object_List//All] =
+    filter(([^] == chopPath(chopPath([_]))), inherit("Sized_Object_List"));
+
+[Local_Sized_Object_List//Text Pages] =
+    filter(eval("[Sized_Object_Units] == \"Text Pages\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Sub_tasks /Estimated Text Pages] =
+    sumFor("Estimated Text Pages", [Subtask_List]);
+[Total_Plus_Subtasks/Estimated Text Pages] =
+    [Estimated Text Pages] + [Sub_tasks /Estimated Text Pages];
+[Estimated Text Pages] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//Text Pages]);
+
+[Sub_tasks /Text Pages] =
+    sumFor("Text Pages", [Subtask_List]);
+[Total_Plus_Subtasks/Text Pages] =
+    [Text Pages] + [Sub_tasks /Text Pages];
+[Text Pages] =
+    0 + sumFor("Size", [Local_Sized_Object_List//Text Pages]);
+
+
+[Local_Sized_Object_List//Inspected Text Pages] =
+    filter(eval("[Sized_Object_Units] == \"Inspected Text Pages\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Sub_tasks /Estimated Inspected Text Pages] =
+    sumFor("Estimated Inspected Text Pages", [Subtask_List]);
+[Total_Plus_Subtasks/Estimated Inspected Text Pages] =
+    [Estimated Inspected Text Pages] + [Sub_tasks /Estimated Inspected Text Pages];
+[Estimated Inspected Text Pages] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//Inspected Text Pages]);
+
+[Sub_tasks /Inspected Text Pages] =
+    sumFor("Inspected Text Pages", [Subtask_List]);
+[Total_Plus_Subtasks/Inspected Text Pages] =
+    [Inspected Text Pages] + [Sub_tasks /Inspected Text Pages];
+[Inspected Text Pages] =
+    0 + sumFor("Size", [Local_Sized_Object_List//Inspected Text Pages]);
+
+
+
+[Local_Sized_Object_List//Req Pages] =
+    filter(eval("[Sized_Object_Units] == \"Req Pages\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Sub_tasks /Estimated Req Pages] =
+    sumFor("Estimated Req Pages", [Subtask_List]);
+[Total_Plus_Subtasks/Estimated Req Pages] =
+    [Estimated Req Pages] + [Sub_tasks /Estimated Req Pages];
+[Estimated Req Pages] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//Req Pages]);
+
+[Sub_tasks /Req Pages] =
+    sumFor("Req Pages", [Subtask_List]);
+[Total_Plus_Subtasks/Req Pages] =
+    [Req Pages] + [Sub_tasks /Req Pages];
+[Req Pages] =
+    0 + sumFor("Size", [Local_Sized_Object_List//Req Pages]);
+
+
+[Local_Sized_Object_List//Inspected Req Pages] =
+    filter(eval("[Sized_Object_Units] == \"Inspected Req Pages\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Sub_tasks /Estimated Inspected Req Pages] =
+    sumFor("Estimated Inspected Req Pages", [Subtask_List]);
+[Total_Plus_Subtasks/Estimated Inspected Req Pages] =
+    [Estimated Inspected Req Pages] + [Sub_tasks /Estimated Inspected Req Pages];
+[Estimated Inspected Req Pages] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//Inspected Req Pages]);
+
+[Sub_tasks /Inspected Req Pages] =
+    sumFor("Inspected Req Pages", [Subtask_List]);
+[Total_Plus_Subtasks/Inspected Req Pages] =
+    [Inspected Req Pages] + [Sub_tasks /Inspected Req Pages];
+[Inspected Req Pages] =
+    0 + sumFor("Size", [Local_Sized_Object_List//Inspected Req Pages]);
+
+
+
+[Local_Sized_Object_List//HLD Pages] =
+    filter(eval("[Sized_Object_Units] == \"HLD Pages\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Sub_tasks /Estimated HLD Pages] =
+    sumFor("Estimated HLD Pages", [Subtask_List]);
+[Total_Plus_Subtasks/Estimated HLD Pages] =
+    [Estimated HLD Pages] + [Sub_tasks /Estimated HLD Pages];
+[Estimated HLD Pages] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//HLD Pages]);
+
+[Sub_tasks /HLD Pages] =
+    sumFor("HLD Pages", [Subtask_List]);
+[Total_Plus_Subtasks/HLD Pages] =
+    [HLD Pages] + [Sub_tasks /HLD Pages];
+[HLD Pages] =
+    0 + sumFor("Size", [Local_Sized_Object_List//HLD Pages]);
+
+
+[Local_Sized_Object_List//Inspected HLD Pages] =
+    filter(eval("[Sized_Object_Units] == \"Inspected HLD Pages\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Sub_tasks /Estimated Inspected HLD Pages] =
+    sumFor("Estimated Inspected HLD Pages", [Subtask_List]);
+[Total_Plus_Subtasks/Estimated Inspected HLD Pages] =
+    [Estimated Inspected HLD Pages] + [Sub_tasks /Estimated Inspected HLD Pages];
+[Estimated Inspected HLD Pages] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//Inspected HLD Pages]);
+
+[Sub_tasks /Inspected HLD Pages] =
+    sumFor("Inspected HLD Pages", [Subtask_List]);
+[Total_Plus_Subtasks/Inspected HLD Pages] =
+    [Inspected HLD Pages] + [Sub_tasks /Inspected HLD Pages];
+[Inspected HLD Pages] =
+    0 + sumFor("Size", [Local_Sized_Object_List//Inspected HLD Pages]);
+
+
+
+[Local_Sized_Object_List//DLD Lines] =
+    filter(eval("[Sized_Object_Units] == \"DLD Lines\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Sub_tasks /Estimated DLD Lines] =
+    sumFor("Estimated DLD Lines", [Subtask_List]);
+[Total_Plus_Subtasks/Estimated DLD Lines] =
+    [Estimated DLD Lines] + [Sub_tasks /Estimated DLD Lines];
+[Estimated DLD Lines] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//DLD Lines]);
+
+[Sub_tasks /DLD Lines] =
+    sumFor("DLD Lines", [Subtask_List]);
+[Total_Plus_Subtasks/DLD Lines] =
+    [DLD Lines] + [Sub_tasks /DLD Lines];
+[DLD Lines] =
+    0 + sumFor("Size", [Local_Sized_Object_List//DLD Lines]);
+
+
+[Local_Sized_Object_List//Inspected DLD Lines] =
+    filter(eval("[Sized_Object_Units] == \"Inspected DLD Lines\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Sub_tasks /Estimated Inspected DLD Lines] =
+    sumFor("Estimated Inspected DLD Lines", [Subtask_List]);
+[Total_Plus_Subtasks/Estimated Inspected DLD Lines] =
+    [Estimated Inspected DLD Lines] + [Sub_tasks /Estimated Inspected DLD Lines];
+[Estimated Inspected DLD Lines] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//Inspected DLD Lines]);
+
+[Sub_tasks /Inspected DLD Lines] =
+    sumFor("Inspected DLD Lines", [Subtask_List]);
+[Total_Plus_Subtasks/Inspected DLD Lines] =
+    [Inspected DLD Lines] + [Sub_tasks /Inspected DLD Lines];
+[Inspected DLD Lines] =
+    0 + sumFor("Size", [Local_Sized_Object_List//Inspected DLD Lines]);
+
+
+
+[Local_Sized_Object_List//New & Changed LOC] =
+    filter(eval("[Sized_Object_Units] == \"New & Changed LOC\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Sub_tasks /Estimated New & Changed LOC] =
+    sumFor("Estimated New & Changed LOC", [Subtask_List]);
+[Total_Plus_Subtasks/Estimated New & Changed LOC] =
+    [Estimated New & Changed LOC] + [Sub_tasks /Estimated New & Changed LOC];
+[Estimated New & Changed LOC] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//New & Changed LOC]);
+
+[Sub_tasks /New & Changed LOC] =
+    sumFor("New & Changed LOC", [Subtask_List]);
+[Total_Plus_Subtasks/New & Changed LOC] =
+    [New & Changed LOC] + [Sub_tasks /New & Changed LOC];
+[New & Changed LOC] =
+    0 + sumFor("Size", [Local_Sized_Object_List//New & Changed LOC]);
+
+
+[Local_Sized_Object_List//Inspected New & Changed LOC] =
+    filter(eval("[Sized_Object_Units] == \"Inspected New & Changed LOC\"", [_]),
+           [Local_Sized_Object_List//All]);
+
+[Sub_tasks /Estimated Inspected New & Changed LOC] =
+    sumFor("Estimated Inspected New & Changed LOC", [Subtask_List]);
+[Total_Plus_Subtasks/Estimated Inspected New & Changed LOC] =
+    [Estimated Inspected New & Changed LOC] + [Sub_tasks /Estimated Inspected New & Changed LOC];
+[Estimated Inspected New & Changed LOC] =
+    0 + sumFor("Estimated Size", [Local_Sized_Object_List//Inspected New & Changed LOC]);
+
+[Sub_tasks /Inspected New & Changed LOC] =
+    sumFor("Inspected New & Changed LOC", [Subtask_List]);
+[Total_Plus_Subtasks/Inspected New & Changed LOC] =
+    [Inspected New & Changed LOC] + [Sub_tasks /Inspected New & Changed LOC];
+[Inspected New & Changed LOC] =
+    0 + sumFor("Size", [Local_Sized_Object_List//Inspected New & Changed LOC]);
+
+
+
+
+
+/*
+ * Alter calculations for summary metrics to include subtasks.
+ */
+
+[Estimated Productivity] =
+    60 * [Total_Plus_Subtasks/Estimated New & Changed LOC] / [Estimated Time];
+[Productivity] = 60 * [Total_Plus_Subtasks/New & Changed LOC] / [Time];
+[Size Estimating Error] = ([Total_Plus_Subtasks/New & Changed LOC] - [Total_Plus_Subtasks/Estimated New & Changed LOC]) / [Total_Plus_Subtasks/Estimated New & Changed LOC];
+
+
+
+/*
+ * Don't try to calculate the estimated defects removed by phase.
+ */
+
+[Misc/Estimated Defects Removed] = 0;
+
+[Strategy/Estimated Defects Removed] = 0;
+
+[Planning/Estimated Defects Removed] = 0;
+
+[Reqts/Estimated Defects Removed] = 0;
+
+[Sys Test Plan/Estimated Defects Removed] = 0;
+
+[Reqts Review/Estimated Defects Removed] = 0;
+
+[Reqts Inspect/Estimated Defects Removed] = 0;
+
+[HLD/Estimated Defects Removed] = 0;
+
+[Int Test Plan/Estimated Defects Removed] = 0;
+
+[HLD Review/Estimated Defects Removed] = 0;
+
+[HLD Inspect/Estimated Defects Removed] = 0;
+
+[Design/Estimated Defects Removed] = 0;
+
+[Design Review/Estimated Defects Removed] = 0;
+
+[Test Devel/Estimated Defects Removed] = 0;
+
+[Design Inspect/Estimated Defects Removed] = 0;
+
+[Code/Estimated Defects Removed] = 0;
+
+[Code Review/Estimated Defects Removed] = 0;
+
+[Compile/Estimated Defects Removed] = 0;
+
+[Code Inspect/Estimated Defects Removed] = 0;
+
+[Test/Estimated Defects Removed] = 0;
+
+[Int Test/Estimated Defects Removed] = 0;
+
+[Sys Test/Estimated Defects Removed] = 0;
+
+[Documentation/Estimated Defects Removed] = 0;
+
+[Accept Test/Estimated Defects Removed] = 0;
+
+[Postmortem/Estimated Defects Removed] = 0;
+
+[Product Life/Estimated Defects Removed] = 0;
+
+
+
+/*
+ * Remove definitions for items we don't need.
+ */
+undefine(
+[Misc/Defects Injected per Hour],
+    [Misc/Estimated Defects Removed per Hour],
+    [Misc/Defects Removed per Hour],
+    [Misc/Estimated Defect Injection Density],
+    [Misc/Defect Injection Density],
+    [Misc/Estimated Defect Density],
+    [Misc/Defect Density],
+    [Misc/Estimated DRL],
+    [Misc/DRL],
+    [Misc/Estimated Appraisal Rate],
+    [Misc/Appraisal Rate],
+[Strategy/Defects Injected per Hour],
+    [Strategy/Estimated Defects Removed per Hour],
+    [Strategy/Defects Removed per Hour],
+    [Strategy/Estimated Defect Injection Density],
+    [Strategy/Defect Injection Density],
+    [Strategy/Estimated Defect Density],
+    [Strategy/Defect Density],
+    [Strategy/Estimated DRL],
+    [Strategy/DRL],
+    [Strategy/Estimated Appraisal Rate],
+    [Strategy/Appraisal Rate],
+[Planning/Defects Injected per Hour],
+    [Planning/Estimated Defects Removed per Hour],
+    [Planning/Defects Removed per Hour],
+    [Planning/Estimated Defect Injection Density],
+    [Planning/Defect Injection Density],
+    [Planning/Estimated Defect Density],
+    [Planning/Defect Density],
+    [Planning/Estimated DRL],
+    [Planning/DRL],
+    [Planning/Estimated Appraisal Rate],
+    [Planning/Appraisal Rate],
+[Reqts/Defects Injected per Hour],
+    [Reqts/Estimated Defects Removed per Hour],
+    [Reqts/Defects Removed per Hour],
+    [Reqts/Estimated Defect Injection Density],
+    [Reqts/Defect Injection Density],
+    [Reqts/Estimated Defect Density],
+    [Reqts/Defect Density],
+    [Reqts/Estimated DRL],
+    [Reqts/DRL],
+    [Reqts/Estimated Appraisal Rate],
+    [Reqts/Appraisal Rate],
+[Sys Test Plan/Defects Injected per Hour],
+    [Sys Test Plan/Estimated Defects Removed per Hour],
+    [Sys Test Plan/Defects Removed per Hour],
+    [Sys Test Plan/Estimated Defect Injection Density],
+    [Sys Test Plan/Defect Injection Density],
+    [Sys Test Plan/Estimated Defect Density],
+    [Sys Test Plan/Defect Density],
+    [Sys Test Plan/Estimated DRL],
+    [Sys Test Plan/DRL],
+    [Sys Test Plan/Estimated Appraisal Rate],
+    [Sys Test Plan/Appraisal Rate],
+[Reqts Review/Defects Injected per Hour],
+    [Reqts Review/Estimated Defects Removed per Hour],
+    [Reqts Review/Defects Removed per Hour],
+    [Reqts Review/Estimated Defect Injection Density],
+    [Reqts Review/Defect Injection Density],
+    [Reqts Review/Estimated Defect Density],
+    [Reqts Review/Defect Density],
+    [Reqts Review/Estimated DRL],
+    [Reqts Review/DRL],
+    [Reqts Review/Estimated Appraisal Rate],
+    [Reqts Review/Appraisal Rate],
+[Reqts Inspect/Defects Injected per Hour],
+    [Reqts Inspect/Estimated Defects Removed per Hour],
+    [Reqts Inspect/Defects Removed per Hour],
+    [Reqts Inspect/Estimated Defect Injection Density],
+    [Reqts Inspect/Defect Injection Density],
+    [Reqts Inspect/Estimated Defect Density],
+    [Reqts Inspect/Defect Density],
+    [Reqts Inspect/Estimated DRL],
+    [Reqts Inspect/DRL],
+    [Reqts Inspect/Estimated Appraisal Rate],
+    [Reqts Inspect/Appraisal Rate],
+[HLD/Defects Injected per Hour],
+    [HLD/Estimated Defects Removed per Hour],
+    [HLD/Defects Removed per Hour],
+    [HLD/Estimated Defect Injection Density],
+    [HLD/Defect Injection Density],
+    [HLD/Estimated Defect Density],
+    [HLD/Defect Density],
+    [HLD/Estimated DRL],
+    [HLD/DRL],
+    [HLD/Estimated Appraisal Rate],
+    [HLD/Appraisal Rate],
+[Int Test Plan/Defects Injected per Hour],
+    [Int Test Plan/Estimated Defects Removed per Hour],
+    [Int Test Plan/Defects Removed per Hour],
+    [Int Test Plan/Estimated Defect Injection Density],
+    [Int Test Plan/Defect Injection Density],
+    [Int Test Plan/Estimated Defect Density],
+    [Int Test Plan/Defect Density],
+    [Int Test Plan/Estimated DRL],
+    [Int Test Plan/DRL],
+    [Int Test Plan/Estimated Appraisal Rate],
+    [Int Test Plan/Appraisal Rate],
+[HLD Review/Defects Injected per Hour],
+    [HLD Review/Estimated Defects Removed per Hour],
+    [HLD Review/Defects Removed per Hour],
+    [HLD Review/Estimated Defect Injection Density],
+    [HLD Review/Defect Injection Density],
+    [HLD Review/Estimated Defect Density],
+    [HLD Review/Defect Density],
+    [HLD Review/Estimated DRL],
+    [HLD Review/DRL],
+    [HLD Review/Estimated Appraisal Rate],
+    [HLD Review/Appraisal Rate],
+[HLD Inspect/Defects Injected per Hour],
+    [HLD Inspect/Estimated Defects Removed per Hour],
+    [HLD Inspect/Defects Removed per Hour],
+    [HLD Inspect/Estimated Defect Injection Density],
+    [HLD Inspect/Defect Injection Density],
+    [HLD Inspect/Estimated Defect Density],
+    [HLD Inspect/Defect Density],
+    [HLD Inspect/Estimated DRL],
+    [HLD Inspect/DRL],
+    [HLD Inspect/Estimated Appraisal Rate],
+    [HLD Inspect/Appraisal Rate],
+[Design/Defects Injected per Hour],
+    [Design/Estimated Defects Removed per Hour],
+    [Design/Defects Removed per Hour],
+    [Design/Estimated Defect Injection Density],
+    [Design/Defect Injection Density],
+    [Design/Estimated Defect Density],
+    [Design/Defect Density],
+    [Design/Estimated DRL],
+    [Design/DRL],
+    [Design/Estimated Appraisal Rate],
+    [Design/Appraisal Rate],
+[Design Review/Defects Injected per Hour],
+    [Design Review/Estimated Defects Removed per Hour],
+    [Design Review/Defects Removed per Hour],
+    [Design Review/Estimated Defect Injection Density],
+    [Design Review/Defect Injection Density],
+    [Design Review/Estimated Defect Density],
+    [Design Review/Defect Density],
+    [Design Review/Estimated DRL],
+    [Design Review/DRL],
+    [Design Review/Estimated Appraisal Rate],
+    [Design Review/Appraisal Rate],
+[Test Devel/Defects Injected per Hour],
+    [Test Devel/Estimated Defects Removed per Hour],
+    [Test Devel/Defects Removed per Hour],
+    [Test Devel/Estimated Defect Injection Density],
+    [Test Devel/Defect Injection Density],
+    [Test Devel/Estimated Defect Density],
+    [Test Devel/Defect Density],
+    [Test Devel/Estimated DRL],
+    [Test Devel/DRL],
+    [Test Devel/Estimated Appraisal Rate],
+    [Test Devel/Appraisal Rate],
+[Design Inspect/Defects Injected per Hour],
+    [Design Inspect/Estimated Defects Removed per Hour],
+    [Design Inspect/Defects Removed per Hour],
+    [Design Inspect/Estimated Defect Injection Density],
+    [Design Inspect/Defect Injection Density],
+    [Design Inspect/Estimated Defect Density],
+    [Design Inspect/Defect Density],
+    [Design Inspect/Estimated DRL],
+    [Design Inspect/DRL],
+    [Design Inspect/Estimated Appraisal Rate],
+    [Design Inspect/Appraisal Rate],
+[Code/Defects Injected per Hour],
+    [Code/Estimated Defects Removed per Hour],
+    [Code/Defects Removed per Hour],
+    [Code/Estimated Defect Injection Density],
+    [Code/Defect Injection Density],
+    [Code/Estimated Defect Density],
+    [Code/Defect Density],
+    [Code/Estimated DRL],
+    [Code/DRL],
+    [Code/Estimated Appraisal Rate],
+    [Code/Appraisal Rate],
+[Code Review/Defects Injected per Hour],
+    [Code Review/Estimated Defects Removed per Hour],
+    [Code Review/Defects Removed per Hour],
+    [Code Review/Estimated Defect Injection Density],
+    [Code Review/Defect Injection Density],
+    [Code Review/Estimated Defect Density],
+    [Code Review/Defect Density],
+    [Code Review/Estimated DRL],
+    [Code Review/DRL],
+    [Code Review/Estimated Appraisal Rate],
+    [Code Review/Appraisal Rate],
+[Compile/Defects Injected per Hour],
+    [Compile/Estimated Defects Removed per Hour],
+    [Compile/Defects Removed per Hour],
+    [Compile/Estimated Defect Injection Density],
+    [Compile/Defect Injection Density],
+    [Compile/Estimated Defect Density],
+    [Compile/Defect Density],
+    [Compile/Estimated DRL],
+    [Compile/DRL],
+    [Compile/Estimated Appraisal Rate],
+    [Compile/Appraisal Rate],
+[Code Inspect/Defects Injected per Hour],
+    [Code Inspect/Estimated Defects Removed per Hour],
+    [Code Inspect/Defects Removed per Hour],
+    [Code Inspect/Estimated Defect Injection Density],
+    [Code Inspect/Defect Injection Density],
+    [Code Inspect/Estimated Defect Density],
+    [Code Inspect/Defect Density],
+    [Code Inspect/Estimated DRL],
+    [Code Inspect/DRL],
+    [Code Inspect/Estimated Appraisal Rate],
+    [Code Inspect/Appraisal Rate],
+[Test/Defects Injected per Hour],
+    [Test/Estimated Defects Removed per Hour],
+    [Test/Defects Removed per Hour],
+    [Test/Estimated Defect Injection Density],
+    [Test/Defect Injection Density],
+    [Test/Estimated Defect Density],
+    [Test/Defect Density],
+    [Test/Estimated DRL],
+    [Test/DRL],
+    [Test/Estimated Appraisal Rate],
+    [Test/Appraisal Rate],
+[Int Test/Defects Injected per Hour],
+    [Int Test/Estimated Defects Removed per Hour],
+    [Int Test/Defects Removed per Hour],
+    [Int Test/Estimated Defect Injection Density],
+    [Int Test/Defect Injection Density],
+    [Int Test/Estimated Defect Density],
+    [Int Test/Defect Density],
+    [Int Test/Estimated DRL],
+    [Int Test/DRL],
+    [Int Test/Estimated Appraisal Rate],
+    [Int Test/Appraisal Rate],
+[Sys Test/Defects Injected per Hour],
+    [Sys Test/Estimated Defects Removed per Hour],
+    [Sys Test/Defects Removed per Hour],
+    [Sys Test/Estimated Defect Injection Density],
+    [Sys Test/Defect Injection Density],
+    [Sys Test/Estimated Defect Density],
+    [Sys Test/Defect Density],
+    [Sys Test/Estimated DRL],
+    [Sys Test/DRL],
+    [Sys Test/Estimated Appraisal Rate],
+    [Sys Test/Appraisal Rate],
+[Documentation/Defects Injected per Hour],
+    [Documentation/Estimated Defects Removed per Hour],
+    [Documentation/Defects Removed per Hour],
+    [Documentation/Estimated Defect Injection Density],
+    [Documentation/Defect Injection Density],
+    [Documentation/Estimated Defect Density],
+    [Documentation/Defect Density],
+    [Documentation/Estimated DRL],
+    [Documentation/DRL],
+    [Documentation/Estimated Appraisal Rate],
+    [Documentation/Appraisal Rate],
+[Accept Test/Defects Injected per Hour],
+    [Accept Test/Estimated Defects Removed per Hour],
+    [Accept Test/Defects Removed per Hour],
+    [Accept Test/Estimated Defect Injection Density],
+    [Accept Test/Defect Injection Density],
+    [Accept Test/Estimated Defect Density],
+    [Accept Test/Defect Density],
+    [Accept Test/Estimated DRL],
+    [Accept Test/DRL],
+    [Accept Test/Estimated Appraisal Rate],
+    [Accept Test/Appraisal Rate],
+[Postmortem/Defects Injected per Hour],
+    [Postmortem/Estimated Defects Removed per Hour],
+    [Postmortem/Defects Removed per Hour],
+    [Postmortem/Estimated Defect Injection Density],
+    [Postmortem/Defect Injection Density],
+    [Postmortem/Estimated Defect Density],
+    [Postmortem/Defect Density],
+    [Postmortem/Estimated DRL],
+    [Postmortem/DRL],
+    [Postmortem/Estimated Appraisal Rate],
+    [Postmortem/Appraisal Rate],
+[Product Life/Defects Injected per Hour],
+    [Product Life/Estimated Defects Removed per Hour],
+    [Product Life/Defects Removed per Hour],
+    [Product Life/Estimated Defect Injection Density],
+    [Product Life/Defect Injection Density],
+    [Product Life/Estimated Defect Density],
+    [Product Life/Defect Density],
+    [Product Life/Estimated DRL],
+    [Product Life/DRL],
+    [Product Life/Estimated Appraisal Rate],
+    [Product Life/Appraisal Rate],
+
+    [Estimated Yield],           [Yield],
+    [Estimated % Appraisal COQ], [% Appraisal COQ],
+    [Estimated % Failure COQ],   [% Failure COQ],
+    [Estimated % COQ],           [% COQ],
+    [Estimated AFR],             [AFR],
+    [Estimated Defect Density],  [Defect Density],
+    [Appraisal_Phase_List], [Failure_Phase_List], 
+    [Quality_Phase_List], [Yield_Phase_List]
+);

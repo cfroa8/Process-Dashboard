@@ -1,0 +1,282 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.0
+Dash-Pkg-ID: TSP
+Dash-Pkg-Name: Tuma Solutions's TSP(SM) Module
+Dash-Pkg-Version: 4.0.0.20130914175139
+Dash-Pkg-Requires-Version: 1.11+
+Created-By: 16.3-b01 (Sun Microsystems Inc.)
+
+Name: teamdash/templates/setup/RestoreIndivData.class
+SHA1-Digest: sPzeDfY94Sr791carL/wD9hctiw=
+
+Name: teamdash/templates/setup/SyncWorkerWhatIf.class
+SHA1-Digest: B8uV/PHevTHdZOJP0sM1LOkx5HI=
+
+Name: teamdash/templates/setup/selectHier.class
+SHA1-Digest: iiRx/VSXTSqYbuuMhLewt9BR2F0=
+
+Name: teamdash/templates/setup/SyncWorkerLogger.class
+SHA1-Digest: h6r+mT3DEbFsNnFRXEAEOr4Gyhk=
+
+Name: teamdash/templates/setup/GetAddOnInternalURL.class
+SHA1-Digest: ND3VlF5IR/RxAwxaeBLZ8yY5IYw=
+
+Name: teamdash/templates/setup/selectLabelFilter.class
+SHA1-Digest: 012llL2LEChy+wWEeqEVz0uJii0=
+
+Name: teamdash/templates/setup/inclTeamTools.class
+SHA1-Digest: VEW3jvdUuUMG3LkaijsZ1+0Wcz8=
+
+Name: teamdash/templates/setup/wizard$1.class
+SHA1-Digest: 00QnLNKZxtyKsShKNZUttCOx4pI=
+
+Name: teamdash/templates/setup/selectWBSIndiv.class
+SHA1-Digest: uybx1ftRxC7utUW0b/MgYt3iICU=
+
+Name: teamdash/templates/setup/ReadOnlyMessageNoteFormat$Editor.class
+SHA1-Digest: trRYXkAzKvC44GmVA55ynhD+Fes=
+
+Name: teamdash/templates/setup/EditSubprojectList$Subproject.class
+SHA1-Digest: 8BU6vVna68tASJMQsrwX90JsvcQ=
+
+Name: teamdash/templates/setup/migrate.class
+SHA1-Digest: fBVN4dWXFhZ31NOhZx4cOXxE9Ac=
+
+Name: teamdash/templates/setup/selectLabelFilter$1.class
+SHA1-Digest: asvX4TfRUBLTgsp3Dw7ty2syoCI=
+
+Name: teamdash/templates/setup/SyncScanner$LaunchBrowserWindow.class
+SHA1-Digest: z59kWcSNsGeFJoEpvyjRX+qaVSo=
+
+Name: teamdash/templates/setup/HierarchySynchronizer$ForceDataContext.
+ class
+SHA1-Digest: tBiiZubSKioFJTnVavrcKR4yHXQ=
+
+Name: teamdash/templates/setup/MigrationToolIndiv$MigrationTask.class
+SHA1-Digest: VLRZpg0MSd1u48OVPqLZl1h9mE0=
+
+Name: teamdash/templates/setup/SyncScanner.class
+SHA1-Digest: /O2dhC5i4gmgNNyjmIbORRY1yg4=
+
+Name: teamdash/templates/setup/MoveProjectWorker.class
+SHA1-Digest: ORBD3gvBamPimmsKR3hrHdTJutI=
+
+Name: teamdash/FilenameMapper.class
+SHA1-Digest: WPQcd30YxjSksOrkjoO/03J8Pzk=
+
+Name: teamdash/templates/setup/summaryName.class
+SHA1-Digest: IUfJlVJv/2jYoQcTloRhrGVvzHM=
+
+Name: teamdash/templates/setup/wizard$TemplateDirAdder.class
+SHA1-Digest: 3hyi471t7XZ2OTgPP5p7VJKBAeU=
+
+Name: teamdash/templates/setup/MigrationToolIndiv$1.class
+SHA1-Digest: ebmn35W6gU3qjOnEw7qavENVr9o=
+
+Name: teamdash/templates/setup/join.class
+SHA1-Digest: Kjwb7Fi9AaWhaBVv5yZvmLa1xfI=
+
+Name: teamdash/templates/setup/TeamSettingsFile.class
+SHA1-Digest: lDevA8ZJvZpyQFeIW5fAnR8+WCw=
+
+Name: teamdash/templates/setup/TeamSettingsFile$RelatedProject.class
+SHA1-Digest: V33rKnYWwUy4DPKFQZzY5RAlWHM=
+
+Name: teamdash/templates/setup/migrate.properties
+SHA1-Digest: Od0uh73H3eRZEt4JI9yGaGaauQI=
+
+Name: teamdash/templates/setup/UserDataWriter$DiscrepancyWriter.class
+SHA1-Digest: pPDzodkz6sNSo7+DnBxW8KBdWck=
+
+Name: teamdash/templates/setup/selectWBSData$1.class
+SHA1-Digest: 41Jm1NYZs3dy+GePgq7gJ1LqCes=
+
+Name: teamdash/templates/setup/MigrationException.class
+SHA1-Digest: +NFVBRrGhPLDhYiQdDl3FMxpwZ0=
+
+Name: teamdash/templates/setup/selectWBSFrame.class
+SHA1-Digest: BDsFF9BCCvQr1VmhvWEFkXcQW58=
+
+Name: teamdash/templates/setup/TeamMetricsStatus.class
+SHA1-Digest: fee8UHS6PS3M60O3bTBRhSCblMw=
+
+Name: teamdash/templates/setup/RestoreIndivDataWorker$MapType.class
+SHA1-Digest: ULVNext56BaHNcdonIuYbuBLx0I=
+
+Name: teamdash/templates/setup/HierarchySynchronizer.class
+SHA1-Digest: T4oymbfJ5F/SQjIFf9nfU+4xDsg=
+
+Name: teamdash/templates/setup/UserDataWriter.class
+SHA1-Digest: Kkh7NPl4LvdWrP2G5li35P65auE=
+
+Name: teamdash/templates/setup/SyncDiscrepancy$EVSchedule.class
+SHA1-Digest: EmNOly0KioZ2ubM5HbGHouF4J/Q=
+
+Name: teamdash/templates/setup/RepairImportInstruction.class
+SHA1-Digest: LsTxSwANrfUTV8na4bYhdyNA8AA=
+
+Name: teamdash/templates/setup/HierarchySynchronizer$SyncSimpleNode.cl
+ ass
+SHA1-Digest: /oLwCWGY/JqXJX79hlwEccj8U4I=
+
+Name: teamdash/templates/setup/sync.class
+SHA1-Digest: pSeigKOOiyES6bvP/mAMTVu7QkM=
+
+Name: teamdash/templates/setup/EditSubprojectList.class
+SHA1-Digest: wwtOActDHgXIlEQBJuS/UbVXBic=
+
+Name: teamdash/templates/setup/MoveTeamDirMessageHandler.class
+SHA1-Digest: H3Q81RF7X+z4Iq3GJbSrRqjHpss=
+
+Name: teamdash/templates/setup/GetUnassignedAndDeferredTime$Node.class
+SHA1-Digest: ZoDqyFWw7N1ziV80UdAikQIR614=
+
+Name: teamdash/templates/setup/MigrationToolIndivLauncher$1.class
+SHA1-Digest: /UUWleAtDhIjkcnmLdpkXPTGypw=
+
+Name: teamdash/templates/setup/selectTopNode.class
+SHA1-Digest: uwFc7bdW6Wn28qFELf+Bre5VmbY=
+
+Name: teamdash/templates/setup/MigrationToolIndiv.class
+SHA1-Digest: GlhLriHpZ5lZKrdHO+y08eNo3hQ=
+
+Name: teamdash/templates/setup/SelectPspRollup.class
+SHA1-Digest: Qhhw/eqH2UwdQYipqCI4K5Pm1d0=
+
+Name: teamdash/templates/setup/SetTeamServerJoinUrl.class
+SHA1-Digest: fkC2cbvsTGvqv03ZkXLwdIwCPrg=
+
+Name: teamdash/templates/setup/MoveProjectException.class
+SHA1-Digest: 5oKNgTM8CTz8BwbRUXbhBWSq+js=
+
+Name: teamdash/templates/setup/convert.class
+SHA1-Digest: Tnl9OSzGq06gd7ffwAGrNat+wFo=
+
+Name: teamdash/templates/setup/MigrationToolIndiv$WaitForLockTask.clas
+ s
+SHA1-Digest: YWpuZ4bK/KIwbRjaTn2+llSO4ks=
+
+Name: teamdash/templates/setup/WorkflowScriptSource.class
+SHA1-Digest: likS5fFeFzLTHn93H0g5PewCXg0=
+
+Name: teamdash/templates/setup/ProcessAdvisor.class
+SHA1-Digest: 9r1e5uwOLMt+Xuudnj5v9RiRXRs=
+
+Name: teamdash/templates/setup/HierarchySynchronizer$1.class
+SHA1-Digest: hFKQL3yLuLAMiciF/aI69xKcM5U=
+
+Name: teamdash/templates/setup/HierarchySynchronizer$SyncTaskNode.clas
+ s
+SHA1-Digest: Mz/NVMtJ938k8QeIYhHt3IHMwpc=
+
+Name: teamdash/templates/setup/MigrationToolIndivLauncher.class
+SHA1-Digest: OZTCefIstuFpXTSObLZj+pqEVnQ=
+
+Name: teamdash/templates/setup/MigrationToolTeam.class
+SHA1-Digest: 441qrM2fwv85DdKo5tOU7raogK0=
+
+Name: teamdash/templates/setup/SyncDiscrepancy$PlanTime.class
+SHA1-Digest: zt6aPfKnpk789b2SKg1kZzjODW4=
+
+Name: teamdash/templates/setup/HierarchySynchronizer$DefectCounter.cla
+ ss
+SHA1-Digest: uQA2XmWi5xLuXRFntKILt3NZHLk=
+
+Name: teamdash/templates/setup/HierarchySynchronizer$SyncPSPTaskNode.c
+ lass
+SHA1-Digest: wnW10jmY8tkbWyHoRNfjvafS3yE=
+
+Name: teamdash/templates/setup/MigrationToolIndiv$MigrationMethod.clas
+ s
+SHA1-Digest: aqU4cJgUDel6Si/qn+/FNkgPFT8=
+
+Name: teamdash/templates/setup/selectWBS.class
+SHA1-Digest: G4eA+ZdOvH70d0lVF90/IJDcImo=
+
+Name: teamdash/templates/setup/ReadOnlyMessageNoteFormat.class
+SHA1-Digest: dcegqaQP+D+hIL73WxbuxD+bRms=
+
+Name: teamdash/templates/setup/RestoreIndivDataWorker.class
+SHA1-Digest: sGf++zPUB3dKfgRYXFwWa9qek4Q=
+
+Name: teamdash/templates/setup/TeamMetricsStatus$ImportData.class
+SHA1-Digest: nzclyH/NZbUxY97Tw0aZGXZZUsg=
+
+Name: teamdash/templates/setup/HierarchySynchronizer$SyncNode.class
+SHA1-Digest: hewoOPysp0NuEwc1uJV+xXOsUsY=
+
+Name: teamdash/templates/setup/MoveProjectWizard.class
+SHA1-Digest: 3C+w7MrPdrl8XkMAtHRmCB46pbE=
+
+Name: teamdash/templates/setup/filterWBS.class
+SHA1-Digest: mWxikc47NGk+qNq57KzOHY5JYcw=
+
+Name: teamdash/templates/setup/selectWBSData.class
+SHA1-Digest: u7NX0AplY3yHVVMn2+oGuf4Yp8M=
+
+Name: teamdash/templates/setup/UserDataWriter$WrappedIOException.class
+SHA1-Digest: tFH98ljD+S+mnHPkXuEGtIQybVU=
+
+Name: teamdash/templates/setup/TemplateSynchronizer.class
+SHA1-Digest: psT4HQHxtQs/046/o4UWp0rzGtw=
+
+Name: teamdash/templates/setup/wizard.class
+SHA1-Digest: l4Hqo04krRcSHbQHZIB34UlBa+w=
+
+Name: teamdash/templates/setup/SyncDiscrepancy$ItemNote.class
+SHA1-Digest: O7DyvZJJeO2rxMnGPh6TkSqnZW0=
+
+Name: teamdash/templates/setup/sync$AsyncExporter.class
+SHA1-Digest: t/JXiyLfzmGXNir5NNez8/+UWFU=
+
+Name: teamdash/templates/setup/HierarchySynchronizer$SyncOldTaskNode.c
+ lass
+SHA1-Digest: 4zLYN9d7xU+hXnaP89UNNnJeRWQ=
+
+Name: teamdash/templates/setup/AddScheduleWriter.class
+SHA1-Digest: kk0xInSSz/zsUY9aJzySGwhmpK4=
+
+Name: teamdash/templates/setup/AbstractSyncWorker.class
+SHA1-Digest: I6jiT6k51HTswxcSDJMxtV6sV5k=
+
+Name: teamdash/templates/setup/SyncDiscrepancy.class
+SHA1-Digest: T9fCZFBi6Iiof1aMLxpuYzCjJ+M=
+
+Name: teamdash/templates/setup/TeamDataConstants.class
+SHA1-Digest: +D3FuQ+ux4FM7KPFMaznx3Wtlfs=
+
+Name: teamdash/templates/setup/SyncWorker.class
+SHA1-Digest: J0Q8LU37+eMw3pI1UR9qFbMXWZg=
+
+Name: teamdash/templates/setup/SyncDiscrepancy$NodeType.class
+SHA1-Digest: YunxOn8BbemKLDYfE/k7vftL8pk=
+
+Name: teamdash/templates/setup/SyncScanner$SyncTask.class
+SHA1-Digest: AecroHhJCSrpBqhgxTOsRP5jJY0=
+
+Name: teamdash/FilenameMapperExtResMgr.class
+SHA1-Digest: XPo7414zyyzZDRdUUZ9qS6KtaIo=
+
+Name: teamdash/templates/setup/SyncWorkerLive.class
+SHA1-Digest: vqZLkn769jsMJjBfiVsutbZqdAQ=
+
+Name: teamdash/templates/setup/selectWBSIndiv$1.class
+SHA1-Digest: GQjKk2h8cmqzvophlxge70R/L4I=
+
+Name: teamdash/templates/setup/GetUnassignedAndDeferredTime.class
+SHA1-Digest: Gfkj1P/DeEfmlumZ3nRbEQBZGBw=
+
+Name: teamdash/templates/setup/SyncDiscrepancy$Visitor.class
+SHA1-Digest: tMeQK8Ozqxtf5+zuxv8jX/6Ju64=
+
+Name: teamdash/templates/setup/sizeForm.class
+SHA1-Digest: IxwbF/KVcfFe0zNz7suebZwfAYc=
+
+Name: teamdash/templates/setup/HierarchySynchronizer$SyncProjectNode.c
+ lass
+SHA1-Digest: cUz6YjUR7pa8ajFcBvZLNaEu+AY=
+
+Name: teamdash/templates/setup/GetUnassignedAndDeferredTime$DataProble
+ m.class
+SHA1-Digest: p/jBs4RKJJrYAAalTPAGYkFpPg0=
+

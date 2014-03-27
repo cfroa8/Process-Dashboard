@@ -1,0 +1,72 @@
+// 
+// Data file for an individual TSP(SM) project.
+//
+
+#include <TSP/rollup_dataFile.txt> exclude (
+    [Project_Component_List], ".*/% Defect Free",
+    [Analyze Rollup Data/leaf], [Analyze Rollup Data/node]
+)
+#include <TSP/indiv_root_data.txt>
+
+undefine([Simple Project Tag]);
+[Exporting_Namespaced_Phase_Metrics] = true;
+[TSP Indiv2 Root Tag] = tag;
+[Enable_Reverse_Sync] = true;
+[EV Project Tag] = tag;
+
+
+/*
+ * Define items in support of project node types.
+ */
+[TSP /Effective_Phase] = "?????";
+[/TSP /No_Node_Type] == "";
+[Node_Type] == [/TSP /No_Node_Type];
+[Node_Type_Spec] = list(
+    "(processName:TSP(SM))",
+    [/TSP/Phase_List]);
+
+
+/*
+ * Redefine the rollup filter to include items from this project, and
+ * respect the label-based filter if it is in effect.
+ */
+[Filtered_Task_Labels] = globSearch([Label//Filter], [Task_Labels]);
+[Project_WBS_ID_Filter] = nvl([Project_WBS_ID//Filter], [Project_ID]);
+
+[Rollup_Filter] =
+    "nvlz(!defined([{Filtered_Task_Labels}]), \
+          intersects([{Filtered_Task_Labels}], [EV_Task_IDs])) \
+     && nvlz([Project_WBS_ID] == [{Project_WBS_ID_Filter}], \
+          startsWith([{Project_WBS_ID_Filter}] & \"/\", [Project_WBS_ID]))";
+
+[Rollup_Namespaced_Phase_Metrics] = true;
+
+
+/*
+ * On the team side, the calculations assume that the team inspects
+ * the products that were produced.  But on the personal side, that
+ * isn't true - you are inspecting other people's products, not your
+ * own. Redefine the "Inspected" metrics to sum up the corresponding
+ * "Inspected" items from the Size Inventory form.
+ */
+
+[Estimated Inspected Text Pages] = 0 + sumFor ("Estimated Inspected Text Pages" , [Rollup_List]);
+[Inspected Text Pages] = 0 + sumFor ("Inspected Text Pages" , [Rollup_List]);
+
+
+[Estimated Inspected Req Pages] = 0 + sumFor ("Estimated Inspected Req Pages" , [Rollup_List]);
+[Inspected Req Pages] = 0 + sumFor ("Inspected Req Pages" , [Rollup_List]);
+
+
+[Estimated Inspected HLD Pages] = 0 + sumFor ("Estimated Inspected HLD Pages" , [Rollup_List]);
+[Inspected HLD Pages] = 0 + sumFor ("Inspected HLD Pages" , [Rollup_List]);
+
+
+[Estimated Inspected DLD Lines] = 0 + sumFor ("Estimated Inspected DLD Lines" , [Rollup_List]);
+[Inspected DLD Lines] = 0 + sumFor ("Inspected DLD Lines" , [Rollup_List]);
+
+
+[Estimated Inspected New & Changed LOC] = 0 + sumFor ("Estimated Inspected New & Changed LOC" , [Rollup_List]);
+[Inspected New & Changed LOC] = 0 + sumFor ("Inspected New & Changed LOC" , [Rollup_List]);
+
+

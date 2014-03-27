@@ -1,0 +1,15 @@
+#include <dataFile.txt>
+Current_Exported_Filenames=="/Users/CarlosRoa/Documents/Documents/Process Dashboard/https:/github.com/ECOS2014/proyectotsp.git/data/ht5x5427/disseminate/team-data.pdash/Users/CarlosRoa/Documents/Documents/Process Dashboard/data/ht77arzq/disseminate/team-data.pdash
+Historically_Exported_Filenames=="/Users/CarlosRoa/Documents/Documents/Process Dashboard/data/ht5x5427/disseminate/team-data.pdash/Users/CarlosRoa/Documents/Documents/Process Dashboard/https:/github.com/ECOS2014/proyectotsp.git/data/ht5x5427/disseminate/team-data.pdash/Users/CarlosRoa/Documents/Documents/Process Dashboard/data/ht77arzq/disseminate/team-data.pdash
+Non Project/Time==0.0
+Non Project/leaf==TAG
+Non Project/node==TAG
+Project/node==TAG
+Task-Schedule/ChangeCounter/Task List ID="ydpk0c.ht77arzz
+Task-Schedule/ChangeCounter/Task Lists=="
+Task-Schedule/ContadorCambios/Task List ID="yeuh9c.ht5x54ow
+Task-Schedule/ContadorCambios/Task Lists=="
+ev /ChangeCounter/PW_STOR=" none 
+ev /ChangeCounter/_Password_==1.0
+ev /ContadorCambios/PW_STOR=" none 
+ev /ContadorCambios/_Password_==1.0

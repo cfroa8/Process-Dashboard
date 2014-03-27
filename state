@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- hierarchical work breakdown structure -->
+
+<node name="top">
+  <node name="Project" selected="true">
+    <node name="ContadorCambios" templateID="TSP/TeamRoot" dataFile="1.dat"/>
+    <node name="ChangeCounter" templateID="TSP/TeamRoot" dataFile="3.dat" selected="true"/>
+  </node>
+  <node name="Non Project"/>
+</node>
