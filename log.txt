@@ -97,3 +97,17 @@ Mar 29, 2014 8:04:46 PM net.sourceforge.processdash.tool.export.DataImporter imp
 INFO: importing /Users/CarlosRoa/Documents/Documents/Process Dashboard/data/ht77arzq/CR-data.pdash
 Mar 29, 2014 8:04:52 PM com.tuma_solutions.tpidw.client.addon.TpidwAddOnDataLoader$DatasetLoaderThread loadDatasetImpl
 INFO: Refreshed database with project data (took 49 ms)
+Mar 29, 2014 8:08:35 PM net.sourceforge.processdash.tool.bridge.client.WorkingDirectoryFactory get
+INFO: Using local working directory /Users/CarlosRoa/Documents/Documents/Process Dashboard/data/ht77arzq
+Completed user-scheduled data export.
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/3.dat
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/global.dat
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/global.dat
+Mar 29, 2014 8:55:06 PM com.tuma_solutions.tpidw.client.addon.TpidwAddOnDataLoader$DatasetLoaderThread loadDatasetImpl
+INFO: Refreshed database with project data (took 75 ms)
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/3.dat
+Mar 29, 2014 8:58:06 PM com.tuma_solutions.tpidw.client.addon.TpidwAddOnDataLoader$DatasetLoaderThread loadDatasetImpl
+INFO: Refreshed database with project data (took 50 ms)
+Completed user-scheduled data export.
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/3.dat
+Saved /Users/CarlosRoa/Documents/Documents/Process Dashboard/global.dat
